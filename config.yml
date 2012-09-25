@@ -1,0 +1,6 @@
+directories:
+  output: './output'
+
+nodes:
+  homepage: 2
+  safety: 100

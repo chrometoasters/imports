@@ -1,0 +1,16 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    SystemTimer (1.2.3)
+    highline (1.6.15)
+    redis (3.0.1)
+    trollop (2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  SystemTimer
+  highline
+  redis
+  trollop
