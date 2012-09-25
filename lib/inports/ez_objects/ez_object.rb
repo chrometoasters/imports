@@ -1,10 +1,10 @@
 class EzObject
-  def self.is_mine?(path)
-
+  def self.me?(path)
+    puts "#{self}.me? is not defined."
   end
 
 
   def self.store(path)
-
+    "#{self}.store is not defined."
   end
 end

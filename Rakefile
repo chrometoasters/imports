@@ -13,8 +13,9 @@ namespace :reset do
     puts $term.color("Removing #{dir}", :green)
     FileUtils.remove_dir(dir, true)
 
-    puts $term.color("ReCreating #{dir}", :green)
+    puts $term.color("Recreating fresh #{dir}", :green)
     FileUtils.mkdir(dir)
+    FileUtils.touch(dir + '/.gitkeep')
   end
 end
 
