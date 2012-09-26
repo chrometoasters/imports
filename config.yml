@@ -1,5 +1,6 @@
 directories:
   output: './output'
+  input: './input'
 
 nodes:
   homepage: 2

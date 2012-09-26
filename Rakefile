@@ -22,3 +22,8 @@ end
 task :reset do
   Rake::Task['reset:output'].invoke
 end
+
+task :scratch do
+    Rake::Task['app'].invoke
+    require './test/scratch'
+end

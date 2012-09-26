@@ -3,6 +3,7 @@ GEM
   specs:
     SystemTimer (1.2.3)
     highline (1.6.15)
+    nokogiri (1.5.2)
     redis (3.0.1)
     trollop (2.0)
 
@@ -12,5 +13,6 @@ PLATFORMS
 DEPENDENCIES
   SystemTimer
   highline
+  nokogiri
   redis
   trollop
