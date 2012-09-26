@@ -1,8 +1,6 @@
 class Crawler
   include Logger
 
-  @@name =
-
   def initialize(root = CONFIG['directories']['input'])
     @root = root
   end

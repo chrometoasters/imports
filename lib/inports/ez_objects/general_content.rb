@@ -13,21 +13,34 @@ class GeneralContent < EzObject
   def self.store(path)
     id = $r.get_id
 
-    puts $term.color("Storing #{path} with id #{id}", :green)
+    puts $term.color("Storing #{path} as #{@@type} with id #{id}", :green)
+
 
     $r.log_key path
     $r.hset path, 'type', @@type
-
     $r.hset path, 'id', id
-
     $r.hset path, 'parent', parent_id(path)
 
-    #$r.hset path, 'body'
-    #$r.hset path, 'title'
+    doc = Nokogiri::HTML(open(path))
+
+    $r.hset path, 'body', process_body(doc)
+    $r.hset path, 'title', doc.xpath("//p[@class='header']").first.content
+  end
+
+  def process_body(path)
+    str = doc.xpath("//div[@id='content']").first.to_s
+
+    puts Sanitize.clean(str, Sanitize::Config::RELAXED)
   end
 
 
   def self.matched(path)
-    path =~ /\.htm$/ || path =~ /.\/[^\.]+$/
+    if path =~ /\.htm$/
+      :page
+    elsif path =~ /.\/[^\.]+$/
+      :folder
+    else
+      nil
+    end
   end
 end

@@ -5,6 +5,8 @@ GEM
     highline (1.6.15)
     nokogiri (1.5.2)
     redis (3.0.1)
+    sanitize (2.0.3)
+      nokogiri (>= 1.4.4, < 1.6)
     trollop (2.0)
 
 PLATFORMS
@@ -15,4 +17,5 @@ DEPENDENCIES
   highline
   nokogiri
   redis
+  sanitize
   trollop
