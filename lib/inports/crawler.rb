@@ -1,4 +1,6 @@
 class Crawler
+  include Logger
+
   def initialize(root = CONFIG['directories']['input'])
     @root = root
   end
@@ -6,12 +8,11 @@ class Crawler
 
   def run
     list.each do |path|
-      next if EzObject.dispatch path
+      unless EzObject.handle path
+        warn path, 'unhandled'
+      end
     end
   end
-
-
-  private
 
 
   def list

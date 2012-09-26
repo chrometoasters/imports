@@ -2,6 +2,8 @@ directories:
   output: './output'
   input: './input'
 
-nodes:
+ids:
   homepage: 2
   safety: 100
+
+db: 3

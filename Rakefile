@@ -2,8 +2,8 @@ task :app do
   require './lib/inports'
 end
 
-namespace :reset do
-  task :output do
+namespace :output do
+  task :delete do
     Rake::Task['app'].invoke
 
     $term.agree($term.color('Wipe existing output?', :red))
@@ -19,9 +19,40 @@ namespace :reset do
   end
 end
 
+
 task :reset do
-  Rake::Task['reset:output'].invoke
+  Rake::Task['output:delete'].invoke
+  Rake::Task['logs:delete'].invoke
+  Rake::Task['redis:clean'].invoke
+
 end
+
+
+namespace :logs do
+  task :delete do
+    Rake::Task['app'].invoke
+    #$term.agree($term.color('Wipe logs?', :red))
+
+    puts $term.color("Deleting logs", :green)
+
+    FileUtils.rm Dir.glob('./log/*.log')
+  end
+end
+
+
+namespace :redis do
+  task :clean do
+    Rake::Task['app'].invoke
+
+    $term.agree($term.color('Delete all redis keys?', :red))
+
+    $r.smembers('keys').each do |k|
+      puts $term.color("Deleting #{k}", :green)
+      $r.del k
+    end
+  end
+end
+
 
 task :scratch do
     Rake::Task['app'].invoke

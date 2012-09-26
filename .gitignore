@@ -2,6 +2,9 @@
 /output/*
 !.gitkeep
 
+*.log
+
 /.bundle
 *.gem
 *.rbc
+

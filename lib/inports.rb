@@ -10,5 +10,7 @@ CONFIG = YAML.load(raw_config)
 # Create terminal
 $term = HighLine.new
 
+require './lib/inports/redis'
+require './lib/inports/logger'
 require './lib/inports/crawler'
 require './lib/inports/ez_objects'

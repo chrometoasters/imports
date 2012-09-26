@@ -6,13 +6,15 @@ class EzObject
   end
 
 
-  def self.dispatch(path)
-    @@descendants.each do |type|
+  def self.handle(path)
+    handled = @@descendants.each do |type|
       if type.mine? path
         type.store path
         return true
       end
     end
+
+    handled == true ? true : false
   end
 
 
