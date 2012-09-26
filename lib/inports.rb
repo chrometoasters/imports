@@ -10,6 +10,8 @@ CONFIG = YAML.load(raw_config)
 # Create terminal
 $term = HighLine.new
 
+require './lib/inports/string'
+require './lib/inports/exceptions'
 require './lib/inports/redis'
 require './lib/inports/logger'
 require './lib/inports/crawler'

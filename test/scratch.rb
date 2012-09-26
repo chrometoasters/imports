@@ -1,4 +1,4 @@
-
+require './lib/inports'
 
 # docs = []
 # docs << Nokogiri::HTML(open('./input/curriculum-support/index.htm'))
@@ -14,4 +14,5 @@
 # puts files
 
 c = Crawler.new
+#puts c.list
 c.run

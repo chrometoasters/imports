@@ -50,6 +50,8 @@ namespace :redis do
       puts $term.color("Deleting #{k}", :green)
       $r.del k
     end
+
+    $r.del 'keys'
   end
 end
 

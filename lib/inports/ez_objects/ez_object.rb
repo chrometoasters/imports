@@ -26,4 +26,14 @@ class EzObject
   def self.store(path)
     "#{self}.store is not defined."
   end
+
+
+  def self.parent_id(path)
+    parent = $r.hget path._parentize, 'id'
+    if parent
+      parent
+    else
+      raise Orphanity, "#{path} failed to find id of parent #{parent}"
+    end
+  end
 end

@@ -1,0 +1,2 @@
+class Orphanity < Exception
+end

@@ -1,5 +1,9 @@
 module Logger
-  def warn(path, type)
-    File.open('./log/' + type + '.log', 'a') {|f| f.write(path + '\n') }
+  def warning(path, type)
+    log_file = './log/' + type + '.log'
+
+    puts $term.color("Logging item as #{type} => #{log_file}", :yellow)
+
+    File.open(log_file, 'a') {|f| f.write(path + '\n') }
   end
 end

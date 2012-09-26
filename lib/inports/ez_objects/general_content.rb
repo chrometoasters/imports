@@ -1,7 +1,9 @@
 class GeneralContent < EzObject
 
+  @@type = 'general_content'
+
   def self.mine?(path)
-    if path =~ /\.htm$/
+    if matched(path)
       true
     else
       false
@@ -9,14 +11,23 @@ class GeneralContent < EzObject
   end
 
   def self.store(path)
-    $r.log_key path
+    id = $r.get_id
 
-    $r.hset path, 'id', $r.get_id
-    $r.hset path, 'parent', path
+    puts $term.color("Storing #{path} with id #{id}", :green)
+
+    $r.log_key path
+    $r.hset path, 'type', @@type
+
+    $r.hset path, 'id', id
+
+    $r.hset path, 'parent', parent_id(path)
+
+    #$r.hset path, 'body'
+    #$r.hset path, 'title'
   end
 
 
-  def self.parent_id(path)
-
+  def self.matched(path)
+    path =~ /\.htm$/ || path =~ /.\/[^\.]+$/
   end
 end
