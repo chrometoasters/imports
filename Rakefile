@@ -46,7 +46,7 @@ namespace :redis do
 
     $term.agree($term.color('Delete all redis keys?', :red))
 
-    $r.smembers('keys').each do |k|
+    $r.lrange('keys', 0, -1).each do |k|
       puts $term.color("Deleting #{k}", :green)
       $r.del k
     end
@@ -59,4 +59,18 @@ end
 task :scratch do
     Rake::Task['app'].invoke
     require './test/scratch'
+end
+
+namespace :output do
+  task :xml do
+    Rake::Task['app'].invoke
+
+    xml = XML.new
+
+    puts $term.color("Generating XML output...", :green)
+
+    path = xml.output $r.lrange('keys', 0, -1)
+
+    puts $term.color("Output located at #{path}", :green)
+  end
 end
