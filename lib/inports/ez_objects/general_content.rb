@@ -10,6 +10,7 @@ class GeneralContent < EzObject
     end
   end
 
+
   def self.store(path)
     id = $r.get_id
 
@@ -21,16 +22,41 @@ class GeneralContent < EzObject
     $r.hset path, 'id', id
     $r.hset path, 'parent', parent_id(path)
 
-    doc = Nokogiri::HTML(open(path))
+    type = matched(path)
+
+    if type == :page
+      doc = Nokogiri::HTML(open(path))
+
+    elsif type == :folder
+
+      index = path + '/index.htm'
+
+      if File.exist?(index)
+        doc = Nokogiri::HTML(open(index))
+      else
+        Logger.warning "#{path} doesn't have an index.htm.", 'just-a-folder'
+        doc = Nokogiri::HTML('<div id="content>PLACEHOLDER</div>')
+      end
+    else
+      raise Unmatched, "#{path} seems to be neither a folder or a file."
+    end
 
     $r.hset path, 'body', process_body(doc)
-    $r.hset path, 'title', doc.xpath("//p[@class='header']").first.content
+
+    if doc.xpath("//p[@class='header']").first
+      $r.hset path, 'title', doc.xpath("//p[@class='header']").first.content
+    else
+      $r.hset path, 'title', 'TITLE UNKNOWN'
+      Logger.warning "Couldn't work out a title, setting TITLE UNKNOWN", 'unknown-titles'
+    end
   end
 
-  def process_body(path)
+
+
+  def self.process_body(doc)
     str = doc.xpath("//div[@id='content']").first.to_s
 
-    puts Sanitize.clean(str, Sanitize::Config::RELAXED)
+    Sanitize.clean(str, Sanitize::Config::RELAXED)
   end
 
 

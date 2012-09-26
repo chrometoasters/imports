@@ -1,11 +1,11 @@
 require './lib/inports'
 
-# docs = []
-doc = Nokogiri::HTML(open('./input/curriculum-support/index.htm'))
+# # docs = []
+# doc = Nokogiri::HTML(open('./input/curriculum-support/index.htm'))
 
-str = doc.xpath("//div[@id='content']").first.to_s
+# str = doc.xpath("//div[@id='content']").first.to_s
 
-puts Sanitize.clean(str, Sanitize::Config::RELAXED)
+# puts Sanitize.clean(str, Sanitize::Config::RELAXED)
 
 #puts doc.css('cfinclude')[2]
 
@@ -20,6 +20,6 @@ puts Sanitize.clean(str, Sanitize::Config::RELAXED)
 
 # puts files
 
-# c = Crawler.new
+ c = Crawler.new
 # #puts c.list
-# c.run
+ c.run

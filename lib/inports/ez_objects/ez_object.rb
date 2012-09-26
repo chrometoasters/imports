@@ -1,4 +1,5 @@
 class EzObject
+
   @@descendants = []
 
   def self.inherited(subclass)

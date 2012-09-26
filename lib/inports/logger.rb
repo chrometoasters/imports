@@ -1,5 +1,5 @@
 module Logger
-  def warning(path, type)
+  def self.warning(path, type)
     log_file = './log/' + type + '.log'
 
     puts $term.color("Logging item as #{type} => #{log_file}", :yellow)

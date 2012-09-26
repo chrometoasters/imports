@@ -9,7 +9,7 @@ class Crawler
   def run
     list.each do |path|
       unless EzObject.handle path
-        warning path, 'unhandled'
+        Logger.warning path, 'unhandled'
       end
     end
   end
