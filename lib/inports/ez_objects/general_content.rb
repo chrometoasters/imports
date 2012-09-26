@@ -1,7 +1,6 @@
 class GeneralContent < EzObject
-  EzObject.register self
 
-  def self.me(path)
+  def self.mine?(path)
     true
   end
 

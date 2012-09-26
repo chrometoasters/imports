@@ -1,8 +1,8 @@
 class EzObject
   @@descendants = []
 
-  def self.register(klass)
-    @@descendants << klass
+  def self.inherited(subclass)
+    @@descendants << subclass
   end
 
 
@@ -17,7 +17,7 @@ class EzObject
 
 
   def self.mine?(path)
-    puts "#{self}.me? is not defined."
+    puts "#{self}.mine? is not defined."
   end
 
 
