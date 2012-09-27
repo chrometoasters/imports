@@ -1,4 +1,9 @@
 module Logger
+
+  # Logs and prints a warning message.
+  # Requires a type (which is the name of the log file the
+  # warning will be stored as.
+
   def self.warning(path, type)
     log_file = './log/' + type + '.log'
 

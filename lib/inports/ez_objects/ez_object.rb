@@ -2,10 +2,18 @@ class EzObject
 
   @@descendants = []
 
+  # When a class inherits from EzObject
+  # it is stored in the @@descendants class var.
+
   def self.inherited(subclass)
     @@descendants << subclass
   end
 
+
+  # Iterates through the child classes of EzObject
+  # calling ::mine? on each.
+  #
+  # If a class accepts the item, its ::store method is called.
 
   def self.handle(path)
     handled = @@descendants.each do |type|
@@ -30,6 +38,11 @@ class EzObject
     "#{self}.store is not defined."
   end
 
+
+  # Finds parent id for an item, using the _parentize
+  # method we've added to string (shortens path down a level).
+  #
+  # Overide in child classes if necessary.
 
   def self.parent_id(path)
     parent = $r.hget path._parentize, 'id'

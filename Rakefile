@@ -2,6 +2,7 @@ task :app do
   require './lib/inports'
 end
 
+
 namespace :output do
   task :delete do
     Rake::Task['app'].invoke
@@ -60,6 +61,7 @@ task :scratch do
     Rake::Task['app'].invoke
     require './test/scratch'
 end
+
 
 namespace :output do
   task :xml do

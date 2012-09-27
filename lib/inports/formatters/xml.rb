@@ -4,12 +4,14 @@ class XML
     @builder.to_xml.to_s
 
     output_path = CONFIG['directories']['output'] + '/content.xml'
+
     file = File.new(output_path, "w")
     file.write(@builder.to_xml.to_s)
     file.close
 
     output_path
   end
+
 
   def generate(keys)
     @builder = Nokogiri::XML::Builder.new do |xml|

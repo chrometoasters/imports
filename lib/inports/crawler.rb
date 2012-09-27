@@ -6,6 +6,10 @@ class Crawler
   end
 
 
+  # Main script loop.
+  # Runs through our list of files/folders, passing each to the
+  # EzObject children for handling.
+
   def run
     list.each do |path|
       unless EzObject.handle path
