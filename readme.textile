@@ -1,0 +1,19 @@
+Requires redis to be installed.
+
+Installation:
+
+@$ gem install bundler rake@
+@$ bundle install@
+
+Run tasks via rake:
+
+@$ rake reset@
+@$ rake run@
+@$ rake output:xml@
+
+etc.
+
+Configuration options are in
+
+@config.yml@
+
