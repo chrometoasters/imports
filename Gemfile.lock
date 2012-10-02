@@ -4,6 +4,10 @@ GEM
     SystemTimer (1.2.3)
     fastercsv (1.5.4)
     highline (1.6.15)
+    minitest (2.12.1)
+    minitest-colorize (0.0.4)
+      minitest (~> 2.0)
+    mock_redis (0.4.1)
     nokogiri (1.5.2)
     redis (3.0.1)
     sanitize (2.0.3)
@@ -17,6 +21,9 @@ DEPENDENCIES
   SystemTimer
   fastercsv
   highline
+  minitest
+  minitest-colorize
+  mock_redis
   nokogiri
   redis
   sanitize

@@ -1,5 +1,12 @@
+require 'rake/testtask'
+
 task :app do
   require './lib/inports'
+end
+
+
+Rake::TestTask.new do |t|
+  t.test_files = FileList['test/test*.rb']
 end
 
 
@@ -18,8 +25,8 @@ namespace :output do
     FileUtils.mkdir(dir)
     FileUtils.touch(dir + '/.gitkeep')
   end
-  
-  
+
+
   task :xml do
     Rake::Task['app'].invoke
 
