@@ -34,7 +34,7 @@ class GeneralContent < EzObject
       if File.exist?(index)
         doc = Nokogiri::HTML(open(index))
       else
-        Logger.warning "#{path} doesn't have an index.htm.", 'just-a-folder'
+        Logger.warning path, 'just-a-folder'
         doc = Nokogiri::HTML('<div id="content>PLACEHOLDER</div>')
       end
     else
@@ -47,7 +47,7 @@ class GeneralContent < EzObject
       $r.hset path, 'title', doc.xpath("//p[@class='header']").first.content
     else
       $r.hset path, 'title', 'TITLE UNKNOWN'
-      Logger.warning "Couldn't work out a title, setting TITLE UNKNOWN", 'unknown-titles'
+      Logger.warning path, 'unknown-titles'
     end
   end
 
