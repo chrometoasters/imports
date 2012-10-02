@@ -67,12 +67,7 @@ namespace :redis do
 
     $term.agree($term.color('Delete all redis keys?', :red))
 
-    $r.lrange('keys', 0, -1).each do |k|
-      puts $term.color("Deleting #{k}", :green)
-      $r.del k
-    end
-
-    $r.del 'keys'
+    $r.kill_keys { |k| puts $term.color("Deleting #{k}", :green) }
   end
 end
 

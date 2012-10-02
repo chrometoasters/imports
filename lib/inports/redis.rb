@@ -15,7 +15,25 @@ class Redis
   def log_key(k)
     $r.rpush 'keys', k
   end
+
+
+  # Removes all keys referenced in 'keys' list.
+  #
+  # Yields each key as it runs.
+
+  def kill_keys
+    $r.lrange('keys', 0, -1).each do |k|
+
+      yield k if block_given?
+
+      $r.del k
+    end
+
+    $r.del 'keys'
+  end
 end
+
+
 
 # Initialize redis.
 $r = Redis.new

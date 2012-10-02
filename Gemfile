@@ -11,5 +11,5 @@ gem "fastercsv"
 group :test do
   gem "minitest", :require => 'minitest/autorun'
   gem "minitest-colorize"
-  gem "mock_redis"
+  # gem "mock_redis"
 end
