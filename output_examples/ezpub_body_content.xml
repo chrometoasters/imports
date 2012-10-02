@@ -1,0 +1,206 @@
+<!-- http://ezboot-staging.internal.cwa.co.nz/Test-general-content-styles -->
+
+
+<header class="h1" level="2">Heading 1 (faux .h1)</header>
+<header level="2">Heading 2</header>
+<header level="3">Heading 3</header>
+<header level="4">Heading 4</header>
+<header level="5">Heading 5</header>
+<header level="6">Heading 6</header>
+<header level="2">Heading 2 <custom name="small">custom tag :: 'small' for associated text </custom><custom name="small">&nbsp;</custom></header>
+<header level="3">Heading 3 <custom name="small">custom tag :: 'small'</custom></header>
+<header level="4">Heading 4 <custom name="small">custom tag :: 'small'</custom></header>
+<strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong> Ut <emphasize>imperdiet sagittis</emphasize> velit eu tempor. Suspendisse potenti. Donec auctor ornare tempor. Proin vel arcu nulla. Sed pellentesque hendrerit porttitor. Praesent posuere eros tellus, in vehicula lacus. Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat2 metus2 vel facilisis.
+
+<header level="2">Tables</header>
+<header level="3">Default</header>
+<table width="100%" border="1">
+  <tr>
+    <th>Header cell</th>
+    <th>Header cell</th>
+    <th>Header cell</th>
+    <th>Header cell</th>
+  </tr>
+  <tr>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+  </tr>
+  <tr>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+  </tr>
+</table>
+
+<header level="3">Table bordered</header>
+<table class="table-bordered" width="100%" border="1">
+  <tr>
+    <th>Header cell</th>
+    <th>Header cell</th>
+    <th>Header cell</th>
+    <th>Header cell</th>
+  </tr>
+  <tr>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+  </tr>
+  <tr>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+  </tr>
+</table>
+
+<header level="3">Table striped</header>
+<table class="table-striped" width="100%" border="1">
+  <tr>
+    <th>Header cell</th>
+    <th>Header cell</th>
+    <th>Header cell</th>
+    <th>Header cell</th>
+  </tr>
+  <tr>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+  </tr>
+  <tr>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+  </tr>
+</table>
+
+<header level="3">Table condensed</header>
+<table class="table-condensed" width="100%" border="1">
+  <tr>
+    <th>Header cell</th>
+    <th>Header cell</th>
+    <th>Header cell</th>
+    <th>Header cell</th>
+  </tr>
+  <tr>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+  </tr>
+  <tr>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+  </tr>
+</table>
+
+<emphasize>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</emphasize> Ut imperdiet sagittis velit eu tempor. Suspendisse potenti. Donec auctor ornare tempor. Proin vel arcu nulla. Sed pellentesque hendrerit porttitor. Praesent posuere eros tellus, in vehicula lacus. Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis. <link title="Test link" href="http://www.google.com">Test external link</link>.
+
+<ul>
+  <li>item 1</li>
+  <li>item 2 - Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi.</li>
+  <li><link title="Test link" href="http://www.google.com">item 3</link></li>
+</ul>
+
+<header level="2">Heading 2</header>
+<embed size="small" align="left" href="ezobject://66" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut imperdiet sagittis velit eu tempor. Suspendisse potenti. Donec auctor ornare tempor. Proin vel arcu nulla. Sed pellentesque hendrerit porttitor. Aenean porttitor volutpat metus vel facilisis. <link title="Test link" href="eznode://64">Test internal link</link>.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut imperdiet sagittis velit eu tempor. Suspendisse potenti. Donec auctor ornare tempor. Proin vel arcu nulla. Sed pellentesque hendrerit porttitor. Praesent posuere eros tellus, in vehicula lacus. Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.
+
+<ol>
+  <li>item 1</li>
+  <li>item 2 - Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi.</li>
+  <li><link title="Test link" href="http://www.google.com">item 3</link></li>
+</ol>
+
+<header level="3">Heading 3</header>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut imperdiet sagittis velit eu tempor. Suspendisse potenti. Donec auctor ornare tempor. Proin vel arcu nulla. Sed pellentesque hendrerit porttitor. Praesent posuere eros tellus, in vehicula lacus. Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.
+
+<ol>
+  <li>item 1 - Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi.
+    <ol>
+      <li>sub-item 1</li>
+      <li>sub-item 2 - Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi.</li>
+      <li><link title="Test link" href="http://www.google.com">sub-item 3</link></li>
+    </ol>
+  </li>
+  <li>item 2</li>
+  <li>item 3</li>
+</ol>
+<ul>
+  <li>item 1
+    <ul>
+      <li>sub-item 1</li>
+      <li>sub-item 2</li>
+      <li><link title="Test link" href="eznode://64">sub-item 3</link></li>
+    </ul>
+  </li>
+  <li>item 2</li>
+  <li>item 3</li>
+</ul>
+
+<header level="4">Heading 4</header>
+<embed size="medium" align="center" href="ezobject://66" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut imperdiet sagittis velit eu tempor. Suspendisse potenti. Donec auctor ornare tempor. Proin vel arcu nulla. Sed pellentesque hendrerit porttitor. Praesent posuere eros tellus, in vehicula lacus. Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.
+
+<table width="100%" border="1">
+  <tr>
+    <td>item</td>
+    <td>item</td>
+    <td>item</td>
+  </tr>
+  <tr>
+    <td>item</td>
+    <td>item</td>
+    <td>item</td>
+  </tr>
+  <tr>
+    <td>item</td>
+    <td>item</td>
+    <td>item</td>
+  </tr>
+</table>
+
+<header level="5">Heading 5</header>
+<embed size="small" href="ezobject://66" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut imperdiet sagittis velit eu tempor. Suspendisse potenti. Donec auctor ornare tempor. Proin vel arcu nulla. Sed pellentesque hendrerit porttitor. Praesent posuere eros tellus, in vehicula lacus. Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean&nbsp;<embed-inline view="embed-inline" size="medium" href="ezobject://77" /> porttitor volutpat metus vel facilisis.
+
+<embed view="embed" size="medium" href="ezobject://67" /><embed view="embed" size="medium" href="ezobject://68" /><embed view="embed" size="medium" href="ezobject://69" />
+
+<header level="6">Heading 6</header>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut imperdiet sagittis velit eu tempor. Suspendisse potenti. Donec auctor ornare tempor. Proin vel arcu nulla. Sed pellentesque hendrerit porttitor. Praesent posuere eros tellus, in vehicula lacus. Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.
+
+<header level="2">Custom tags</header>
+There will be a clear custom tag applied just below this text.
+
+Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.
+
+<custom name="quote" custom:citation="William Wordsworth">For I have learned to look on nature, not as in the hour of thoughtless youth, but hearing oftentimes the still, sad music of humanity.</custom>
+
+There will be a separator custom tag applied just below this text.
+
+Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.
+
+<custom name="factbox" custom:title="Title goes here" custom:heading-type="h4"><strong>factbox ::</strong> Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.</custom>
+
+<header level="2">Columns custom tag</header>
+Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.
+
+<custom name="row">
+  <custom name="column" custom:columns="span12"><strong>column :: span 12</strong>
+
+Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.</custom>
+  <custom name="column" custom:columns="span6"><strong>column :: span 6</strong>
+
+Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.</custom>
+  <custom name="column" custom:columns="span6"><strong>column :: span 6</strong>
+
+Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.</custom>
+</custom>
+
+Vestibulum nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel facilisis.
