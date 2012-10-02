@@ -79,5 +79,5 @@ end
 
 task :scratch do
     Rake::Task['app'].invoke
-    require './test/scratch'
+    require './scratch'
 end
