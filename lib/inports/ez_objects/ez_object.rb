@@ -10,6 +10,7 @@ class EzObject
   end
 
 
+
   # Iterates through the child classes of EzObject
   # calling ::mine? on each.
   #
