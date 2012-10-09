@@ -7,10 +7,10 @@ Installation:
 
 Run tasks via rake:
 
-@$ rake test          # run unit tests@
-@$ rake reset         # wipe clean output and redis data@
-@$ rake run           # process input@
-@$ rake output:xml    # generate xml output@
+@$ rake test@          run unit tests
+@$ rake reset@         wipe clean output and redis data
+@$ rake run@           process input
+@$ rake output:xml@    generate xml output
 
 etc.
 
