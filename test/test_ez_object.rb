@@ -61,6 +61,7 @@ class TestEzObject < MiniTest::Unit::TestCase
 
     $r.hset './test/hello', 'id', $r.get_id
     $r.log_key './test/hello'
+
     $r.hset './test/another', 'id', $r.get_id
     $r.log_key './test/another'
 
