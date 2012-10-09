@@ -14,7 +14,7 @@ Run tasks via rake:
 
 etc.
 
-Configuration options are in
+Configuration options are in:
 
 @config.yml@
 
