@@ -20,6 +20,22 @@ class TestEzObject < MiniTest::Unit::TestCase
   end
 
 
+  def test_parent_id_returns_parents_id
+    CONFIG['ids']['safety'] = 50
+    CONFIG['ids']['homepage'] = 1
+    CONFIG['directories']['input'] = './test'
+
+    load './lib/inports/redis.rb'
+
+    $r.hset './test/hello', 'id', $r.get_id
+    $r.hset './test/another', 'id', $r.get_id
+
+    assert_equal '51', EzObject.parent_id('./test/hello/index.htm')
+    assert_equal '51', EzObject.parent_id('./test/hello/thing.htm')
+    assert_equal '52', EzObject.parent_id('./test/another/what')
+  end
+
+
   def test_parent_id_returns_homepage_id_from_config_for_root
     CONFIG['directories']['input'] = './thing'
     CONFIG['ids']['homepage'] = 1
