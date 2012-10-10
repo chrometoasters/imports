@@ -34,8 +34,6 @@ class EzObject
 
 
   def self.store(path)
-    puts $term
-
     "#{self}.store is not defined."
   end
 
