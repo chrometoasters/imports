@@ -3,7 +3,7 @@ module STFU
   #
   # STFU.shh { warning 'HAI GUYS' }
 
-  def self.shh
+  def shh
     begin
       orig_stderr = $stderr.clone
       orig_stdout = $stdout.clone
