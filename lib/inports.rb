@@ -11,9 +11,8 @@ CONFIG = YAML.load(raw_config)
 $term = HighLine.new
 
 # load helpers
+
 Dir['./lib/helpers/*.rb'].each {|file| require file }
-
-
 
 # load code
 
