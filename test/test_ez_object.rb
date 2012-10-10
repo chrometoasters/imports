@@ -11,7 +11,7 @@ class TestEzObject < MiniTest::Unit::TestCase
 
 
       class ::EzShort < ::EzObject
-        puts 'declaring EzShort'
+
         def self.mine?(path)
           true if path.length < 2
         end
@@ -24,7 +24,6 @@ class TestEzObject < MiniTest::Unit::TestCase
 
 
       class ::EzHello < ::EzObject
-        puts 'declaring EzHello'
 
         def self.mine?(path)
           true if path == 'hello'

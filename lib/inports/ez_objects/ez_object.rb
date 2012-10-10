@@ -6,7 +6,6 @@ class EzObject
   # it is stored in the @@descendants class var.
 
   def self.inherited(subclass)
-    puts '!! -- subclass'
     @@descendants << subclass
   end
 
