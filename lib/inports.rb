@@ -10,6 +10,13 @@ CONFIG = YAML.load(raw_config)
 # Create terminal
 $term = HighLine.new
 
+# load helpers
+Dir['./lib/helpers/*.rb'].each {|file| require file }
+
+
+
+# load code
+
 require './lib/inports/string'
 require './lib/inports/exceptions'
 require './lib/inports/redis'
