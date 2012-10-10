@@ -4,7 +4,7 @@ module Logger
   # Requires a type (which is the name of the log file the
   # warning will be stored as.
   #
-  # Logger.warning(path, 'no-heading')
+  # Logger.warning(path, 'No heading')
   #
   # $ tail ./log/no-heading.log
   # $ ./curriculum/index.htm
