@@ -3,14 +3,14 @@ Bundler.require(:test)
 
 class TestEzObject < MiniTest::Unit::TestCase
   def setup
+    EzObject.descendants = []
+
     eval %{
 
-      class ::EzObject
-        @@descendants = []
-      end
-
-
       class ::EzShort < ::EzObject
+        def self.priority
+          2
+        end
 
         def self.mine?(path)
           true if path.length < 2
@@ -24,6 +24,9 @@ class TestEzObject < MiniTest::Unit::TestCase
 
 
       class ::EzHello < ::EzObject
+        def self.priority
+          1
+        end
 
         def self.mine?(path)
           true if path == 'hello'
@@ -48,8 +51,8 @@ class TestEzObject < MiniTest::Unit::TestCase
 
 
   def test_inheriting_from_class_registers_class_as_descendent
-    assert_includes EzObject.inherited('dummy class'), EzShort
-    assert_includes EzObject.inherited('dummy class'), EzHello
+    assert_includes EzObject.descendants, EzShort
+    assert_includes EzObject.descendants, EzHello
   end
 
 
