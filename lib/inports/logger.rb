@@ -10,7 +10,7 @@ module Logger
   # $ ./curriculum/index.htm
 
   def self.warning(path, type)
-    log_file = './log/' + type + '.log'
+    log_file = './log/' + type.gsub(' ', '-').downcase + '.log'
 
     puts $term.color("Logging item as #{type} => #{log_file}", :yellow)
 
