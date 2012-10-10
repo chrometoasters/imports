@@ -49,6 +49,7 @@ class TestEzObject < MiniTest::Unit::TestCase
 
   def test_inheriting_from_class_registers_class_as_descendent
     assert_includes EzObject.inherited('dummy class'), EzShort
+    assert_includes EzObject.inherited('dummy class'), EzHello
   end
 
 
