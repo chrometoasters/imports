@@ -53,12 +53,18 @@ class TestEzObject < MiniTest::Unit::TestCase
   end
 
 
-  def test_handle_iterates_through_descendants_calling_mine
+  def test_handle_iterates_through_descendants_returning_true_when_handled
     assert EzObject.handle('hello')
     assert_equal "EzHello", $r.get('hello')
 
     assert EzObject.handle('x')
     assert_equal "EzShort", $r.get('x')
+  end
+
+
+  def test_handle_returns_true_for_handled_paths
+    refute EzObject.handle('abcd')
+    refute $r.get('abcd')
   end
 
 
