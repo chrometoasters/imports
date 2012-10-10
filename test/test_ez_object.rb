@@ -3,6 +3,7 @@ Bundler.require(:test)
 
 class TestEzObject < MiniTest::Unit::TestCase
   def setup
+    # Remove actual children.
     EzObject.descendants = []
 
     eval %{
@@ -13,6 +14,10 @@ class TestEzObject < MiniTest::Unit::TestCase
         end
 
         def self.mine?(path)
+          # For checking order
+          $r.log_key 'called'
+          $r.set 'called', self
+
           true if path.length < 2
         end
 
@@ -29,6 +34,10 @@ class TestEzObject < MiniTest::Unit::TestCase
         end
 
         def self.mine?(path)
+          # For checking order
+          $r.log_key 'called'
+          $r.set 'called', self
+
           true if path == 'hello'
         end
 
@@ -62,6 +71,12 @@ class TestEzObject < MiniTest::Unit::TestCase
 
     assert EzObject.handle('x')
     assert_equal "EzShort", $r.get('x')
+  end
+
+
+  def test_handle_respects_order
+    EzObject.handle('nothing-at-all')
+    assert_equal "EzShort", $r.get('called')
   end
 
 

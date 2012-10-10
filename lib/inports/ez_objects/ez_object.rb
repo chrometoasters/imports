@@ -2,6 +2,7 @@ class EzObject
   class << self
     attr_accessor :descendants
 
+
     # When a class inherits from EzObject
     # it is stored in the @@descendants class var.
 
@@ -9,12 +10,15 @@ class EzObject
       @descendants << subclass
     end
 
+
     # Iterates through the child classes of EzObject
     # calling ::mine? on each.
     #
     # If a class accepts the item, its ::store method is called.
 
     def handle(path)
+      @descendants.sort! { |a,b| a.priority <=> b.priority }
+
       handled = @descendants.each do |type|
         if type.mine? path
           type.store path
@@ -27,7 +31,7 @@ class EzObject
 
 
     def priority
-      raise 'All children of EzObject need an int returning ::priority'
+      raise 'All children of EzObject need ::priority to return an integer.'
     end
 
 
@@ -54,5 +58,6 @@ class EzObject
         raise Orphanity, "#{path} failed to find id of parent #{parent}"
       end
     end
+
   end
 end
