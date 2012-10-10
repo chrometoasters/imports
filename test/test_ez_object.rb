@@ -5,7 +5,13 @@ class TestEzObject < MiniTest::Unit::TestCase
   def setup
     eval %{
 
-      class EzShort < EzObject
+      class ::EzObject
+        @@descendants = []
+      end
+
+
+      class ::EzShort < ::EzObject
+        puts 'declaring EzShort'
         def self.mine?(path)
           true if path.length < 2
         end
@@ -17,7 +23,9 @@ class TestEzObject < MiniTest::Unit::TestCase
       end
 
 
-      class EzHello < EzObject
+      class ::EzHello < ::EzObject
+        puts 'declaring EzHello'
+
         def self.mine?(path)
           true if path == 'hello'
         end
@@ -29,10 +37,13 @@ class TestEzObject < MiniTest::Unit::TestCase
       end
 
     }
+
   end
 
 
   def teardown
+    Object.send(:remove_const, :EzHello)
+    Object.send(:remove_const, :EzShort)
     $r.kill_keys
   end
 
@@ -43,13 +54,18 @@ class TestEzObject < MiniTest::Unit::TestCase
 
 
   def test_handle_iterates_through_descendants_calling_mine
-    EzObject.handle('hello')
-    assert_equal "TestEzObject::EzHello", $r.get('hello')
+    assert EzObject.handle('hello')
+    assert_equal "EzHello", $r.get('hello')
 
-    EzObject.handle('x')
-    assert_equal "TestEzObject::EzShort", $r.get('x')
+    assert EzObject.handle('x')
+    assert_equal "EzShort", $r.get('x')
   end
 
+
+  def test_handle_returns_flase_for_unhandled_paths
+    refute EzObject.handle('abcd')
+    refute $r.get('abcd')
+  end
 
 
   def test_parent_id_returns_parents_id
