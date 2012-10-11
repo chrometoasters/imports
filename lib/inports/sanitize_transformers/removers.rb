@@ -22,5 +22,16 @@ RemoveHeader = lambda do |env|
 end
 
 
-Removers = [RemoveTitle, RemoveHeader]
+# Kill if style="display:none;"
+RemoveHiddenElements = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if node[:style] == 'display:none;'
+    node.remove
+  end
+end
+
+Removers = [RemoveTitle, RemoveHeader, RemoveHiddenElements]
 
