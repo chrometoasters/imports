@@ -1,35 +1,29 @@
 class Sanitize
-  module InportConfigs
-
-
-
+  module InportConfig
 
     EZXML = {
       :elements => %w[
-        a abbr b blockquote br cite code dd dfn dl dt em i kbd li mark ol p pre
-        q s samp small strike strong sub sup time u ul var
+        heading paragraph emphasize link
       ],
 
       :attributes => {
-        'a'          => ['href'],
-        'abbr'       => ['title'],
-        'blockquote' => ['cite'],
-        'dfn'        => ['title'],
-        'q'          => ['cite'],
-        'time'       => ['datetime', 'pubdate']
+        'heading' => ['level'],
+        'link' => ['href', 'title']
       },
 
       :add_attributes => {
-        'a' => {'rel' => 'nofollow'}
+        #'a' => {'rel' => 'nofollow'}
       },
 
       :protocols => {
-        'a'          => {'href' => ['ftp', 'http', 'https', 'mailto', :relative]},
-        'blockquote' => {'cite' => ['http', 'https', :relative]},
-        'q'          => {'cite' => ['http', 'https', :relative]}
+        #'a'          => {'href' => ['ftp', 'http', 'https', 'mailto', :relative]},
       },
 
-      :transformers => []
+      :output => :xhtml,
+
+      # Order is important.
+      :transformers => Links + Removers + Headings + Paragraphs + Styles
     }
+
   end
 end
