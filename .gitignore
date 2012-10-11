@@ -1,5 +1,7 @@
 /input/*
-/output/*
+/output/content/*
+/output/files/*
+/output/images/*
 !.gitkeep
 
 *.log
