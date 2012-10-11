@@ -9,4 +9,16 @@ PToParagraph = lambda do |env|
   end
 end
 
-Paragraphs = [PToParagraph]
+
+RemoveEmptyParagraphs = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if name == 'paragraph'
+    node.remove unless node.text =~ /\d|\w/
+  end
+end
+
+
+Paragraphs = [PToParagraph, RemoveEmptyParagraphs]
