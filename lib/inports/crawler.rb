@@ -1,8 +1,10 @@
 class Crawler
-  include Logger
 
-  def initialize(root = CONFIG['directories']['input'])
-    @root = root
+  # Pass in an optional input folder and handlers constant.
+
+  def initialize(opts = {})
+    @root = opts[:root] || CONFIG['directories']['input']
+    @handlers = opts[:handlers] || EzPub::Handlers::All
   end
 
 
@@ -12,10 +14,29 @@ class Crawler
 
   def run
     list.each do |path|
-      unless EzPub::Handler.handle path
-        Logger.warning path, 'unhandled'
+      unless handle path
+        Logger.warning path, "Unhandled by #{@handlers}"
       end
     end
+  end
+
+
+  # Iterates through the handlers
+  # calling ::mine? on each.
+  #
+  # If a class accepts the item, its ::store method is called.
+
+  def handle(path)
+    @handlers.sort! { |a,b| a.priority <=> b.priority }
+
+    handled = @handlers.each do |type|
+      if type.mine? path
+        type.store path
+        return true
+      end
+    end
+
+    handled == true ? true : false
   end
 
 

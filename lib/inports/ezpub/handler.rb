@@ -1,35 +1,6 @@
 module EzPub
   class Handler
     class << self
-      attr_accessor :descendants
-
-      # When a class inherits from EzObject
-      # it is stored in the @@descendants class var.
-
-      def inherited(subclass)
-        @descendants = [] unless @descendants
-        @descendants << subclass
-      end
-
-
-      # Iterates through the child classes of EzObject
-      # calling ::mine? on each.
-      #
-      # If a class accepts the item, its ::store method is called.
-
-      def handle(path)
-        @descendants.sort! { |a,b| a.priority <=> b.priority }
-
-        handled = @descendants.each do |type|
-          if type.mine? path
-            type.store path
-            return true
-          end
-        end
-
-        handled == true ? true : false
-      end
-
 
       def priority
         raise 'All children of EzObject need ::priority to return an integer.'
