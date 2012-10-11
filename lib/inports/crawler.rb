@@ -8,11 +8,11 @@ class Crawler
 
   # Main script loop.
   # Runs through our list of files/folders, passing each to the
-  # EzObject children for handling.
+  # EzPub::Handler children for handling.
 
   def run
     list.each do |path|
-      unless EzObject.handle path
+      unless EzPub::Handler.handle path
         Logger.warning path, 'unhandled'
       end
     end
