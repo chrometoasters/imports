@@ -3,7 +3,9 @@ class Sanitize
 
     EZXML = {
       :elements => %w[
-        heading paragraph emphasize link strong anchor custom ul li
+        heading paragraph emphasize link strong anchor custom
+        li ul br
+        table tr th td
       ],
 
       :attributes => {
@@ -11,6 +13,8 @@ class Sanitize
         'link' => ['href', 'title'],
         'anchor' => ['name'],
         'custom' => ['name'],
+        'table' => ['class', 'width', 'border'],
+        'td' => ['colspan'],
       },
 
       :add_attributes => {
@@ -24,7 +28,7 @@ class Sanitize
       :output => :xhtml,
 
       # Order is important.
-      :transformers => Links + Removers + Headings + Paragraphs + Styles
+      :transformers => Links + Removers + Headings + Paragraphs + Styles + Tables
     }
 
   end
