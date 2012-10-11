@@ -1,5 +1,5 @@
 # Convert <p class="subhead"> => <heading level="2">
-SubheadToHeading = lambda do |env|
+SubheadToHeading2 = lambda do |env|
   node = env[:node]
   name = env[:node_name]
   return if env[:is_whitelisted] || !node.element?
@@ -10,5 +10,31 @@ SubheadToHeading = lambda do |env|
   end
 end
 
-Headings = [SubheadToHeading]
+
+# Convert <p class="subsubhead"> => <heading level="2">
+SubsubheadToHeading3 = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if node[:class] == 'subsubhead' && name == 'p'
+    node.name = 'heading'
+    node[:level] = '3'
+  end
+end
+
+
+# Convert <heading><strong> => <heading>
+RemoveRedundantStrongs = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if name == 'heading' && node.child.name == 'strong'
+    node.child.swap(node.child.children)
+  end
+end
+
+
+Headings = [SubheadToHeading2, SubsubheadToHeading3, RemoveRedundantStrongs]
 
