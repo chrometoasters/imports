@@ -5,12 +5,12 @@ class TestEzObject < MiniTest::Unit::TestCase
   def setup
     # Remove actual children first time
     unless EzPub.const_defined?('Short') || EzPub.const_defined?('Hello')
-      EzPub::Object.descendants = []
+      EzPub::Handler.descendants = []
     end
 
     eval %{
 
-      class EzPub::Short < EzPub::Object
+      class EzPub::Short < EzPub::Handler
         def self.priority
           2
         end
@@ -30,7 +30,7 @@ class TestEzObject < MiniTest::Unit::TestCase
       end
 
 
-      class EzPub::Hello < EzPub::Object
+      class EzPub::Hello < EzPub::Handler
         def self.priority
           1
         end
@@ -60,34 +60,34 @@ class TestEzObject < MiniTest::Unit::TestCase
 
 
   def test_inheriting_from_class_registers_class_as_descendent
-    assert_includes EzPub::Object.descendants, EzPub::Short
-    assert_includes EzPub::Object.descendants, EzPub::Hello
+    assert_includes EzPub::Handler.descendants, EzPub::Short
+    assert_includes EzPub::Handler.descendants, EzPub::Hello
   end
 
 
   def test_handle_iterates_through_descendants_returning_true_when_handled
-    assert EzPub::Object.handle('hello')
+    assert EzPub::Handler.handle('hello')
     assert_equal "EzPub::Hello", $r.get('hello')
 
-    assert EzPub::Object.handle('x')
+    assert EzPub::Handler.handle('x')
     assert_equal "EzPub::Short", $r.get('x')
   end
 
 
   def test_handle_respects_order
-    EzPub::Object.handle('nothing-at-all')
+    EzPub::Handler.handle('nothing-at-all')
     assert_equal "EzPub::Short", $r.get('called')
   end
 
 
   def test_handle_returns_true_for_handled_paths
-    refute EzPub::Object.handle('abcd')
+    refute EzPub::Handler.handle('abcd')
     refute $r.get('abcd')
   end
 
 
   def test_handle_returns_flase_for_unhandled_paths
-    refute EzPub::Object.handle('abcd')
+    refute EzPub::Handler.handle('abcd')
     refute $r.get('abcd')
   end
 
@@ -105,9 +105,9 @@ class TestEzObject < MiniTest::Unit::TestCase
     $r.hset './test/another', 'id', $r.get_id
     $r.log_key './test/another'
 
-    assert_equal '51', EzPub::Object.parent_id('./test/hello/index.htm')
-    assert_equal '51', EzPub::Object.parent_id('./test/hello/thing.htm')
-    assert_equal '52', EzPub::Object.parent_id('./test/another/what')
+    assert_equal '51', EzPub::Handler.parent_id('./test/hello/index.htm')
+    assert_equal '51', EzPub::Handler.parent_id('./test/hello/thing.htm')
+    assert_equal '52', EzPub::Handler.parent_id('./test/another/what')
   end
 
 
@@ -117,11 +117,11 @@ class TestEzObject < MiniTest::Unit::TestCase
 
     load './lib/inports/redis.rb'
 
-    assert_equal '1', EzPub::Object.parent_id('./thing/what')
+    assert_equal '1', EzPub::Handler.parent_id('./thing/what')
   end
 
 
   def test_parent_id_fails_on_orphaned_path
-    assert_raises(Orphanity) { EzPub::Object.parent_id('z') }
+    assert_raises(Orphanity) { EzPub::Handler.parent_id('z') }
   end
 end

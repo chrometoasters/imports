@@ -1,5 +1,5 @@
 module EzPub
-  class Image < EzPub::Object
+  class Image < EzPub::Handler
     class << self
       def priority
         raise 'All children of EzObject need ::priority to return an integer.'

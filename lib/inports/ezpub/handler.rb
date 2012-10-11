@@ -1,5 +1,5 @@
 module EzPub
-  class Object
+  class Handler
     class << self
       attr_accessor :descendants
 
