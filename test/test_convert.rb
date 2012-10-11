@@ -57,4 +57,44 @@ class TestConvert < MiniTest::Unit::TestCase
     refute_match '<p>', @converted
     assert_match '<paragraph>', @converted
   end
+
+
+  def test_subheads_to_level_2_heading
+    refute_match '<p class="subhead">Introduction</p>', @converted
+    assert_match '<heading level="2">Introduction</heading>', @converted
+  end
+
+
+  def test_anchor_endpoints_to_anchor
+    refute_match '<a name="curriculum" id="curriculum">', @converted
+    assert_match '<anchor name="curriculum">', @converted
+  end
+
+
+  def test_a_to_link_for_unproblematic_links
+    refute_match '<a href="#', @converted
+    refute_match '<a href="http', @converted
+    refute_match '<a href="mailto', @converted
+
+    assert_match '<link href="#', @converted
+    assert_match '<link href="http', @converted
+    assert_match '<link href="mailto', @converted
+  end
+
+
+  def test_subsubhead_converted_to_heading3
+    refute_match '<p class="subsubhead">', @converted
+    assert_match '<heading level="3">', @converted
+  end
+
+
+  def test_heading_converted_without_redundant_strong
+    refute_match %r{<heading level="3">\n?<strong>}, @converted
+    refute_match %r{<heading level="2">\n?<strong>}, @converted
+  end
+
+
+  def test_no_empty_paragraphs
+    refute_match %r{<paragraph>\s*<\/paragraph>}, @converted
+  end
 end
