@@ -72,7 +72,11 @@ namespace :redis do
 end
 
 
-task :scratch do
+task :scratch, :v do |t, args|
+    # $ rake scratch[v]
+
     Rake::Task['app'].invoke
+    args.with_defaults(:v => nil)
+    $verbose = args[:v]
     require './scratch'
 end
