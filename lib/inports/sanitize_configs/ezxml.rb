@@ -3,12 +3,14 @@ class Sanitize
 
     EZXML = {
       :elements => %w[
-        heading paragraph emphasize link
+        heading paragraph emphasize link strong anchor custom ul li
       ],
 
       :attributes => {
         'heading' => ['level'],
-        'link' => ['href', 'title']
+        'link' => ['href', 'title'],
+        'anchor' => ['name'],
+        'custom' => ['name'],
       },
 
       :add_attributes => {
@@ -16,7 +18,7 @@ class Sanitize
       },
 
       :protocols => {
-        #'a'          => {'href' => ['ftp', 'http', 'https', 'mailto', :relative]},
+        'link' => {'href' => ['#', 'mailto', 'http', 'https', :relative]},
       },
 
       :output => :xhtml,

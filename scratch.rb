@@ -1,9 +1,10 @@
 require './lib/inports'
 include Convert
 
-file = File.open('./input/curriculum-support/index.htm')
+file = File.open('./input/curriculum-support/terms.htm')
 contents = file.read
 
-puts to_ezp contents
+str = to_ezp contents
 
-File.open('./output/thing.xml', 'a') {|f| f.write(to_ezp contents) }
+
+puts str

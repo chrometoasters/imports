@@ -1,4 +1,4 @@
-# Remove title (rm <title>)
+# <em> => <emphasize>
 EmToEmphasize = lambda do |env|
   node = env[:node]
   name = env[:node_name]
@@ -9,4 +9,18 @@ EmToEmphasize = lambda do |env|
   end
 end
 
-Styles = [EmToEmphasize]
+
+# <div class="glossarybox> => <custom name="factbox" custom:title="Title goes here" custom:heading-type="h4">
+GlossaryBoxToCustomTag = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if name == 'div' && node[:class] == 'glossarybox'
+    node.name = 'custom'
+    node[:name] = 'glossarybox'
+  end
+end
+
+
+Styles = [EmToEmphasize, GlossaryBoxToCustomTag]
