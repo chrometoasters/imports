@@ -36,14 +36,19 @@ namespace :process do
 end
 
 
-namespace :output do
-  namespace :files do
-    task :delete do
+namespace :delete do
+  namespace :helpers do
+    task :output, :section, :silent do |t, args|
+      section = args[:section]
+      silent = args[:silent] || nil
+
       Rake::Task['app'].invoke
 
-      $term.agree($term.color('Wipe existing output?', :red))
+      unless silent
+        $term.agree($term.color("Wipe existing #{section} output?", :red))
+      end
 
-      dir = CONFIG['directories']['output']['files']
+      dir = CONFIG['directories']['output'][section]
 
       puts $term.color("Removing #{dir}", :green)
       FileUtils.remove_dir(dir, true)
@@ -54,70 +59,69 @@ namespace :output do
     end
   end
 
-  namespace :images do
-    task :delete do
-      Rake::Task['app'].invoke
 
-      $term.agree($term.color('Wipe existing output?', :red))
-
-      dir = CONFIG['directories']['output']['images']
-
-      puts $term.color("Removing #{dir}", :green)
-      FileUtils.remove_dir(dir, true)
-
-      puts $term.color("Recreating fresh #{dir}", :green)
-      FileUtils.mkdir(dir)
-      FileUtils.touch(dir + '/.gitkeep')
-    end
-  end
-
-  namespace :content do
-    task :delete do
-      Rake::Task['app'].invoke
-
-      $term.agree($term.color('Wipe existing output?', :red))
-
-      dir = CONFIG['directories']['output']['content']
-
-      puts $term.color("Removing #{dir}", :green)
-      FileUtils.remove_dir(dir, true)
-
-      puts $term.color("Recreating fresh #{dir}", :green)
-      FileUtils.mkdir(dir)
-      FileUtils.touch(dir + '/.gitkeep')
-    end
-  end
-end
-
-
-task :reset do
-  Rake::Task['output:delete'].invoke
-  Rake::Task['logs:delete'].invoke
-  Rake::Task['redis:clean'].invoke
-
-end
-
-
-namespace :logs do
-  task :delete do
+  task :logs, :silent do |t, args|
     Rake::Task['app'].invoke
-    #$term.agree($term.color('Wipe logs?', :red))
+
+    silent = args[:silent] || nil
+
+    unless silent
+      $term.agree($term.color('Wipe all logs?', :red))
+    end
 
     puts $term.color("Deleting logs", :green)
 
     FileUtils.rm Dir.glob('./log/*.log')
   end
-end
 
 
-namespace :redis do
-  task :clean do
+  task :keys, :silent do |t, args|
     Rake::Task['app'].invoke
 
-    $term.agree($term.color('Delete all redis keys?', :red))
+    silent = args[:silent] || nil
+
+    unless silent
+      $term.agree($term.color('Delete all redis keys?', :red))
+    end
 
     $r.kill_keys { |k| puts $term.color("Deleting #{k}", :green) }
   end
+
+
+  namespace :output do
+    task :files, :silent do |t, args|
+      Rake::Task['delete:helpers:output'].reenable
+      Rake::Task['delete:helpers:output'].invoke('files', args[:silent])
+    end
+
+    task :images, :silent do |t, args|
+      Rake::Task['delete:helpers:output'].reenable
+      Rake::Task['delete:helpers:output'].invoke('images', args[:silent])
+    end
+
+    task :static, :silent do |t, args|
+      Rake::Task['delete:output:files'].invoke(args[:silent])
+      Rake::Task['delete:output:images'].invoke(args[:silent])
+    end
+
+    task :content, :silent do |t, args|
+      Rake::Task['delete:helpers:output'].reenable
+      Rake::Task['delete:helpers:output'].invoke('content', args[:silent])
+    end
+
+    task :all, :silent do |t, args|
+      Rake::Task['delete:output:files'].invoke(args[:silent])
+      Rake::Task['delete:output:images'].invoke(args[:silent])
+      Rake::Task['delete:output:content'].invoke(args[:silent])
+    end
+  end
+end
+
+
+task :flush do
+  Rake::Task['delete:output:all'].invoke('shh')
+  Rake::Task['delete:logs'].invoke('shh')
+  Rake::Task['delete:keys'].invoke('shh')
 end
 
 
