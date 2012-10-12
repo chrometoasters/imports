@@ -9,10 +9,10 @@ module Logger
   # $ tail ./log/no-heading.log
   # $ ./curriculum/index.htm
 
-  def self.warning(path, type)
+  def self.warning(path, type, quiet = nil)
     log_file = './log/' + type.gsub(/\s|:/, '-').downcase + '.log'
 
-    puts $term.color("Logging item as #{type} => #{log_file}", :yellow)
+    puts $term.color("Logging item as #{type} => #{log_file}", :yellow) unless quiet
 
     File.open(log_file, 'a') {|f| f.write(path + "\n") }
   end
