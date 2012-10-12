@@ -1,0 +1,3 @@
+module StaticCopy
+
+end
