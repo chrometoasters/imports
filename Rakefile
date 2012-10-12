@@ -17,7 +17,6 @@ namespace :process do
     @p.ingest
 
     # @p.output(Xml)
-
   end
 
   task :content do
