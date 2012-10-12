@@ -10,8 +10,8 @@ Run tasks via rake:
 @$ rake test@                       run unit tests
 @$ rake delete:logs@                delete log files
 @$ rake delete:keys@                delete redis keys
-@$ rake delete:output:files         delete output in files folder
-@$ rake delete:output:images[shh]   similar but no confirmation question
+@$ rake delete:output:files@        delete output in files folder
+@$ rake delete:output:images[shh]@  similar but no confirmation question
 @$ rake flush@                      wipe clean output and redis data (silently)
 @$ rake process:static@             process input using the static file handler set
 
