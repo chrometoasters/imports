@@ -4,5 +4,5 @@ end
 class Unmatched < Exception
 end
 
-class JustAFolder < Exception
+class BadHandlerOrder < Exception
 end
