@@ -2,7 +2,6 @@ module EzPub
   class Image < EzPub::Handler
     EzPub::Handlers::All << self
     EzPub::Handlers::Static << self
-    EzPub::Handlers::Images << self
 
     class << self
       def priority

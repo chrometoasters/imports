@@ -1,8 +1,7 @@
 module EzPub
   module Handlers
     All = []
-    Files = []
-    Images = []
+    Content = []
     Static = []
   end
 end
