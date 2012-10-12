@@ -3,7 +3,8 @@ module EzPub
     EzPub::Handlers::All << self
     EzPub::Handlers::Static << self
 
-    include StaticCopy
+    extend StaticCopy
+    extend NameMaker
 
     def self.priority
       # I should run nearly last,
@@ -29,13 +30,36 @@ module EzPub
         # It performs a "best guess" based on a simple test
         # of the first +File.blksize+ characters.
 
-        ::File.binary?(path)
+        exts = /\.#{EZP_ICON_BINARY_EXTENSIONS.join('|')}$/
+
+        if ::File.binary?(path)
+
+          if exts.match(path)
+            true
+          else
+            Logger.warning path, 'Unknown ext attempted by File'
+            false
+          end
+
+        else
+          false
+        end
       end
     end
 
 
     def self.store(path)
-      puts '!!!!!!!!!!!!!!!!!!!'
+      dest = move_to_files path
+
+      $r.log_key(path)
+
+      $r.hset path, 'id', $r.get_id
+
+      $r.hset path, 'fields', 'file,name,description'
+
+      $r.hset path, 'file', dest
+      $r.hset path, 'name', pretify_filename(dest)
+      $r.hset path, 'description', ''
     end
   end
 end
