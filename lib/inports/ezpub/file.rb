@@ -3,6 +3,8 @@ module EzPub
     EzPub::Handlers::All << self
     EzPub::Handlers::Static << self
 
+    include StaticCopy
+
     def self.priority
       # I should run nearly last,
       # to keep my ::mine? check simple.
