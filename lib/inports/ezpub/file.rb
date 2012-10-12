@@ -1,8 +1,8 @@
 module EzPub
   class File < EzPub::Handler
-    Handlers::All << self
-    Handlers::Static << self
-    Handlers::Files << self
+    EzPub::Handlers::All << self
+    EzPub::Handlers::Static << self
+    EzPub::Handlers::Files << self
 
     class << self
       def priority

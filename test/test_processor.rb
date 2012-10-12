@@ -1,7 +1,7 @@
 require './lib/inports'
 Bundler.require(:test)
 
-class TestCrawler < MiniTest::Unit::TestCase
+class Testprocessor < MiniTest::Unit::TestCase
 
   def setup
     # Remove existing handlers
@@ -55,7 +55,7 @@ class TestCrawler < MiniTest::Unit::TestCase
 
     }
 
-    @crawler = Crawler.new
+    @processor = Processor.new
   end
 
 
@@ -73,28 +73,28 @@ class TestCrawler < MiniTest::Unit::TestCase
 
 
   def test_handle_iterates_through_descendants_returning_true_when_handled
-    @crawler.handle('hello')
+    @processor.handle('hello')
     assert_equal "EzPub::Hello", $r.get('hello')
 
-    assert @crawler.handle('x')
+    assert @processor.handle('x')
     assert_equal "EzPub::Short", $r.get('x')
   end
 
 
   def test_handle_respects_order
-    @crawler.handle('nothing-at-all')
+    @processor.handle('nothing-at-all')
     assert_equal "EzPub::Short", $r.get('called')
   end
 
 
   def test_handle_returns_true_for_handled_paths
-    refute @crawler.handle('abcd')
+    refute @processor.handle('abcd')
     refute $r.get('abcd')
   end
 
 
   def test_handle_returns_flase_for_unhandled_paths
-    refute @crawler.handle('abcd')
+    refute @processor.handle('abcd')
     refute $r.get('abcd')
   end
 end

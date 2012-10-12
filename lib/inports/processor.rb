@@ -1,4 +1,4 @@
-class Crawler
+class Processor
 
   # Pass in an optional input folder and handlers constant.
 
