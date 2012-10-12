@@ -8,6 +8,7 @@ GEM
     minitest-colorize (0.0.4)
       minitest (~> 2.0)
     nokogiri (1.5.2)
+    ptools (1.2.2)
     redis (3.0.1)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
@@ -23,6 +24,7 @@ DEPENDENCIES
   minitest
   minitest-colorize
   nokogiri
+  ptools
   redis
   sanitize
   trollop
