@@ -19,13 +19,12 @@ module EzPub
         # Check if an image - basic check from ptools gem.
 
         ::File.image? path
-
       end
     end
 
 
     def self.store(path)
-      "#{self}.store is not defined."
+      puts path
     end
   end
 end
