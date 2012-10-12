@@ -10,40 +10,82 @@ Rake::TestTask.new do |t|
 end
 
 
-namespace :convert do
-  task :files do
+namespace :process do
+  task :static do
+    Rake::Task['app'].invoke
+    @p = Processor.new(:handlers => EzPub::Handlers::Static)
+    @p.ingest
 
+    # @p.output(Xml)
+
+  end
+
+  task :content do
+    Rake::Task['app'].invoke
+    # @p = Processor.new(:handlers => EzPub::Handlers::Content)
+    # @p.ingest
+
+    # @p.clean_and_reference
+
+    # @p.output(Xml)
+  end
+
+  task :all do
+    Rake::Task['app'].invoke
   end
 end
 
 
 namespace :output do
-  task :delete do
-    Rake::Task['app'].invoke
+  namespace :files do
+    task :delete do
+      Rake::Task['app'].invoke
 
-    $term.agree($term.color('Wipe existing output?', :red))
+      $term.agree($term.color('Wipe existing output?', :red))
 
-    dir = CONFIG['directories']['output']
+      dir = CONFIG['directories']['output']['files']
 
-    puts $term.color("Removing #{dir}", :green)
-    FileUtils.remove_dir(dir, true)
+      puts $term.color("Removing #{dir}", :green)
+      FileUtils.remove_dir(dir, true)
 
-    puts $term.color("Recreating fresh #{dir}", :green)
-    FileUtils.mkdir(dir)
-    FileUtils.touch(dir + '/.gitkeep')
+      puts $term.color("Recreating fresh #{dir}", :green)
+      FileUtils.mkdir(dir)
+      FileUtils.touch(dir + '/.gitkeep')
+    end
   end
 
+  namespace :images do
+    task :delete do
+      Rake::Task['app'].invoke
 
-  task :xml do
-    Rake::Task['app'].invoke
+      $term.agree($term.color('Wipe existing output?', :red))
 
-    xml = XML.new
+      dir = CONFIG['directories']['output']['images']
 
-    puts $term.color("Generating XML output...", :green)
+      puts $term.color("Removing #{dir}", :green)
+      FileUtils.remove_dir(dir, true)
 
-    path = xml.output $r.lrange('keys', 0, -1)
+      puts $term.color("Recreating fresh #{dir}", :green)
+      FileUtils.mkdir(dir)
+      FileUtils.touch(dir + '/.gitkeep')
+    end
+  end
 
-    puts $term.color("Output located at #{path}", :green)
+  namespace :content do
+    task :delete do
+      Rake::Task['app'].invoke
+
+      $term.agree($term.color('Wipe existing output?', :red))
+
+      dir = CONFIG['directories']['output']['content']
+
+      puts $term.color("Removing #{dir}", :green)
+      FileUtils.remove_dir(dir, true)
+
+      puts $term.color("Recreating fresh #{dir}", :green)
+      FileUtils.mkdir(dir)
+      FileUtils.touch(dir + '/.gitkeep')
+    end
   end
 end
 
