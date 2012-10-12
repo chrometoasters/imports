@@ -15,7 +15,7 @@ class Processor
   def ingest
     list.each do |path|
       unless handle path
-        Logger.warning path, "Unhandled by #{@handlers}"
+        Logger.warning path, "Unhandled by #{@handlers}", 'shh'
       end
     end
   end
