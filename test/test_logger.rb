@@ -5,7 +5,7 @@ class TestLogger < MiniTest::Unit::TestCase
   include STFU
 
   def teardown
-    FileUtils.rm './log/just-testing.log'
+    FileUtils.rm Dir.glob('./log/just-testing*.log')
   end
 
 
@@ -18,6 +18,9 @@ class TestLogger < MiniTest::Unit::TestCase
   def test_logfile_name_normalized
     shh { Logger.warning('somepath', 'Just Testing') }
     assert_includes Dir.glob('./log/*.log'), './log/just-testing.log'
+
+    shh { Logger.warning('somepath', 'Just Testing Some::Class') }
+    assert_includes Dir.glob('./log/*.log'), './log/just-testing-some--class.log'
   end
 
 
