@@ -6,3 +6,6 @@ end
 
 class BadHandlerOrder < Exception
 end
+
+class AlreadyExists < Exception
+end
