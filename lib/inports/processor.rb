@@ -10,9 +10,9 @@ class Processor
 
   # Main script loop.
   # Runs through our list of files/folders, passing each to the
-  # EzPub::Handler children for handling.
+  # EzPub::Handlers constants for handling.
 
-  def run
+  def ingest
     list.each do |path|
       unless handle path
         Logger.warning path, "Unhandled by #{@handlers}"
