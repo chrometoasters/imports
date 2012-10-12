@@ -84,7 +84,7 @@ namespace :delete do
       $term.agree($term.color('Delete all redis keys?', :red))
     end
 
-    $r.kill_keys { |k| puts $term.color("Deleting #{k}", :green) }
+    $r.kill_keys { |k| puts $term.color("Deleting #{k}", :yellow) }
   end
 
 
@@ -119,9 +119,9 @@ end
 
 
 task :flush do
+  Rake::Task['delete:keys'].invoke('shh')
   Rake::Task['delete:output:all'].invoke('shh')
   Rake::Task['delete:logs'].invoke('shh')
-  Rake::Task['delete:keys'].invoke('shh')
 end
 
 
