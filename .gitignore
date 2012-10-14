@@ -2,6 +2,8 @@
 /output/content/*
 /output/files/*
 /output/images/*
+/output/xml/*
+
 !.gitkeep
 
 *.log
