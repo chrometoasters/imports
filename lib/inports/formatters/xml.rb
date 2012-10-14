@@ -26,54 +26,52 @@ module Formatter
 
     def generate(keys)
       @builder = Nokogiri::XML::Builder.new do |xml|
-        xml.all {
-          xml.ezpublish(namespace) do
+        xml.ezpublish(namespace) do
 
-            xml.send('AdministrativeMetadata') do
-              xml.name 'Techlink import'
-              xml.export_date Time.now
-              xml.country 'New Zealand'
-            end
+          xml.send('AdministrativeMetadata') do
+            xml.name 'Techlink import'
+            xml.export_date Time.now
+            xml.country 'New Zealand'
+          end
 
-            # Start main loop through all keys.
+          # Start main loop through all keys.
 
-            keys.each do |k|
+          keys.each do |k|
 
-              xml.objects do
+            xml.objects do
 
-                # Get all properties for this object.
+              # Get all properties for this object.
 
-                h = $r.hgetall k
+              h = $r.hgetall k
 
-                obj_props = {
-                  :parent_remote_id => h['parent'],
-                  :priority => h['priority'],
-                  :remote_id => h['id'],
-                }
+              obj_props = {
+                :parent_remote_id => h['parent'],
+                :priority => h['priority'],
+                :remote_id => h['id'],
+              }
 
-                # Get field info.
+              # Get field info.
 
-                fields = h['fields']._explode_fields
+              fields = h['fields']._explode_fields
 
-                # Declare object.
+              # Declare object.
 
-                xml.send h['type'], obj_props do
+              xml.send h['type'], obj_props do
 
-                  # Add all field data.
-                  fields.each do |field|
-                    field.each do |k,v|
+                # Add all field data.
+                fields.each do |field|
+                  field.each do |k,v|
 
-                      xml.send k, {:datatype => v} do
-                        xml.cdata h['field_' + k]
-                      end
+                    xml.send k, {:datatype => v} do
+                      xml.cdata h['field_' + k]
+                    end
 
-                    end # field hash
-                  end # fields array
-                end # object
-              end # objects
-            end # key loop
-          end # ezpublish
-        } # all
+                  end # field hash
+                end # fields array
+              end # object
+            end # objects
+          end # key loop
+        end # ezpublish
       end # builder
     end
   end
