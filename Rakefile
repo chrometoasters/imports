@@ -108,10 +108,16 @@ namespace :delete do
       Rake::Task['delete:helpers:output'].invoke('content', args[:silent])
     end
 
+    task :xml, :silent do |t, args|
+      Rake::Task['delete:helpers:output'].reenable
+      Rake::Task['delete:helpers:output'].invoke('xml', args[:silent])
+    end
+
     task :all, :silent do |t, args|
       Rake::Task['delete:output:files'].invoke(args[:silent])
       Rake::Task['delete:output:images'].invoke(args[:silent])
       Rake::Task['delete:output:content'].invoke(args[:silent])
+      Rake::Task['delete:output:xml'].invoke(args[:silent])
     end
   end
 end

@@ -1,10 +1,8 @@
 class XML
-  def output(keys)
+  def output(keys, output)
     generate(keys)
 
-    @builder.to_xml.to_s
-
-    output_path = CONFIG['directories']['output'] + '/content.xml'
+    output_path = CONFIG['directories']['output']['content'] + '/import.xml'
 
     file = File.new(output_path, "w")
     file.write(@builder.to_xml.to_s)

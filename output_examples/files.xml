@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ezpublish xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="file:">
+     <AdministrativeMetadata>
+         <name>Techlink Test Export</name>
+         <export_date>2012-10-11T04:20:15</export_date>
+         <country>New Zealand</country>
+     </AdministrativeMetadata>
+     <objects>
+         <general_content
+parent_remote_id="f3e90596361e31d496d4026eb624c983"
+                         priority="3"
+                         remote_id="27964b3400c76032dcf09911841425b0" >
+             <title datatype="ezstring">Import test 1</title>
+             <body datatype="ezxmltext"><![CDATA[<?xml version="1.0"
+encoding="utf-8"?>
+<section xmlns:image="http://ez.no/namespaces/ezpublish3/image/"
+xmlns:xhtml="http://ez.no/namespaces/ezpublish3/xhtml/"
+xmlns:custom="http://ez.no/namespaces/ezpublish3/custom/"><paragraph>Lorem
+ipsum dolor sit amet, consectetur adipiscing elit. Ut imperdiet sagittis
+velit eu tempor. Suspendisse potenti. Donec auctor ornare tempor. Proin
+vel arcu nulla. Sed pellentesque hendrerit porttitor. Praesent posuere
+eros tellus, in vehicula lacus. Vestibulum nunc tellus, consectetur sed
+sagittis sit amet, placerat vel felis. Nunc non orci est, in convallis
+mi. Sed tellus libero, semper vel pretium nec, volutpat ac dolor.
+Maecenas pharetra eros ipsum, ut posuere erat. Aenean quis sollicitudin
+lectus. Duis scelerisque elementum nulla, sed suscipit arcu condimentum
+consequat. Aenean porttitor volutpat metus vel
+facilisis.</paragraph><paragraph>Etiam quis nulla nisi, ac dignissim
+purus. Aliquam iaculis magna at quam pellentesque faucibus. Etiam neque
+mi, volutpat quis faucibus a, iaculis in enim. Aenean tristique pulvinar
+felis, porttitor sodales ligula semper nec. Sed in augue justo, quis
+aliquet est. Sed ut libero in ipsum blandit ullamcorper nec sed odio.
+Cras a ante nisl.</paragraph></section>]]></body>
+         </general_content>
+     </objects>
+     <objects>
+         <general_content
+parent_remote_id="f3e90596361e31d496d4026eb624c983"
+                         remote_id="5eb3b849da0c6217ceb75c5ea1f0eec0" >
+             <title datatype="ezstring">Import test 2</title>
+             <body datatype="ezxmltext"><![CDATA[<?xml version="1.0"
+encoding="utf-8"?>
+<section xmlns:image="http://ez.no/namespaces/ezpublish3/image/"
+xmlns:xhtml="http://ez.no/namespaces/ezpublish3/xhtml/"
+xmlns:custom="http://ez.no/namespaces/ezpublish3/custom/"><paragraph>Lorem
+ipsum dolor sit amet, consectetur <link node_id="65">adipiscing</link>
+elit. Ut imperdiet sagittis velit eu tempor. Suspendisse potenti. Donec
+auctor ornare tempor. Proin vel arcu nulla. Sed pellentesque hendrerit
+porttitor. Praesent posuere eros tellus, in vehicula lacus. Vestibulum
+nunc tellus, consectetur sed sagittis sit amet, placerat vel felis. Nunc
+non orci est, in convallis mi. Sed tellus libero, semper vel pretium
+nec, volutpat ac dolor. Maecenas pharetra eros ipsum, ut posuere erat.
+Aenean quis sollicitudin lectus. Duis scelerisque elementum nulla, sed
+suscipit arcu condimentum consequat. Aenean porttitor volutpat metus vel
+facilisis. <embed-inline view="embed-inline" size="medium"
+object_id="69"/></paragraph><paragraph><embed size="small" align="left"
+object_id="66"/>Etiam quis nulla nisi, ac dignissim purus. Aliquam
+iaculis magna at quam pellentesque faucibus. Etiam neque mi, volutpat
+quis faucibus a, iaculis in enim. Aenean tristique pulvinar felis,
+porttitor sodales ligula semper nec. Sed in augue justo, quis aliquet
+est. Sed ut libero in ipsum blandit ullamcorper nec sed odio. Cras a
+ante nisl.</paragraph></section>]]></body>
+         </general_content>
+     </objects>
+     <objects>
+         <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c"
+                 remote_id="" >
+             <name datatype="ezstring">Test imported file 1</name>
+             <file datatype="ezbinaryfile">Test.xlsx</file>
+         </file>
+     </objects>
+     <objects>
+         <image parent_remote_id="1b26c0454b09bb49dfb1b9190ffd67cb"
+                 remote_id="" >
+             <name datatype="ezstring">Test imported image 1</name>
+             <image datatype="ezbinaryfile">ruff.jpg</file>
+         </image>
+     </objects>
+</ezpublish>
