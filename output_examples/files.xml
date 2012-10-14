@@ -74,7 +74,7 @@ ante nisl.</paragraph></section>]]></body>
          <image parent_remote_id="1b26c0454b09bb49dfb1b9190ffd67cb"
                  remote_id="" >
              <name datatype="ezstring">Test imported image 1</name>
-             <image datatype="ezbinaryfile">ruff.jpg</file>
+             <image datatype="ezimage">ruff.jpg</image>
          </image>
      </objects>
 </ezpublish>

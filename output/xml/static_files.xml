@@ -1,0 +1,904 @@
+<?xml version="1.0"?>
+<all>
+  <ezpublish xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:">
+    <AdministrativeMetadata>
+      <name>Techlink import</name>
+      <export_date>Mon Oct 15 12:19:48 +1300 2012</export_date>
+      <country>New Zealand</country>
+    </AdministrativeMetadata>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="101" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Future-Subjects-Technology.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Future subjects technology]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="102" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/DTEP-Press-Release.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Dtep press release]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="103" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Outcomes-from-DTEP.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Outcomes from dtep]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="104" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/technology-unit-planner-2009.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Technology unit planner 2009]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="105" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/technology-unit-planner-2009-example.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Technology unit planner 2009 example]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="106" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/tl-learning-progression-diagrams - Copy.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Tl learning progression diagrams   copy]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="107" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/CSP-application.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Csp application]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="108" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91044-7v1.doc]]></file>
+        <name datatype="ezstring"><![CDATA[91044 7v1]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="109" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91046v1.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[91046v1]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="110" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91047v1.doc]]></file>
+        <name datatype="ezstring"><![CDATA[91047v1]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="111" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91045v1.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[91045v1]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="112" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91047v1.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[91047v1]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="113" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91044v1.doc]]></file>
+        <name datatype="ezstring"><![CDATA[91044v1]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="114" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91044v1.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[91044v1]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="115" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91045v1.doc]]></file>
+        <name datatype="ezstring"><![CDATA[91045v1]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="116" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91044-7v1.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[91044 7v1]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="117" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91046v1.doc]]></file>
+        <name datatype="ezstring"><![CDATA[91046v1]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="118" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A2-Maori-Technology-Activity.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E1a2 maori technology activity]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="119" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A1-jobs_list.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E1a1 jobs list]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="120" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A1-Strategy-TPCS-Comparison-Compare-Contrast-Worksheet.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E1a1 strategy tpcs comparison compare contrast worksheet]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="121" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A1-things_list.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E1a1 things list]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="122" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Worksheet1-example3.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Worksheet1 example3]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="123" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A1-Strategy-Card-Sort-Activity-questions.docx]]></file>
+        <name datatype="ezstring"><![CDATA[E1a1 strategy card sort activity questions]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="124" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A1-Strategy-TPCS-Comparison-Compare-Contrast-Worksheet-Student-exemplar.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E1a1 strategy tpcs comparison compare contrast worksheet student exemplar]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="125" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1_Strategy_Unit_Planning_Resource_example.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strategy unit planning resource example]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="126" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-2-planning-table.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 2 planning table]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="127" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-4-Learning-Intentions-Task.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 4 learning intentions task]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="128" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A2_Strategy_Thinking_Hats.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E4a2 strategy thinking hats]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="129" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/2010_Strategy_Design_Principles_resource.ppt]]></file>
+        <name datatype="ezstring"><![CDATA[2010 strategy design principles resource]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="130" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-2-learning-intentions.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 2 learning intentions]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="131" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-2-planning-overview.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 2 planning overview]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="132" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-3-Unit-Planner.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 3 unit planner]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="133" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-2-where-technology-fits.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 2 where technology fits]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="134" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/PN reading guide TK  .doc]]></file>
+        <name datatype="ezstring"><![CDATA[Pn reading guide tk  ]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="135" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Close up on the curriculum.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Close up on the curriculum]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="136" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Cards-Snakes-and-Ladders-set-b.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Cards snakes and ladders set b]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="137" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/PN reading guide TP .doc]]></file>
+        <name datatype="ezstring"><![CDATA[Pn reading guide tp ]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="138" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Snakes-and-Ladders-board.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Snakes and ladders board]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="139" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Cards-Snakes-and-Ladders-set-a.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Cards snakes and ladders set a]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="140" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/PN Reading guide Nof T .doc]]></file>
+        <name datatype="ezstring"><![CDATA[Pn reading guide nof t ]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="141" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Cards-Snakes-and-Ladders-set-c.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Cards snakes and ladders set c]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="142" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Changing-technology-E3A1-Activity.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Changing technology e3a1 activity]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="143" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/107 sheet competencies doc.doc]]></file>
+        <name datatype="ezstring"><![CDATA[107 sheet competencies doc]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="144" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E3A2_Strategy_Technological_Modelling.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E3a2 strategy technological modelling]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="145" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91044-7v11350256781.doc]]></file>
+        <name datatype="ezstring"><![CDATA[91044 7v11350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="146" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91046v11350256781.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[91046v11350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="147" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91047v11350256781.doc]]></file>
+        <name datatype="ezstring"><![CDATA[91047v11350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="148" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91045v11350256781.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[91045v11350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="149" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91047v11350256781.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[91047v11350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="150" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91044v11350256781.doc]]></file>
+        <name datatype="ezstring"><![CDATA[91044v11350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="151" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91044v11350256781.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[91044v11350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="152" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91045v11350256781.doc]]></file>
+        <name datatype="ezstring"><![CDATA[91045v11350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="153" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91044-7v11350256781.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[91044 7v11350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="154" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/91046v11350256781.doc]]></file>
+        <name datatype="ezstring"><![CDATA[91046v11350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="155" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A2-Maori-Technology-Activity1350256781.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E1a2 maori technology activity1350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="156" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A1-jobs_list1350256781.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E1a1 jobs list1350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="157" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A1-Strategy-TPCS-Comparison-Compare-Contrast-Worksheet1350256781.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E1a1 strategy tpcs comparison compare contrast worksheet1350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="158" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A1-things_list1350256781.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E1a1 things list1350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="159" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Worksheet1-example31350256781.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Worksheet1 example31350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="160" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A1-Strategy-Card-Sort-Activity-questions1350256781.docx]]></file>
+        <name datatype="ezstring"><![CDATA[E1a1 strategy card sort activity questions1350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="161" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E1A1-Strategy-TPCS-Comparison-Compare-Contrast-Worksheet-Student-exemplar1350256781.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E1a1 strategy tpcs comparison compare contrast worksheet student exemplar1350256781]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="162" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1_Strategy_Unit_Planning_Resource_example1350256782.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strategy unit planning resource example1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="163" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-2-planning-table1350256782.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 2 planning table1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="164" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-4-Learning-Intentions-Task1350256782.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 4 learning intentions task1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="165" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A2_Strategy_Thinking_Hats1350256782.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E4a2 strategy thinking hats1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="166" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/2010_Strategy_Design_Principles_resource1350256782.ppt]]></file>
+        <name datatype="ezstring"><![CDATA[2010 strategy design principles resource1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="167" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-2-learning-intentions1350256782.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 2 learning intentions1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="168" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-2-planning-overview1350256782.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 2 planning overview1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="169" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-3-Unit-Planner1350256782.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 3 unit planner1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="170" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E4A1-Strat-2-where-technology-fits1350256782.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[E4a1 strat 2 where technology fits1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="171" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Close up on the curriculum1350256782.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Close up on the curriculum1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="172" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/PN_Reading_guide_NofT.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Pn reading guide noft]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="173" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Cards-Snakes-and-Ladders-set-b1350256782.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Cards snakes and ladders set b1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="174" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/107_sheet_competencies_doc.doc]]></file>
+        <name datatype="ezstring"><![CDATA[107 sheet competencies doc]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="175" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Snakes-and-Ladders-board1350256782.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Snakes and ladders board1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="176" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Cards-Snakes-and-Ladders-set-a1350256782.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Cards snakes and ladders set a1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="177" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Cards-Snakes-and-Ladders-set-c1350256782.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Cards snakes and ladders set c1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="178" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Changing-technology-E3A1-Activity1350256782.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Changing technology e3a1 activity1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="179" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/PN_reading_guide_TK.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Pn reading guide tk]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="180" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/PN_reading_guide_TP.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Pn reading guide tp]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="181" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/E3A2_Strategy_Technological_Modelling1350256782.doc]]></file>
+        <name datatype="ezstring"><![CDATA[E3a2 strategy technological modelling1350256782]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="182" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Sunsafe-worksheets-archive.zip]]></file>
+        <name datatype="ezstring"><![CDATA[Sunsafe worksheets archive]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="183" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/big-bikkie-curriculum-links.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Big bikkie curriculum links]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="184" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Phone-iPod-Stand-Assessment-Rubric.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Phone ipod stand assessment rubric]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="185" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Phone-iPod-Stand-supporting-worksheets.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Phone ipod stand supporting worksheets]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="186" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/road-safety-unit-plan.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Road safety unit plan]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="187" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Personalised-Pen-Assessment-Rubric.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Personalised pen assessment rubric]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="188" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Personalised-Pen-supporting-worksheets.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Personalised pen supporting worksheets]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="189" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Market-Day-Unit.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Market day unit]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="190" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/technology-curriculum-strategy-2009.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Technology curriculum strategy 2009]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="191" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Strategies-Brief-Development.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Strategies brief development]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="192" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/TK Tech Modelling v7 May 2010.docx]]></file>
+        <name datatype="ezstring"><![CDATA[Tk tech modelling v7 may 2010]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="193" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/xX Done Xx TP Planning for Practice v6 April 2010.docx]]></file>
+        <name datatype="ezstring"><![CDATA[Xx done xx tp planning for practice v6 april 2010]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="194" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/TK Systems v7 May 2010.docx]]></file>
+        <name datatype="ezstring"><![CDATA[Tk systems v7 may 2010]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="195" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/xX Done Xx TP Brief Development v7 April 2010.docx]]></file>
+        <name datatype="ezstring"><![CDATA[Xx done xx tp brief development v7 april 2010]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="196" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/xX Done Xx NoT CoTo v7 April 2010.docx]]></file>
+        <name datatype="ezstring"><![CDATA[Xx done xx not coto v7 april 2010]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="197" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/TK Tech Products v7 May 2010.docx]]></file>
+        <name datatype="ezstring"><![CDATA[Tk tech products v7 may 2010]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="198" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/xX Done Xx TP Outcome Development and Evaluationv6 April 2010.docx]]></file>
+        <name datatype="ezstring"><![CDATA[Xx done xx tp outcome development and evaluationv6 april 2010]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="199" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/xX Done Xx NoTCoTv7 April 2010.docx]]></file>
+        <name datatype="ezstring"><![CDATA[Xx done xx notcotv7 april 2010]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="200" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/TKNOT-Implications.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Tknot implications]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="201" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/TKNOT-Implications.docx]]></file>
+        <name datatype="ezstring"><![CDATA[Tknot implications]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="202" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Unit-West-Auckland--Term-2-2010-LP-plan.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Unit west auckland  term 2 2010 lp plan]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="203" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-Unit-How-has-West-Auckland-Changed.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit how has west auckland changed]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="204" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Unit-West-Auckland--Connected-Series-Modelling.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Unit west auckland  connected series modelling]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="205" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-Unit-How-has-West-Auckland-Changed.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit how has west auckland changed]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="206" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Unit-West-Auckland--Moving-Toys-and-History-of-West-Auckland.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Unit west auckland  moving toys and history of west auckland]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="207" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Unit-West-Auckland--Figure-it-Out.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Unit west auckland  figure it out]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="208" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Unit-West-Auckland--Toys-Booklet-Mission-possible.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Unit west auckland  toys booklet mission possible]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="209" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Unit-West-Auckland--Toy-Booklet-for-juniors.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Unit west auckland  toy booklet for juniors]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="210" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Unit-West-Auckland--Yo-Yo-Booklet.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Unit west auckland  yo yo booklet]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="211" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Unit-West-Auckland--Term-2-Assessment-Rubric.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Unit west auckland  term 2 assessment rubric]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="212" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Unit-West-Auckland--Websites-and-connections-related-to-Technological-Modelling.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Unit west auckland  websites and connections related to technological modelling]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="213" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-unit-Canvas-Me.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit canvas me]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="214" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-unit-Canvas-Me.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit canvas me]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="215" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-unit-Agricultural-Day.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit agricultural day]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="216" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-unit-Agricultural-Day.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit agricultural day]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="217" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Motu-Manawa-Marine-Reserve-Planning-Unit.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Motu manawa marine reserve planning unit]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="218" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Motu-Manawa-Marine-Reserve-Planning-Unit.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Motu manawa marine reserve planning unit]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="219" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-Unit-Numeracy-Booklet-Creation.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit numeracy booklet creation]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="220" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-Unit-Numeracy-Booklet-Creation.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit numeracy booklet creation]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="221" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-Unit-Lunchboxes.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit lunchboxes]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="222" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-Unit-Lunchboxes.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit lunchboxes]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="223" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-unit-Fruits-in-Schools.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit fruits in schools]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="224" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/fruits-in-school-resources.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Fruits in school resources]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="225" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-unit-Fruits-in-Schools.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit fruits in schools]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="226" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-unit-Paper-making.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit paper making]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="227" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/jj-numerals-Series-all-lo.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Jj numerals series all lo]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="228" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/paper-unit-y7-teaching-resources-all.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Paper unit y7 teaching resources all]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="229" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-unit-Paper-making.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit paper making]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="230" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-Unit-Developing-a-School-Identity.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit developing a school identity]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="231" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Integrated-Unit-Developing-a-School-Identity.doc]]></file>
+        <name datatype="ezstring"><![CDATA[Integrated unit developing a school identity]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="232" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/technology-curriculum-strategy-20091350256785.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Technology curriculum strategy 20091350256785]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="233" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Strategies-Brief-Development1350256786.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Strategies brief development1350256786]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="234" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/technology-curriculum-support-oct-10.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Technology curriculum support oct 10]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="235" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/PATT18-Glasgow-23-53b.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Patt18 glasgow 23 53b]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="236" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Thumbs.db]]></file>
+        <name datatype="ezstring"><![CDATA[Thumbs]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="237" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/technology-curriculum-support-2009.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Technology curriculum support 2009]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="238" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/tcsp-overview.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Tcsp overview]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="239" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/technology-curriculum-support.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Technology curriculum support]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="240" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/indicators-of-progression-apr-10.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Indicators of progression apr 10]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="241" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/PATT18-Glasgow-23-53b1350256787.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Patt18 glasgow 23 53b1350256787]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="242" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Thumbs1350256787.db]]></file>
+        <name datatype="ezstring"><![CDATA[Thumbs1350256787]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="243" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/technology-curriculum-support-2010.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Technology curriculum support 2010]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="244" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/tl-strategies-2010.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Tl strategies 2010]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="245" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Future-Subjects-Technology1350256787.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Future subjects technology1350256787]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="246" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/DTEP-Press-Release1350256787.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Dtep press release1350256787]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="247" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Outcomes-from-DTEP1350256787.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Outcomes from dtep1350256787]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="248" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Technological-Context-Knowledge-and-Skills-12-2009.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Technological context knowledge and skills 12 2009]]></name>
+      </file>
+    </objects>
+    <objects>
+      <file parent_remote_id="0b113a208f7890f9ad3c24444ff5988c" remote_id="249" priority="0">
+        <file datatype="ezbinaryfile"><![CDATA[./output/files/Technological-Context-Knowledge-and-Skills-07-2009.pdf]]></file>
+        <name datatype="ezstring"><![CDATA[Technological context knowledge and skills 07 2009]]></name>
+      </file>
+    </objects>
+  </ezpublish>
+</all>

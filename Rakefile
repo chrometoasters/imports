@@ -1,5 +1,11 @@
 require 'rake/testtask'
 
+
+module Rake
+  REDUCE_COMPAT = true
+end
+
+
 task :app do
   require './lib/inports'
 end
@@ -12,11 +18,7 @@ end
 
 namespace :process do
   task :static do
-    Rake::Task['app'].invoke
-    @p = Processor.new(:handlers => EzPub::Handlers::Static)
-    @p.ingest
-
-    # @p.output(Xml)
+    system("bundle exec ruby bin/static.rb")
   end
 
   task :content do

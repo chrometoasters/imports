@@ -55,11 +55,16 @@ module EzPub
 
       $r.hset path, 'id', $r.get_id
 
-      $r.hset path, 'fields', 'file,name,description'
+      $r.hset path, 'parent', CONFIG['ids']['files']
 
-      $r.hset path, 'file', dest
-      $r.hset path, 'name', pretify_filename(dest)
-      $r.hset path, 'description', ''
+      $r.hset path, 'priority', '0'
+
+      $r.hset path, 'type', 'file'
+
+      $r.hset path, 'fields', 'file:ezbinaryfile,name:ezstring'
+
+      $r.hset path, 'field_file', dest
+      $r.hset path, 'field_name', pretify_filename(dest)
     end
   end
 end

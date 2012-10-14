@@ -21,6 +21,21 @@ class Processor
   end
 
 
+  # Wrapper for xml export.
+  #
+  # Takes an optional array of keys (uses main list by default).
+  # Dir and filename option can also be passed on to Formatter::XML.
+
+  def to_xml(opts={})
+    keys = opts[:keys] || $r.lrange('keys', 0, -1)
+    dir = opts[:dir]
+    name = opts[:name]
+
+    formatter = Formatter::XML.new
+    formatter.output keys, :dir => dir, :name => name
+  end
+
+
   # Iterates through the handlers
   # calling ::mine? on each.
   #
