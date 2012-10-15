@@ -21,15 +21,11 @@ namespace :process do
     system("bundle exec ruby bin/static.rb")
   end
 
-  task :content do
-    Rake::Task['app'].invoke
-    # @p = Processor.new(:handlers => EzPub::Handlers::Content)
-    # @p.ingest
 
-    # @p.clean_and_reference
-
-    # @p.output(Xml)
+  task :all do
+    system("bundle exec ruby bin/all.rb")
   end
+
 
   task :all do
     Rake::Task['app'].invoke
