@@ -31,7 +31,7 @@ module EzPub
             create_media_path(path, 'images')
           end
 
-          if exts.match(path)
+          if exts.match(path.downcase)
             true
           else
             Logger.warning path, 'Unknown ext for image'
@@ -67,6 +67,5 @@ module EzPub
       $r.hset path, 'field_image', dest
       $r.hset path, 'field_name', pretify_filename(dest)
     end
-  end
   end
 end

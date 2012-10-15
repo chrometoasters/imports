@@ -44,6 +44,8 @@ $r.select CONFIG['db']
 # Set node id incrementer to our safe offset.
 $r.set 'idcount', CONFIG['ids']['start']
 
-
 # Set input directory path as having the eZPublish homepage node id.
 $r.hset CONFIG['directories']['input'], 'id', CONFIG['ids']['homepage']
+
+# Log the PostProcessor list key so it is hit during cleanup.
+$r.log_key 'post_process'

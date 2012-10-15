@@ -42,7 +42,7 @@ module EzPub
             create_media_path(path, 'files')
           end
 
-          if exts.match(path)
+          if exts.match(path.downcase)
             true
           else
             Logger.warning path, 'Unknown ext for file'

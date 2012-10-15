@@ -1,4 +1,13 @@
 class Processor
+  # The Processor provides the main script loops - supplying input for
+  # migration via #list, ingesting the content, post_processing content via
+  # its PostProcessor mixin, and outputing data via #to_xml.
+
+
+  # PostProcessor handles the sanitization and conversion of ezpublish content
+  # after the initial ingest. It takes stored field content from $r and
+  # performs actions sucgh as tag substitution and link resolution.
+  include PostProcessor
 
   # Pass in an optional input folder and handlers constant.
 
@@ -15,7 +24,7 @@ class Processor
   def ingest
     list.each do |path|
       unless handle path
-        Logger.warning path, "Unhandled by #{@handlers}", 'shh'
+        Logger.warning path, "Unhandled", 'shh'
       end
     end
   end
