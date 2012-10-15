@@ -31,6 +31,7 @@ class Redis
       $r.del k
     end
 
+    $r.del 'post_process'
     $r.del 'keys'
   end
 end
@@ -46,6 +47,3 @@ $r.set 'idcount', CONFIG['ids']['start']
 
 # Set input directory path as having the eZPublish homepage node id.
 $r.hset CONFIG['directories']['input'], 'id', CONFIG['ids']['homepage']
-
-# Log the PostProcessor list key so it is hit during cleanup.
-$r.log_key 'post_process'

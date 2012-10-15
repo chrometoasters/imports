@@ -5,9 +5,6 @@ module PostProcessor
 
   # PostProcessor is used as a mixin for the main Processor class.
 
-  # Log the PostProcessor list key so it is hit during cleanup.
-  $r.log_key 'post_process'
-
 
   # Register a key for post processing.
   # This should be done for any class which has an ezxml field.
