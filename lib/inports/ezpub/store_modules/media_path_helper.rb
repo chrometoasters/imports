@@ -11,7 +11,7 @@ module MediaPathHelper
 
     folders.each do |f|
       str = str + '/' + f
-      puts str + '   !!!'
+
       unless $r.exists str
         EzPub::MediaFolder.store str
       end
