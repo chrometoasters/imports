@@ -1,6 +1,10 @@
 module EzPub
   class MediaFolder < EzPub::Handler
     # This handler is kept out of the main list.
+    #
+    # It is only used by the MediaPathHelper module for
+    # creation of parallel heirarchies of folders in the
+    # eZPublish Media Library.
 
     extend NameMaker
 
