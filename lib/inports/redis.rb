@@ -7,7 +7,7 @@ class Redis
   def get_id
     $r.incr 'idcount'
     id = $r.get 'idcount'
-    Digest::MD5.hexdigest(Time.now.to_i.to_s + id )
+    Digest::MD5.hexdigest('not a date :D' + id )
   end
 
 
@@ -42,7 +42,7 @@ $r = Redis.new
 $r.select CONFIG['db']
 
 # Set node id incrementer to our safe offset.
-$r.set 'idcount', CONFIG['ids']['safety']
+$r.set 'idcount', CONFIG['ids']['start']
 
 
 # Set input directory path as having the eZPublish homepage node id.
