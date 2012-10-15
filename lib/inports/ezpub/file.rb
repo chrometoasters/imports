@@ -45,7 +45,7 @@ module EzPub
           if exts.match(path)
             true
           else
-            Logger.warning path, 'Unknown ext attempted by File'
+            Logger.warning path, 'Unknown ext for file'
             false
           end
 

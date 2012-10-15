@@ -22,7 +22,7 @@ module EzPub
 
         # Check if an image - basic check from ptools gem.
 
-        if ::File.binary?(path)
+        if ::File.image?(path)
 
           # Use MediaPathHelper module to create a heirarchy of media library
           # folders for this path, if needed.
@@ -34,7 +34,7 @@ module EzPub
           if exts.match(path)
             true
           else
-            Logger.warning path, 'Unknown ext attempted by File'
+            Logger.warning path, 'Unknown ext for image'
             false
           end
 
