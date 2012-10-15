@@ -31,7 +31,7 @@ module EzPub
         when 'images'
           parent = CONFIG['ids']['images']
         when 'files'
-          parent = CONFIG['ids']['images']
+          parent = CONFIG['ids']['files']
         else
           raise "Serious problem - unhandled MediaFolder parent"
         end
