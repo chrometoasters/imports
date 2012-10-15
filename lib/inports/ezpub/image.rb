@@ -24,7 +24,6 @@ module EzPub
 
 
     def self.store(path)
-      puts path
     end
   end
 end
