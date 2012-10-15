@@ -5,6 +5,7 @@ module EzPub
 
     extend StaticCopy
     extend NameMaker
+    extend MediaPathHelper
 
     def self.priority
       # I should run nearly last,
@@ -34,6 +35,10 @@ module EzPub
 
         if ::File.binary?(path)
 
+          unless has_media_path? path, 'files'
+            create_media_path(path, 'files')
+          end
+
           if exts.match(path)
             true
           else
@@ -55,7 +60,7 @@ module EzPub
 
       $r.hset path, 'id', $r.get_id
 
-      $r.hset path, 'parent', CONFIG['ids']['files']
+      $r.hset path, 'parent', parent_id(mediaize_path(path, 'files'))
 
       $r.hset path, 'priority', '0'
 
