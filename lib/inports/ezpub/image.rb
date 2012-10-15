@@ -1,7 +1,7 @@
 module EzPub
   class Image < EzPub::Handler
-    EzPub::Handlers::All << self
-    EzPub::Handlers::Static << self
+    EzPub::HandlerSets::All << self
+    EzPub::HandlerSets::Static << self
 
     extend StaticCopy
     extend NameMaker

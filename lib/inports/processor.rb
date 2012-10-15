@@ -13,7 +13,7 @@ class Processor
 
   def initialize(opts = {})
     @root = opts[:root] || CONFIG['directories']['input']
-    @handlers = opts[:handlers] || EzPub::Handlers::All
+    @handlers = opts[:handlers] || EzPub::HandlerSets::All
   end
 
 

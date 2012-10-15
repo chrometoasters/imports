@@ -1,5 +1,5 @@
 require './lib/inports/ezpub/handler'
-require './lib/inports/ezpub/handlers'
+require './lib/inports/ezpub/handler_sets'
 
 # load helpers for mine? methods.
 Dir['./lib/inports/ezpub/mine_modules/*.rb'].each {|file| require file }

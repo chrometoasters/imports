@@ -5,12 +5,12 @@ class Testprocessor < MiniTest::Unit::TestCase
 
   def setup
     # Remove existing handlers
-    EzPub::Handlers::All.delete_if {true}
+    EzPub::HandlerSets::All.delete_if {true}
 
     eval %{
 
       class EzPub::Short < EzPub::Handler
-        EzPub::Handlers::All << self
+        EzPub::HandlerSets::All << self
 
         def self.priority
           2
@@ -32,8 +32,8 @@ class Testprocessor < MiniTest::Unit::TestCase
 
 
       class EzPub::Hello < EzPub::Handler
-        EzPub::Handlers::All << self
-        EzPub::Handlers::Static << self
+        EzPub::HandlerSets::All << self
+        EzPub::HandlerSets::Static << self
 
         def self.priority
           1
@@ -65,9 +65,9 @@ class Testprocessor < MiniTest::Unit::TestCase
 
 
   def test_handlers_successfully_registered
-    assert_includes EzPub::Handlers::All, EzPub::Short
-    assert_includes EzPub::Handlers::All, EzPub::Hello
-    assert_includes EzPub::Handlers::Static, EzPub::Hello
+    assert_includes EzPub::HandlerSets::All, EzPub::Short
+    assert_includes EzPub::HandlerSets::All, EzPub::Hello
+    assert_includes EzPub::HandlerSets::Static, EzPub::Hello
 
   end
 

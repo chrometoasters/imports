@@ -1,5 +1,5 @@
 module EzPub
-  module Handlers
+  module HandlerSets
     All = []
     Content = []
     Static = []

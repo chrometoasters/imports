@@ -12,3 +12,7 @@ end
 
 class BadPath < Exception
 end
+
+class UnexpectedPagelikeFile < Exception
+end
+

@@ -1,10 +1,13 @@
 module EzPub
   class GeneralContent < EzPub::Handler
-    EzPub::Handlers::All << self
-    EzPub::Handlers::Static << self
+    EzPub::HandlerSets::All << self
+    EzPub::HandlerSets::Content << self
 
     extend NameMaker
+    extend IncludeOrPage
 
+    # Identifying general_content is primarily a case of elimination.
+    # We place general_content last among our content handlers as
 
     def self.priority
       50
@@ -12,7 +15,9 @@ module EzPub
 
 
     def self.mine?(path)
-      false
+      if page? path
+
+      end
     end
 
 

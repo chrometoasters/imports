@@ -4,12 +4,12 @@ Bundler.require(:test)
 class TestEzPubHandler < MiniTest::Unit::TestCase
   def setup
     # Remove existing handlers
-    EzPub::Handlers::All.delete_if {true}
+    EzPub::HandlerSets::All.delete_if {true}
 
     eval %{
 
       class EzPub::Short < EzPub::Handler
-        EzPub::Handlers::All << self
+        EzPub::HandlerSets::All << self
 
         def self.priority
           2
@@ -31,7 +31,7 @@ class TestEzPubHandler < MiniTest::Unit::TestCase
 
 
       class EzPub::Hello < EzPub::Handler
-        EzPub::Handlers::All << self
+        EzPub::HandlerSets::All << self
 
         def self.priority
           1

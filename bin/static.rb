@@ -1,6 +1,6 @@
 require './lib/inports'
 
-@p = Processor.new(:handlers => EzPub::Handlers::Static)
+@p = Processor.new(:handlers => EzPub::HandlerSets::Static)
 
 @p.ingest
 
