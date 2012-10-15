@@ -8,6 +8,8 @@ Dir['./lib/inports/ezpub/mine_modules/*.rb'].each {|file| require file }
 Dir['./lib/inports/ezpub/store_modules/*.rb'].each {|file| require file }
 
 require './lib/inports/ezpub/media_folder'
-
 require './lib/inports/ezpub/image'
 require './lib/inports/ezpub/file'
+
+require './lib/inports/ezpub/general_content'
+
