@@ -17,12 +17,26 @@ module EzPub
 
 
     def self.store(path)
+      # Paths passed to MediaFolder::store should be of the non-standard form:
+      #
+      # media:files:./input/etc/etc
+      # or
+      # media:images:./input/etc/etc
+
+      unless path =~ /^media:\w+:\.\//
+        raise BadPath, "Passed a non media path to MediaFolder::store."
+      end
+
       $r.log_key(path)
 
       $r.hset path, 'id', $r.get_id
 
       begin
         parent = parent_id path
+
+      # Since orphanity, in this case, could just mean that we've bottomed out
+      # on the non-standard /files and /images folders, we test for that before
+      # raising a general exception.
 
       rescue Orphanity
 
@@ -33,7 +47,7 @@ module EzPub
         when 'files'
           parent = CONFIG['ids']['files']
         else
-          raise "Serious problem - unhandled MediaFolder parent"
+          raise Orphanity, "Serious problem - unhandled MediaFolder parent."
         end
       end
 
