@@ -40,14 +40,27 @@ module EzPub
 
       rescue Orphanity
 
-        case /media:([^:]+)/.match(path)[1]
+        # This hard codes the expectation that input paths will begin with '.'.
+        #
+        # It checks that this is legitmately a bottom level path.
 
-        when 'images'
-          parent = CONFIG['ids']['images']
-        when 'files'
-          parent = CONFIG['ids']['files']
+        if path._parentize =~ /^media:\w+:\.$/
+
+          case /media:([^:]+)/.match(path)[1]
+
+          # Case switch for appropriate folder values in
+          # config file.
+
+          when 'images'
+            parent = CONFIG['ids']['images']
+          when 'files'
+            parent = CONFIG['ids']['files']
+          else
+            raise BadPath, "Unhandled MediaFolder parent due to no matches in predefined folders."
+          end
+
         else
-          raise Orphanity, "Serious problem - unhandled MediaFolder parent."
+          raise Orphanity, "Unhandled MediaFolder parent. Unhandled path didn't bottom out as expected."
         end
       end
 

@@ -5,7 +5,9 @@ class TestMediaPathHelper < MiniTest::Unit::TestCase
   include MediaPathHelper
 
   def setup
+    EzPub::MediaFolder.store 'media:files:./input'
     EzPub::MediaFolder.store 'media:files:./input/folder'
+    EzPub::MediaFolder.store 'media:images:./input'
     EzPub::MediaFolder.store 'media:images:./input/folder'
     EzPub::MediaFolder.store 'media:images:./input/imagefolder'
   end
