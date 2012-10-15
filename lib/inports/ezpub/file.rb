@@ -35,6 +35,9 @@ module EzPub
 
         if ::File.binary?(path)
 
+          # Use MediaPathHelper module to create a heirarchy of media library
+          # folders for this path, if needed.
+
           unless has_media_path? path, 'files'
             create_media_path(path, 'files')
           end
@@ -59,6 +62,9 @@ module EzPub
       $r.log_key(path)
 
       $r.hset path, 'id', $r.get_id
+
+      # Pass in a "media:files:./xyz" path, rather than a standard path.
+      # (Since we want to match against the various Media locations).
 
       $r.hset path, 'parent', parent_id(mediaize_path(path, 'files'))
 
