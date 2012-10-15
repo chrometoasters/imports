@@ -1,11 +1,13 @@
 class Redis
+  require 'digest/md5'
 
   # Helper for getting and incrementing node id
   # value.
 
   def get_id
     $r.incr 'idcount'
-    $r.get 'idcount'
+    id = $r.get 'idcount'
+    Digest::MD5.hexdigest(Time.now.to_i.to_s + id )
   end
 
 
