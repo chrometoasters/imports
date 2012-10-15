@@ -9,9 +9,6 @@ module PostProcessor
   $r.log_key 'post_process'
 
 
-  # Mixin wrapper for Sanitize.
-  include Convert
-
   # Register a key for post processing.
   # This should be done for any class which has an ezxml field.
   # PostProcessor.register path
