@@ -59,10 +59,14 @@ module Formatter
               xml.send h['type'], obj_props do
 
                 # Add all field data.
+
                 fields.each do |field|
                   field.each do |k,v|
 
                     xml.send k, {:datatype => v} do
+
+                      # Field keys are always prefixed with 'field_'
+
                       xml.cdata h['field_' + k]
                     end
 
