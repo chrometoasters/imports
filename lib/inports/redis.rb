@@ -2,7 +2,7 @@ class Redis
   require 'digest/md5'
 
   # Helper for getting and incrementing node id
-  # value.
+  # value and returning a derived hash.
 
   def get_id
     $r.incr 'idcount'
