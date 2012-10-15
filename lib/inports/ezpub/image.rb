@@ -3,7 +3,9 @@ module EzPub
     EzPub::Handlers::All << self
     EzPub::Handlers::Static << self
 
-    include StaticCopy
+    extend StaticCopy
+    extend NameMaker
+    extend MediaPathHelper
 
     def self.priority
       99
