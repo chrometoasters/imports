@@ -9,3 +9,6 @@ end
 
 class AlreadyExists < Exception
 end
+
+class BadPath < Exception
+end
