@@ -38,4 +38,23 @@ class TestString < MiniTest::Unit::TestCase
     assert_equal '', '/a'._parentize
     assert_equal '', '/a/'._parentize
   end
+
+
+  def test_parentize_handles_media_paths
+    assert_equal 'media:files:./a/b', 'media:files:./a/b/hello.jpg'._parentize
+    assert_equal 'media:files:./a', 'media:files:./a/b'._parentize
+    assert_equal 'media:files:.', 'media:files:./a'._parentize
+  end
+
+
+  def test_explode_fields_returns_array_of_hashes
+    a = 'fieldname:type,anotherfield:anothertype,finalfield:type'._explode_fields
+
+    assert_kind_of Array, a
+    assert_equal 3, a.length
+
+    assert_kind_of Hash, a.first
+    assert_equal a.first, {'fieldname' => 'type'}
+    assert_equal a[2], {'finalfield' => 'type'}
+  end
 end
