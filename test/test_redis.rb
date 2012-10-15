@@ -18,7 +18,7 @@ class TestRedis < MiniTest::Unit::TestCase
 
 
   def test_id_count_uses_config_value
-    i = CONFIG['ids']['safety']
+    i = CONFIG['ids']['start']
     assert_equal i.to_s, $r.get('idcount')
   end
 
@@ -36,10 +36,10 @@ class TestRedis < MiniTest::Unit::TestCase
   end
 
 
-  def test_get_id_returns_and_increments_id
+  def test_get_id_returns_unique_ids
     initial = $r.get('idcount').to_i
     initial += 1
-    assert_equal initial.to_s, $r.get_id
+    refute_equal initial.to_s, $r.get_id
   end
 
 

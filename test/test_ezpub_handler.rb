@@ -63,7 +63,6 @@ class TestEzPubHandler < MiniTest::Unit::TestCase
 
   def test_parent_id_returns_parents_id
     CONFIG['ids']['safety'] = 50
-    CONFIG['ids']['homepage'] = 1
     CONFIG['directories']['input'] = './test'
 
     load './lib/inports/redis.rb'
@@ -74,9 +73,9 @@ class TestEzPubHandler < MiniTest::Unit::TestCase
     $r.hset './test/another', 'id', $r.get_id
     $r.log_key './test/another'
 
-    assert_equal '51', EzPub::Handler.parent_id('./test/hello/index.htm')
-    assert_equal '51', EzPub::Handler.parent_id('./test/hello/thing.htm')
-    assert_equal '52', EzPub::Handler.parent_id('./test/another/what')
+    assert_equal '8238101f03021090a2799fcf145103c3', EzPub::Handler.parent_id('./test/hello/index.htm')
+    assert_equal '8238101f03021090a2799fcf145103c3', EzPub::Handler.parent_id('./test/hello/thing.htm')
+    assert_equal '074be90af66f157223e71ace9b4e0319', EzPub::Handler.parent_id('./test/another/what')
   end
 
 
