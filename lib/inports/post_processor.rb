@@ -27,6 +27,13 @@ module PostProcessor
   # See ./lib/sanitize_configs and ./lib/sanitize_transformers
 
   def post_process(opts={})
+    # Post processor currently runs through all keys in the
+    # post_process list, for which they have to be manually registered
+    # in their ::store method.
+
+    # Could possibly change this to run though the entire keys list, if
+    # it is decided that we want to post process EVERY ezxmltext field.
+
     keys = opts[:keys] || $r.lrange('post_process', 0, -1)
 
     keys.each do |k|
