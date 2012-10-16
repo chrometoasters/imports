@@ -82,7 +82,7 @@ class Processor
 
   def log_unhandled
     $r.smembers('unhandled').each do |k|
-      Logger.warning path, 'Unhandled', shh
+      Logger.warning k, 'Unhandled', shh
     end
   end
 end
