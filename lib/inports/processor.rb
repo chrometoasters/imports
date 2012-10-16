@@ -36,7 +36,6 @@ class Processor
         $r.srem 'unhandled', path
       end
     end
-    @@run += 1
   end
 
 
