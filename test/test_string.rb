@@ -32,6 +32,11 @@ class TestString < MiniTest::Unit::TestCase
   end
 
 
+  def test_parentize_handles_spaces
+    assert_equal './input', './input/curriculum support'._parentize
+  end
+
+
   def test_parentize_shortens_all_way_down
     assert_equal '.', './a'._parentize
     assert_equal '.', './a/'._parentize

@@ -1,10 +1,10 @@
 module IncludeOrPage
   def page?(path)
-    if path =~ /.html$/
-      raise UnexpectedPagelikeFile, 'Encountered an .html path, but only expect .htm.'
-    end
+    # if path =~ /.html$/
+    #   raise UnexpectedPagelikeFile, 'Encountered an .html path, but only expect .htm.'
+    # end
 
-    path =~ /.htm$/ ? true : false
+    path =~ /.(htm|html)$/ ? true : false
   end
 
 

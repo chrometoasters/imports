@@ -6,4 +6,4 @@ require './lib/inports'
 
 @p.post_process
 
-@p.to_xml :name => 'static_files'
+@p.to_xml :name => 'all'

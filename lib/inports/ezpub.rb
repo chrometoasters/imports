@@ -11,5 +11,6 @@ require './lib/inports/ezpub/media_folder'
 require './lib/inports/ezpub/image'
 require './lib/inports/ezpub/file'
 
+require './lib/inports/ezpub/folder'
 require './lib/inports/ezpub/general_content'
 

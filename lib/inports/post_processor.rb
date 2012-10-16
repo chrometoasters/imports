@@ -10,8 +10,8 @@ module PostProcessor
   # This should be done for any class which has an ezxml field.
   # PostProcessor.register path
 
-  def self.register(k)
-    $r.rpush 'post_process', k
+  def self.register(path)
+    $r.rpush 'post_process', path
   end
 
   # Main post processing loop. Checks all keys in the post_process
@@ -31,6 +31,8 @@ module PostProcessor
     keys = opts[:keys] || $r.lrange('post_process', 0, -1)
 
     keys.each do |k|
+      puts 'POST PROCESSING'
+
       fields = $r.hget(k, 'fields')._explode_fields
 
       fields.each do |field|
@@ -44,7 +46,7 @@ module PostProcessor
             ezpxml = to_ezp(html)
             $r.hset k, 'field_' + name, ezpxml
 
-            Logger.warning path, "Postprocessed field #{name}", 'shh'
+            Logger.warning k, "Postprocessed field #{name}", 'shh'
 
           end # type check
         end # field
@@ -56,6 +58,8 @@ module PostProcessor
 
   def to_ezp(html, opts = {})
     config = opts[:config] || Sanitize::InportConfig::EZXML
+
+    puts 'SANITIZING'
 
     strip Sanitize.clean(html, config)
   end

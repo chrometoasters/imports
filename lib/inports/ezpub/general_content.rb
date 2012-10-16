@@ -17,11 +17,26 @@ module EzPub
 
 
     def self.mine?(path)
-      page? path ? true : false
+      if page?(path) || ::File.exists?(path + '/index.htm')
+        true
+      else
+        false
+      end
     end
 
 
     def self.store(path)
+      filepath = path
+
+      unless page? path
+        if ::File.exists? path + '/index.htm'
+          filepath = path + '/index.htm'
+        else
+          raise JustAFolder, "#{path} has no index.htm!"
+        end
+      end
+
+
       $r.log_key(path)
 
       $r.hset path, 'id', $r.get_id
@@ -36,7 +51,8 @@ module EzPub
 
       # Resolve includes and get a nokogiri doc at the same time.
 
-      @doc = resolve_includes(path, :return => :doc)
+      @doc = resolve_includes(filepath, :return => :doc)
+
 
       title = get_title(@doc)
 
@@ -47,14 +63,18 @@ module EzPub
         Logger.warning path, 'No title found'
       end
 
+
       body = get_body(@doc)
 
       if body
-        $r.hset path, 'field_body', title
+        $r.hset path, 'field_body', body
       else
         $r.hset path, 'field_body', 'BODY NOT FOUND'
         Logger.warning path, 'Body not found'
       end
+
+      # Register general content for post_processing.
+      PostProcessor.register path
     end
   end
 end

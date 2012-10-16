@@ -16,3 +16,8 @@ end
 class UnexpectedPagelikeFile < Exception
 end
 
+class JustAFolder < Exception
+end
+
+class NotJustAFolder < Exception
+end
