@@ -19,9 +19,4 @@ class TestIncludeOrPage < MiniTest::Unit::TestCase
     refute page? './some/path/thing.cfm'
     refute page? './some/path/thing.jpg'
   end
-
-
-  def test_page_raises_on_html_extension
-    assert_raises(UnexpectedPagelikeFile) { page? './some/path/thing.html' }
-  end
 end
