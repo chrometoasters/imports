@@ -39,6 +39,15 @@ class Processor
   end
 
 
+  # See comments for Processor#ingest
+
+  def log_unhandled
+    $r.smembers('unhandled').each do |k|
+      Logger.warning k, 'Unhandled', 'shh'
+    end
+  end
+
+
   # Wrapper for xml export.
   #
   # Takes an optional array of keys (uses main list by default).
@@ -75,14 +84,5 @@ class Processor
 
   def list
     Dir.glob(@root + "**/**/**")
-  end
-
-
-  # See comments for Processor#ingest
-
-  def log_unhandled
-    $r.smembers('unhandled').each do |k|
-      Logger.warning k, 'Unhandled', shh
-    end
   end
 end
