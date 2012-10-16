@@ -33,6 +33,7 @@ class Redis
 
     $r.del 'post_process'
     $r.del 'keys'
+    $r.del 'unhandled'
   end
 end
 

@@ -24,9 +24,19 @@ class Processor
   def ingest
     list.each do |path|
       unless handle path
-        Logger.warning path, "Unhandled", 'shh'
+
+        # Given multiple runs of #ingest, we track unhandled items in
+        # a set, adding and removing paths as they are handled or vice
+        # versa.
+        #
+        # These are then logged in Processor#log_unhandled
+
+        $r.sadd 'unhandled', path
+      else
+        $r.srem 'unhandled', path
       end
     end
+    @@run += 1
   end
 
 
@@ -66,5 +76,14 @@ class Processor
 
   def list
     Dir.glob(@root + "**/**/**")
+  end
+
+
+  # See comments for Processor#ingest
+
+  def log_unhandled
+    $r.smemebers('unhandled').each do |k|
+      Logger.warning path, 'Unhandled', shh
+    end
   end
 end
