@@ -1,9 +1,47 @@
 require './lib/inports'
 
-@p = Processor.new(:handlers => EzPub::HandlerSets::All)
+
+# Ingesting static content
+#
+#
+
+
+@p = Processor.new(:handlers => EzPub::HandlerSets::Static)
+
+puts $term.color("Starting static file ingest...", :green)
 
 @p.ingest
 
+puts $term.color("Static file ingest complete.", :green)
+
+
+# Ingesting and processing content
+#
+#
+
+
+@p = Processor.new(:handlers => EzPub::HandlerSets::Content)
+
+puts $term.color("Starting content ingest...", :green)
+
+@p.ingest
+
+puts $term.color("Content ingest complete.", :green)
+
+puts $term.color("Starting content post-processing...", :green)
+
 @p.post_process
 
-@p.to_xml :name => 'all'
+
+# Generating xml
+#
+#
+
+
+puts $term.color("Post-processing complete.", :green)
+
+puts $term.color("Generating XML...", :green)
+
+path = @p.to_xml :name => 'techlink-content'
+
+puts $term.color("XML created at #{path}.", :green)
