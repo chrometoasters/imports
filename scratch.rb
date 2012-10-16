@@ -1,11 +1,20 @@
 require './lib/inports'
-include IncludeResolver
 
-CONFIG['directories']['input'] = './test/mocks'
+$r.kill_keys
 
-result = resolve_includes './test/mocks/has_includes.htm'
+$r.hset './input/curriculum-support', 'id', '123'
+
+EzPub::GeneralContent.store('./input/curriculum-support/index.htm')
 
 
-puts result #if $verbose
+
+# CONFIG['directories']['input'] = './test/mocks'
+
+# result = resolve_includes './test/mocks/has_includes.htm'
+
+
+
+
+#puts result #if $verbose
 
 # puts Crawler.new.list

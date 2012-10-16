@@ -22,6 +22,11 @@ class TestIncludeResolver < MiniTest::Unit::TestCase
 
     path = make_path_absolute('/things/absolute_include.cfm', './test/mocks/things/somefile.htm')
     assert_equal path, './test/mocks/things/absolute_include.cfm'
+
+    CONFIG['directories']['input'] = './input'
+
+    path = make_path_absolute('/things/absolute_include.cfm', './input/mocks/things/somefile.htm')
+    assert_equal path, './input/things/absolute_include.cfm'
   end
 
 
@@ -46,5 +51,10 @@ class TestIncludeResolver < MiniTest::Unit::TestCase
   def test_resolved_includes_inserted_in_place_of_cfinclude_element
     shh { @str = resolve_includes('./test/mocks/has_includes.htm') }
     assert_match /footer-links/, @str
+  end
+
+  def test_resolved_includes_returns_doc_with_return_argument
+    shh { @doc = resolve_includes('./test/mocks/has_includes.htm', :return => :doc) }
+    assert_kind_of Nokogiri::HTML::Document, @doc
   end
 end

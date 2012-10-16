@@ -1,11 +1,12 @@
 module IncludeResolver
   # Module for resolving cfinclude tags within a string.
 
-  def resolve_includes(path)
+  def resolve_includes(path, opts={})
+    return_type = opts[:return] || :string
+
     doc = get_nokogiridoc_from_path(path)
 
     doc.xpath('//cfinclude[@template]').each do |cfinclude|
-      puts cfinclude[:template]
       template_path = cfinclude[:template]
 
       # Sometimes template attributes have jibberish in them,
@@ -28,7 +29,18 @@ module IncludeResolver
         cfinclude.add_child include_nodes
       end
     end
-    doc.to_s
+
+    # Sometimes it's much more efficient to return a doc (making further file loads
+    # and parses unecessary).
+
+    # Passing any :return => :whatever value will cause this method to return a
+    # nokogiri doc.
+
+    if return_type == :string
+      doc.to_s
+    else
+      doc
+    end
   end
 
 
@@ -42,21 +54,21 @@ module IncludeResolver
 
 
   def get_nokogiridoc_from_path(path, for_insertion = nil)
-    # Safety check. We log and return a unique tag if
-    # the sepcified include file does not exist.
+    # We're checking for and retrieving files non-case-sentiviely, as this appears
+    # to be how it was done originally.
 
-    if File.exists? path
+    str = StringFromPath.get_case_insensitive(path)
 
-      file = File.open(path)
+    if str
 
       # Full Nokogiri documents can't be passed to node#add_child.
       # So we provide the option to return a fragment if the second
       # argument is anything but nil.
 
       if for_insertion
-        parsed = Nokogiri::HTML.fragment(file.read)
+        parsed = Nokogiri::HTML.fragment(str)
       else
-        parsed = Nokogiri::HTML(file.read)
+        parsed = Nokogiri::HTML(str)
       end
 
       parsed
