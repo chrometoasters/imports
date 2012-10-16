@@ -6,16 +6,14 @@ module EzPub
     extend NameMaker
     extend IncludeOrPage
 
-    # Identifying general_content is primarily a case of elimination.
-    # We place general_content last among our content handlers as
-
     def self.priority
       49
     end
 
 
     def self.mine?(path)
-      if ::File.directory?(path) && !::File.exists?(path + '/index.htm')
+      # Identify folders without index.htm files.
+      if ::File.directory?(path) !::File.exists?(path + '/index.htm')
         true
       else
         false
@@ -24,6 +22,7 @@ module EzPub
 
 
     def self.store(path)
+      # Sanity check.
       if ::File.exists? path + '/index.htm'
         raise NotJustAFolder, "#{path} has an index.htm!"
       end
