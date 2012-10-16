@@ -4,7 +4,6 @@ module EzPub
     EzPub::HandlerSets::Content << self
 
     extend NameMaker
-    extend IncludeOrPage
 
     def self.priority
       49
@@ -13,7 +12,7 @@ module EzPub
 
     def self.mine?(path)
       # Identify folders without index.htm files.
-      if ::File.directory?(path) !::File.exists?(path + '/index.htm')
+      if ::File.directory?(path) && !::File.exists?(path + '/index.htm')
         true
       else
         false
