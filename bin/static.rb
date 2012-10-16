@@ -6,6 +6,8 @@ puts $term.color("Starting static file ingest...", :green)
 
 @p.ingest
 
+@p.log_unhandled
+
 puts $term.color("Static file ingest complete.", :green)
 
 puts $term.color("Generating XML...", :green)

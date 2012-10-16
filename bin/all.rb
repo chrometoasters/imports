@@ -30,6 +30,8 @@ puts $term.color("Content ingest complete.", :green)
 
 puts $term.color("Starting content post-processing...", :green)
 
+@p.log_unhandled
+
 @p.post_process
 
 
