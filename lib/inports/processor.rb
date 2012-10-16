@@ -81,7 +81,7 @@ class Processor
   # See comments for Processor#ingest
 
   def log_unhandled
-    $r.smemebers('unhandled').each do |k|
+    $r.smembers('unhandled').each do |k|
       Logger.warning path, 'Unhandled', shh
     end
   end
