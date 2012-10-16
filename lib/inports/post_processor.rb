@@ -7,8 +7,8 @@ module PostProcessor
 
 
   # Register a key for post processing.
-  # This should be done for any class which has an ezxml field.
-  # PostProcessor.register path
+  # This should be done in ::store for any class which has an ezxml field.
+  # PostProcessor.register 'some/path'
 
   def self.register(path)
     $r.rpush 'post_process', path
