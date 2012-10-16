@@ -3,7 +3,7 @@ module Formatter
     def namespace
       {
         'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-        'xsi:noNamespaceSchemaLocation' => 'file:'
+        'xsi:schemaLocation' => 'http://technology.tki.org.nz techlink.xsd'
       }
     end
 
@@ -48,22 +48,23 @@ module Formatter
                 :parent_remote_id => h['parent'],
                 :priority => h['priority'],
                 :remote_id => h['id'],
+                :name => h['type'],
               }
-
-              # Get field info.
-
-              fields = h['fields']._explode_fields
 
               # Declare object.
 
-              xml.send h['type'], obj_props do
+              xml.object obj_props do
+
+                # Get field info.
+
+                fields = h['fields']._explode_fields
 
                 # Add all field data.
 
                 fields.each do |field|
                   field.each do |k,v|
 
-                    xml.send k, {:datatype => v} do
+                    xml.attribute(:name => k, :datatype => v) do
 
                       # Field keys are always prefixed with 'field_'
 
