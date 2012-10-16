@@ -1,8 +1,11 @@
 require './lib/inports'
-include Convert
+include IncludeResolver
+
+CONFIG['directories']['input'] = './test/mocks'
+
+result = resolve_includes './test/mocks/has_includes.htm'
 
 
-
-puts str if $verbose
+puts result #if $verbose
 
 # puts Crawler.new.list
