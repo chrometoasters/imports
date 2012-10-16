@@ -31,7 +31,6 @@ module PostProcessor
     keys = opts[:keys] || $r.lrange('post_process', 0, -1)
 
     keys.each do |k|
-      puts 'POST PROCESSING'
 
       fields = $r.hget(k, 'fields')._explode_fields
 
@@ -58,8 +57,6 @@ module PostProcessor
 
   def to_ezp(html, opts = {})
     config = opts[:config] || Sanitize::InportConfig::EZXML
-
-    puts 'SANITIZING'
 
     strip Sanitize.clean(html, config)
   end
