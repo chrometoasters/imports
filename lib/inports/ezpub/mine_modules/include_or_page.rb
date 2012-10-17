@@ -1,18 +1,31 @@
 module IncludeOrPage
+  include IsARedirect
+  include HasValidIndex
+
+  # Treats directory paths containing valid index.htm(l)? files as
+  # pages.
+
   def page?(path)
+    response = false
+
+    # Check this is a page path.
     if path =~ /.(htm|html)$/
+
+      # Check it's not an index,
+      # as these are handled in their ./path form.
+
       if path !~ /index\.(htm|html)$/
-        true
-      else
-        false
+        response = true
       end
+
     else
-      if ::File.exists?(path + '/index.htm')
-        true
-      else
-        false
+
+      if has_valid_index?(path)
+        response = true
       end
     end
+
+    response
   end
 
 
