@@ -2,19 +2,8 @@ require './lib/inports'
 
 $r.kill_keys
 
-$r.hset './input/curriculum-support', 'id', '123'
+# puts EzPub::File.mine?('./input/curriculum-support/pdfs/tl-learning-progression-diagrams-oct-2010.pdf')
 
-EzPub::GeneralContent.store('./input/curriculum-support/index.htm')
+include IsARedirect
 
-
-
-# CONFIG['directories']['input'] = './test/mocks'
-
-# result = resolve_includes './test/mocks/has_includes.htm'
-
-
-
-
-#puts result #if $verbose
-
-# puts Crawler.new.list
+redirect?('./input/curriculum-support/CSP/index.htm')

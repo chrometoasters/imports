@@ -19,4 +19,10 @@ class TestIncludeOrPage < MiniTest::Unit::TestCase
     refute page? './some/path/thing.cfm'
     refute page? './some/path/thing.jpg'
   end
+
+
+  def test_page_doesnt_acknowledge_indexs
+    refute page? './some/path/index.htm'
+    refute page? './some/path/index.html'
+  end
 end

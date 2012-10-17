@@ -17,7 +17,7 @@ module EzPub
 
 
     def self.mine?(path)
-      if page?(path) || ::File.exists?(path + '/index.htm')
+      if page?(path)
         true
       else
         false
@@ -27,15 +27,6 @@ module EzPub
 
     def self.store(path)
       filepath = path
-
-      unless page? path
-        if ::File.exists? path + '/index.htm'
-          filepath = path + '/index.htm'
-        else
-          raise JustAFolder, "#{path} has no index.htm!"
-        end
-      end
-
 
       $r.log_key(path)
 

@@ -33,7 +33,9 @@ class Redis
 
     $r.del 'post_process'
     $r.del 'keys'
-    $r.del 'unhandled'
+
+    # Attempt to delete unhandled sets in the event of a broken run.
+    5.times {|i| $r.del "unhandled-#{i}"}
   end
 end
 
@@ -46,5 +48,9 @@ $r.select CONFIG['db']
 # Set node id incrementer to our safe offset.
 $r.set 'idcount', CONFIG['ids']['start']
 
-# Set input directory path as having the eZPublish homepage node id.
+# Set input directory path as having the eZPublish homepage remote id.
 $r.hset CONFIG['directories']['input'], 'id', CONFIG['ids']['homepage']
+
+# Set media folders paths as having the appropriate remote ids.
+$r.hset 'media:files:.', 'id', CONFIG['ids']['files']
+$r.hset 'media:images:.', 'id', CONFIG['ids']['images']

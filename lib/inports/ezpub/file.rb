@@ -6,6 +6,7 @@ module EzPub
     extend StaticCopy
     extend NameMaker
     extend MediaPathHelper
+    extend ImportPathHelper
 
     def self.priority
       # I should run nearly last,
@@ -26,32 +27,24 @@ module EzPub
           raise BadHandlerOrder, "#{path} flagged as image from generic File handler."
         end
 
-        # ::binary? method from ptools gem.
-        #
-        # It performs a "best guess" based on a simple test
-        # of the first +File.blksize+ characters.
-
         exts = /\.#{EZP_ICON_BINARY_EXTENSIONS.join('|')}$/
 
-        if ::File.binary?(path)
+        # Use MediaPathHelper module to create a heirarchy of media library
+        # folders for this path, if needed.
 
-          # Use MediaPathHelper module to create a heirarchy of media library
-          # folders for this path, if needed.
+        unless has_media_path? path, 'files'
+          create_media_path(path, 'files')
+        end
 
-          unless has_media_path? path, 'files'
-            create_media_path(path, 'files')
-          end
-
-          if exts.match(path.downcase)
-            true
-          else
-            Logger.warning path, 'Unknown ext for file'
-            false
-          end
-
+        if exts.match(path.downcase)
+          true
         else
+          Logger.warning path, 'Unknown ext for file'
           false
         end
+
+      else
+        false
       end
     end
 
@@ -74,7 +67,7 @@ module EzPub
 
       $r.hset path, 'fields', 'file:ezbinaryfile,name:ezstring'
 
-      $r.hset path, 'field_file', dest
+      $r.hset path, 'field_file', trim_for_ezp(dest)
       $r.hset path, 'field_name', pretify_filename(dest)
     end
   end

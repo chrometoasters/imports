@@ -7,9 +7,9 @@ directories:
     xml: './output/xml'
 
 ids:
-  homepage: 2
-  images: '1b26c0454b09bb49dfb1b9190ffd67cb'
-  files: '0b113a208f7890f9ad3c24444ff5988c'
+  homepage: '547cc4ebe61632474a33700a26e8b21b'
+  images: 'e7ff633c6b8e0fd3531e74c6e712bead'
+  files: '732a5acd01b51a6fe6eab448ad4138a9'
   start: 10000
 
 db: 3

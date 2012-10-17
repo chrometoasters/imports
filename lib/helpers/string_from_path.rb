@@ -11,13 +11,28 @@ module StringFromPath
 
 
   def self.get(path)
-    if File.exists?(path)
+    # Check for the file, and ensure it isn't a directory.
+    #
+    # If it is a directory we will check for an index.htm file.
+
+    if File.exists?(path) && !File.directory?(path)
       file = File.open(path)
       str = file.read
       file.close
       str
     else
-      nil
+
+      # Checking for index.htm file.
+
+      if File.exists?(path + '/index.htm')
+        file = File.open(path + '/index.htm')
+        str = file.read
+        file.close
+        str
+      else
+        nil
+      end
     end
+
   end
 end

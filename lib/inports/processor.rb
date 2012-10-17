@@ -11,6 +11,8 @@ class Processor
 
   # Pass in an optional input folder and handlers constant.
 
+  @@runs = 0
+
   def initialize(opts = {})
     @root = opts[:root] || CONFIG['directories']['input']
     @handlers = opts[:handlers] || EzPub::HandlerSets::All
@@ -26,25 +28,35 @@ class Processor
       unless handle path
 
         # Given multiple runs of #ingest, we track unhandled items in
-        # a set, adding and removing paths as they are handled or vice
-        # versa.
+        # a set, adding paths as they fail handling.
         #
         # These are then logged in Processor#log_unhandled
 
-        $r.sadd 'unhandled', path
-      else
-        $r.srem 'unhandled', path
+        $r.sadd "unhandled-#{@@runs}", path
       end
     end
+
+    # Increment run count to distinguish unhandled sets.
+    @@runs += 1
   end
 
 
   # See comments for Processor#ingest
 
   def log_unhandled
-    $r.smembers('unhandled').each do |k|
+    sets = []
+
+    # Use @@runs count to collect up our unhandled set keys.
+    @@runs.times {|i| sets << "unhandled-#{i}"}
+
+    # Iterate through the intersection of these sets.
+    # This should be all paths unhandled in any run.
+
+    $r.sinter(*sets).each do |k|
       Logger.warning k, 'Unhandled', 'shh'
     end
+
+    $r.del sets
   end
 
 

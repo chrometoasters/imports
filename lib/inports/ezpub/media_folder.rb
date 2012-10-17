@@ -35,38 +35,7 @@ module EzPub
 
       $r.hset path, 'id', $r.get_id
 
-      begin
-        parent = parent_id path
-
-      # Since orphanity, in this case, could just mean that we've bottomed out
-      # on the non-standard /files and /images folders, we test for that before
-      # raising a general exception.
-
-      rescue Orphanity
-
-        # This hard codes the expectation that input paths will begin with '.'.
-        #
-        # It checks that this is legitmately a bottom level path.
-
-        if path._parentize =~ /^media:\w+:\.$/
-
-          case /media:([^:]+)/.match(path)[1]
-
-          # Case switch for appropriate folder values in
-          # config file.
-
-          when 'images'
-            parent = CONFIG['ids']['images']
-          when 'files'
-            parent = CONFIG['ids']['files']
-          else
-            raise BadPath, "Unhandled MediaFolder parent due to no matches in predefined folders."
-          end
-
-        else
-          raise Orphanity, "Unhandled MediaFolder parent. Unhandled path didn't bottom out as expected."
-        end
-      end
+      parent = parent_id path
 
       $r.hset path, 'parent', parent
 

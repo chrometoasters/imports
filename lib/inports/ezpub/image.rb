@@ -6,6 +6,7 @@ module EzPub
     extend StaticCopy
     extend NameMaker
     extend MediaPathHelper
+    extend ImportPathHelper
 
     def self.priority
       99
@@ -64,7 +65,7 @@ module EzPub
 
       $r.hset path, 'fields', 'image:ezimage,name:ezstring'
 
-      $r.hset path, 'field_image', dest
+      $r.hset path, 'field_image', trim_for_ezp(dest)
       $r.hset path, 'field_name', pretify_filename(dest)
     end
   end
