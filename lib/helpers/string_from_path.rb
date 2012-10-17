@@ -16,23 +16,28 @@ module StringFromPath
     # If it is a directory we will check for an index.htm file.
 
     if File.exists?(path) && !File.directory?(path)
-      file = File.open(path)
-      str = file.read
-      file.close
-      str
+      get_string(path)
     else
 
       # Checking for index.htm file.
 
       if File.exists?(path + '/index.htm')
-        file = File.open(path + '/index.htm')
-        str = file.read
-        file.close
-        str
+        get_string(path + '/index.htm')
+
+      elsif File.exists?(path + '/index.html')
+        get_string(path + '/index.html')
+
       else
         nil
       end
     end
 
+  end
+
+  def self.get_string(path)
+    file = File.open(path)
+    str = file.read
+    file.close
+    str
   end
 end
