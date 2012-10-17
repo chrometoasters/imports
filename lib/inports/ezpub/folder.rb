@@ -4,6 +4,8 @@ module EzPub
     EzPub::HandlerSets::Content << self
 
     extend NameMaker
+    extend IsARedirect
+    extend HasValidIndex
 
     def self.priority
       49
@@ -12,7 +14,7 @@ module EzPub
 
     def self.mine?(path)
       # Identify folders without index.htm files.
-      if ::File.directory?(path) && !::File.exists?(path + '/index.htm')
+      if ::File.directory?(path) && !has_valid_index?(path)
         true
       else
         false
@@ -22,7 +24,7 @@ module EzPub
 
     def self.store(path)
       # Sanity check.
-      if ::File.exists? path + '/index.htm'
+      if has_valid_index?(path)
         raise NotJustAFolder, "#{path} has an index.htm!"
       end
 
