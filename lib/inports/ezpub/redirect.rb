@@ -4,6 +4,7 @@ module EzPub
     EzPub::HandlerSets::Content << self
 
     extend IsARedirect
+    extend IncludeOrPage
 
     # Identifying redirects, and then ignore them.
     # Runs before content classes so they don't have to deal
@@ -29,7 +30,7 @@ module EzPub
 
 
     def self.store(path)
-      Logger.warning path 'ignored redirect', 'shhh'
+      Logger.warning path, 'ignored redirect', 'shhh'
     end
   end
 end
