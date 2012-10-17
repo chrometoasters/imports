@@ -17,7 +17,7 @@ module StaticCopy
     dest = dest + '/' + name
 
     if File.exists? dest
-      Logger.warning path, 'Duplicate filename'
+      Logger.warning path, 'Duplicate filename', 'shh'
       dest = make_unique(dest)
     end
 
