@@ -8,42 +8,48 @@ module EzPub
     extend MediaPathHelper
     extend ImportPathHelper
 
+    # Image is expected to run immediately after EzPub::Thumbnail, which will
+    # catch and disregard thumbnails.
+
     def self.priority
       99
     end
 
 
     def self.mine?(path)
+      response = false
+
       # Stops ptools throwing an exception in the unlikely event
       # of a previously unhandled directory.
 
       unless ::File.directory? path
 
-        exts = /\.#{EZP_ICON_IMAGE_EXTENSIONS.join('|')}$/
 
         # Check if an image - basic check from ptools gem.
 
         if ::File.image?(path)
 
-          # Use MediaPathHelper module to create a heirarchy of media library
-          # folders for this path, if needed.
+          # Check the extension is a valid image extension.
 
-          unless has_media_path? path, 'images'
-            create_media_path(path, 'images')
-          end
+          exts = /\.#{EZP_ICON_IMAGE_EXTENSIONS.join('$|\.')}$/
 
           if exts.match(path.downcase)
-            true
+
+            # Use MediaPathHelper module to create a heirarchy of media library
+            # folders for this path, if needed.
+
+            unless has_media_path? path, 'images'
+              create_media_path(path, 'images')
+            end
+
+            response = true
+
           else
             Logger.warning path, 'Unknown ext for image'
-            false
           end
-
-        else
-          false
         end
-
       end
+      response
     end
 
 

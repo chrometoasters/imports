@@ -15,17 +15,16 @@ module EzPub
 
 
     def self.mine?(path)
+      response = false
       # Check it's a page.
       if page?(path)
+
         # Check if it's a redirect.
         if redirect?(path)
-          true
-        else
-          false
+          response = true
         end
-      else
-        false
       end
+      response
     end
 
 

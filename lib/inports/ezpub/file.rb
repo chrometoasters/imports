@@ -16,6 +16,7 @@ module EzPub
 
 
     def self.mine?(path)
+      response = false
       # Stops ptools throwing an exception in the unlikely event
       # of a previously unhandled directory.
 
@@ -27,25 +28,24 @@ module EzPub
           raise BadHandlerOrder, "#{path} flagged as image from generic File handler."
         end
 
-        exts = /\.#{EZP_ICON_BINARY_EXTENSIONS.join('|')}$/
-
-        # Use MediaPathHelper module to create a heirarchy of media library
-        # folders for this path, if needed.
-
-        unless has_media_path? path, 'files'
-          create_media_path(path, 'files')
-        end
+        exts = /\.#{EZP_ICON_BINARY_EXTENSIONS.join('$|\.')}/
 
         if exts.match(path.downcase)
-          true
+
+          # Use MediaPathHelper module to create a heirarchy of media library
+          # folders for this path, if needed.
+
+          unless has_media_path? path, 'files'
+            create_media_path(path, 'files')
+          end
+
+          response = true
         else
           Logger.warning path, 'Unknown ext for file'
-          false
         end
-
-      else
-        false
       end
+
+      response
     end
 
 
