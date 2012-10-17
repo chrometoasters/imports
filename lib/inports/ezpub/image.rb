@@ -31,7 +31,7 @@ module EzPub
 
           # Check the extension is a valid image extension.
 
-          exts = /\.#{EZP_ICON_IMAGE_EXTENSIONS.join('$|\.')}$/
+          exts = /\.#{EZP_ICON_IMAGE_EXTENSIONS.join('$|\.')}$/i
 
           if exts.match(path.downcase)
 
