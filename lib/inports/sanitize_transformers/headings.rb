@@ -30,7 +30,7 @@ RemoveRedundantStrongs = lambda do |env|
   name = env[:node_name]
   return if env[:is_whitelisted] || !node.element?
 
-  if name == 'heading' && node.child.name == 'strong'
+  if name == 'heading' && node.child && node.child.name == 'strong'
     node.child.swap(node.child.children)
   end
 end
