@@ -36,9 +36,9 @@ module Formatter
 
           # Start main loop through all keys.
 
-          keys.each do |k|
+          xml.objects do
 
-            xml.objects do
+            keys.each do |k|
 
               # Get all properties for this object.
 
@@ -74,8 +74,8 @@ module Formatter
                   end # field hash
                 end # fields array
               end # object
-            end # objects
-          end # key loop
+            end # keys loop
+          end # objects
         end # ezpublish
       end # builder
     end
