@@ -42,6 +42,7 @@ module PostProcessor
           if type == 'ezxmltext'
 
             html = $r.hget(k, 'field_' + name)
+
             ezpxml = to_ezp(html)
             $r.hset k, 'field_' + name, ezpxml
 
