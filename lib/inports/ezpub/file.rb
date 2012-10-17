@@ -22,13 +22,7 @@ module EzPub
 
       unless ::File.directory? path
 
-        # Check if an image - basic check from ptools gem.
-
-        if ::File.image? path
-          raise BadHandlerOrder, "#{path} flagged as image from generic File handler."
-        end
-
-        exts = /\.#{EZP_ICON_BINARY_EXTENSIONS.join('$|\.')}/
+        exts = /\.#{EZP_ICON_BINARY_EXTENSIONS.join('$|\.')}/i
 
         if exts.match(path.downcase)
 
@@ -41,7 +35,10 @@ module EzPub
 
           response = true
         else
-          Logger.warning path, 'Unknown ext for file'
+          # Only log interesting things.
+          if ::File.binary?(path) || path !~ /Thumbs\.db/
+            Logger.warning path, 'Unknown ext for file'
+          end
         end
       end
 
