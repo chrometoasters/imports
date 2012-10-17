@@ -74,7 +74,12 @@ module IncludeResolver
       parsed
     else
       Logger.warning path, 'Unresolved cfinclude'
-      '<include_tag_that_could_not_be_resolved />'
+
+      if for_insertion
+        '<include_tag_that_could_not_be_resolved />'
+      else
+        nil
+      end
     end
   end
 end
