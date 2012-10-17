@@ -84,6 +84,7 @@ class Processor
     @handlers.sort! { |a,b| a.priority <=> b.priority }
 
     handled = @handlers.each do |type|
+
       if type.mine? path
         type.store path
         return true
