@@ -12,6 +12,8 @@ module EzPub
 
 
     def self.mine?(path)
+      response = false
+
       # Stops ptools throwing an exception in the unlikely event
       # of a previously unhandled directory.
 
@@ -28,21 +30,16 @@ module EzPub
           # to be important.
 
           if path =~ /\/thumbs\/|\/thumbnails\/|-thumbnail\.\w{3,4}|-thumb\.\w{3,4}/
-            return true
+            response = true
           end
-
-
-        else
-          return false
         end
-
-        return false
       end
+      response
     end
 
 
     def self.store(path)
-      Logger.warning path 'ignored as thumb', 'shhh'
+      Logger.warning path, 'ignored as thumb', 'shhh'
     end
   end
 end
