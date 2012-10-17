@@ -27,8 +27,8 @@ namespace :process do
   end
 
 
-  task :all do
-    Rake::Task['app'].invoke
+  task :content do
+    system("bundle exec ruby bin/content.rb")
   end
 end
 
