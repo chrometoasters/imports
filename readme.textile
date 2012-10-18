@@ -21,3 +21,11 @@ Configuration options are in:
 
 @config.yml@
 
+
+
+
+Exporting database tables:
+
+@$ sudo apt-get install mdbtools@
+
+@$  mdb-export techlink.mdb TE_Research > database_exports/TE_Research.csv@
