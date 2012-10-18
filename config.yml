@@ -1,7 +1,6 @@
 directories:
   input: './input'
   output:
-    content: './output/content'
     files: './output/files'
     images: './output/images'
     xml: './output/xml'
