@@ -7,6 +7,15 @@ require './lib/inports'
 
 @p = Processor.new(:handlers => EzPub::HandlerSets::Content)
 
+
+puts $term.color("Starting database cotnent ingest...", :green)
+
+@p.database_ingests
+
+puts $term.color("Database content ingest complete.", :green)
+
+
+
 puts $term.color("Starting content ingest...", :green)
 
 @p.ingest

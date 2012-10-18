@@ -30,6 +30,7 @@ puts $term.color("Starting database cotnent ingest...", :green)
 puts $term.color("Database content ingest complete.", :green)
 
 
+
 puts $term.color("Starting content ingest...", :green)
 
 @p.ingest
