@@ -13,21 +13,18 @@ module DatabaseImporters
 
 
     def self.run
-      puts get_data.first
-
       get_data.each do |item|
-        puts item[1]
+        store(item)
       end
     end
 
 
     def self.store(a)
+      path = "database:generated:./glossary/#{a[1]}"
+
       $r.log_key(path)
 
       $r.hset path, 'id', $r.get_id
-
-      # Pass in a "media:files:./xyz" path, rather than a standard path.
-      # (Since we want to match against the various Media locations).
 
       $r.hset path, 'parent', CONFIG['ids']['glossary']
 
@@ -35,11 +32,13 @@ module DatabaseImporters
 
       $r.hset path, 'type', 'glossary_item'
 
-      $r.hset path, 'fields', 'image:ezimage,name:ezstring'
+      $r.hset path, 'fields', 'body:ezxmltext,title:ezstring'
 
-      $r.hset path, 'field_image', trim_for_ezp(dest)
-      $r.hset path, 'field_name', pretify_filename(dest)
+      $r.hset path, 'field_title', a[1]
+      $r.hset path, 'field_body', a[0]
+
+      # Register general content for post_processing.
+      PostProcessor.register path
     end
-
   end
 end
