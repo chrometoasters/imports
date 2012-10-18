@@ -5,6 +5,7 @@ directories:
     files: './output/files'
     images: './output/images'
     xml: './output/xml'
+  dbs: './database_exports'
 
 ids:
   homepage: '547cc4ebe61632474a33700a26e8b21b'
