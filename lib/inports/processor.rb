@@ -16,6 +16,7 @@ class Processor
   def initialize(opts = {})
     @root = opts[:root] || CONFIG['directories']['input']
     @handlers = opts[:handlers] || EzPub::HandlerSets::All
+    @database_importers = opts[:database_importers] || DatabaseImporters::Importers
   end
 
 
@@ -38,6 +39,15 @@ class Processor
 
     # Increment run count to distinguish unhandled sets.
     @@runs += 1
+  end
+
+
+  def database_ingests
+    @database_importers.sort! { |a,b| a.priority <=> b.priority }
+
+    @database_importers.each do |importer|
+      importer.run
+    end
   end
 
 
