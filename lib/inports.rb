@@ -26,6 +26,7 @@ Dir['./lib/inports/sanitize_configs/*.rb'].each {|file| require file }
 
 
 # load code
+require './lib/inports/techlink_database.rb'
 require './lib/inports/string'
 require './lib/inports/exceptions'
 require './lib/inports/redis'
@@ -35,3 +36,4 @@ require './lib/inports/processor'
 require './lib/inports/ezpub'
 require './lib/inports/formatters'
 require './lib/inports/include_blacklist'
+
