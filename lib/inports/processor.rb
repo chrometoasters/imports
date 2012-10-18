@@ -16,11 +16,10 @@ class Processor
   def initialize(opts = {})
     @root = opts[:root] || CONFIG['directories']['input']
     @handlers = opts[:handlers] || EzPub::HandlerSets::All
-    @database_importers = opts[:database_importers] || DatabaseImporters::Importers
+    @database_importers = opts[:database_importers] || DatabaseImporters::Importers::All
   end
 
 
-  # Main script loop.
   # Runs through our list of files/folders, passing each to the
   # EzPub::Handlers constants for handling.
 
@@ -41,6 +40,9 @@ class Processor
     @@runs += 1
   end
 
+
+  # Runs through the various techlink database importers, creating their
+  # associated content. See ./lib/inports/database_importers/
 
   def database_ingests
     @database_importers.sort! { |a,b| a.priority <=> b.priority }

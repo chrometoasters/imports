@@ -1,7 +1,9 @@
 module DatabaseImporters
-  DatabaseImporters::Importers::All << self
-
   class Glossary
+
+    DatabaseImporters::Importers::All << self
+
+
     def self.get_data
       FasterCSV.read(CONFIG['directories']['dbs'] + "/Glossary.csv")
     end
@@ -20,7 +22,7 @@ module DatabaseImporters
 
 
     def self.store(a)
-      path = "database:generated:./glossary/#{a[1]}"
+      path = CONFIG['directories']['input'] + "/GlossaryItem.htm?GID=#{a[4]}"
 
       $r.log_key(path)
 

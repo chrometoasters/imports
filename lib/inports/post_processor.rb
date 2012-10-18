@@ -43,7 +43,8 @@ module PostProcessor
 
             html = $r.hget(k, 'field_' + name)
 
-            ezpxml = to_ezp(html)
+            ezpxml = to_ezp(html, :path => k)
+
             $r.hset k, 'field_' + name, ezpxml
 
             Logger.warning k, "Postprocessed field #{name}", 'shh'
@@ -58,6 +59,8 @@ module PostProcessor
 
   def to_ezp(html, opts = {})
     config = opts[:config] || Sanitize::InportConfig::EZXML
+
+    config[:path] = opts[:path] if opts[:path]
 
     strip Sanitize.clean(html, config)
   end

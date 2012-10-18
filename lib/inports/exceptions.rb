@@ -21,3 +21,6 @@ end
 
 class NotJustAFolder < Exception
 end
+
+class UnresolvedInternalLink < Exception
+end
