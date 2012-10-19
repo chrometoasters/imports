@@ -47,36 +47,76 @@ end
 
 
 # <a href="/somehwere/internal.htm"></a> => <link href="eznode://0f2d5c080f60022be272ff2fd911cbca"></link>
-InternalAbsoluteLink = lambda do |env|
+# <a href="internal.htm"></a> => <link href="eznode://0f2d5c080f60022be272ff2fd911cbca"></link>
+InternalLink = lambda do |env|
   node = env[:node]
   name = env[:node_name]
+  context_path = env[:config][:path]
+
   return if env[:is_whitelisted] || !node.element?
 
-  if name == 'a' && node[:href] =~  /^\//
+  if name == 'a' && node[:href] =~ /^[^:]{8}/
     node.name = 'link'
 
-    path = node[:href]
+    link = LinkHelpers.parse node[:href], context_path
 
-    # unless path is in array of forbidden paths....
-
-    path.gsub!(/#\w+$/, '')
-
-    key = CONFIG['directories']['input'] + path
-
-    new_href = $r.hget(key, 'id')
+    # Look for a direct key match, or run through our special cases.
+    new_href = $r.hget(link.key, 'id') || LinkHelpers.special_resolvers(link.path)
 
     if new_href
+      # Add anchor back to link now that we're matched.
+      new_href = new_href + link.anchor if link.anchor
+
       new_href = 'eznode://' + new_href
 
-      puts new_href
       puts node[:href]
+      puts new_href
 
       node[:href] = new_href
     else
-      raise UnresolvedInternalLink, "Couldn't resolve #{node[:href]}"
+      Logger.warning "#{context_path} -> #{node[:href]}", 'unresolved internal links'
+      #raise UnresolvedInternalLink, "Couldn't resolve #{node[:href]}"
     end
   end
 end
 
 
-Links = [AnchorEndPoint, AnchorLink, Mail, InternalAbsoluteLink, ExternalLink]
+#<a href="/thing.pdf"></a> => <link href="eznode://49827349872349"> <link/>
+MediaLink = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  context_path = env[:config][:path]
+
+  return if env[:is_whitelisted] || !node.element?
+
+  if name == 'a' && node[:href] =~ /^[^:]{8}/
+
+    exts = /\.#{EZP_FILE_EXTENSIONS.join('$|\.')}/i
+
+    # Check this link goes to a media item.
+    if node[:href] =~ exts
+
+      link = LinkHelpers.parse node[:href], context_path
+
+      puts node[:href]
+
+      node.name = 'link'
+
+      id = $r.hget(link.key, 'id')
+
+      if id
+        new_href = 'eznode://' + id
+
+        puts new_href
+
+        node[:href] = new_href
+      else
+        Logger.warning "#{context_path} -> #{node[:href]}", 'unresolved internal media links'
+        #raise UnresolvedInternalLink, "Couldn't resolve media link #{node[:href]}"
+      end
+    end
+  end
+end
+
+
+Links = [AnchorEndPoint, AnchorLink, Mail, MediaLink, InternalLink, ExternalLink]
