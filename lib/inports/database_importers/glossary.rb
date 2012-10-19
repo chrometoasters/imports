@@ -22,7 +22,7 @@ module DatabaseImporters
 
 
     def self.store(a)
-      path = CONFIG['directories']['input'] + "/GlossaryItem.htm?GID=#{a[4]}"
+      path = "DBIMPORT:/GlossaryItem.htm?GID=#{a[4]}"
 
       $r.log_key(path)
 
