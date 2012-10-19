@@ -13,5 +13,4 @@ class TestIsARedirect < MiniTest::Unit::TestCase
     assert redirect?('./test/mocks/index-test/index.htm')
     refute redirect?('./test/mocks/index-test/index.htm-2')
   end
-
 end
