@@ -6,6 +6,7 @@ class Sanitize
         heading paragraph emphasize link strong anchor custom
         li ul br
         table tr th td
+        embed embed-inline
       ],
 
       :attributes => {
@@ -15,6 +16,8 @@ class Sanitize
         'custom' => ['name'],
         'table' => ['class', 'width', 'border'],
         'td' => ['colspan'],
+        'embed' => [''],
+        'embed-inline' => ['view', 'size', 'object_id'],
       },
 
       :add_attributes => {
@@ -22,7 +25,7 @@ class Sanitize
       },
 
       :protocols => {
-        'link' => {'href' => ['#', 'mailto', 'http', 'https', :relative]},
+        'link' => {'href' => ['#', 'mailto', 'http', 'https', 'eznode', :relative]},
       },
 
       :output => :xhtml,
