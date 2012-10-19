@@ -3,6 +3,7 @@
 /output/files/*
 /output/images/*
 /output/xml/*
+
 /database_exports/*
 
 !.gitkeep
