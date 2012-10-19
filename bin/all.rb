@@ -23,7 +23,7 @@ puts $term.color("Static file ingest complete.", :green)
 @p = Processor.new(:handlers => EzPub::HandlerSets::Content)
 
 
-puts $term.color("Starting database cotnent ingest...", :green)
+puts $term.color("Starting database content ingest...", :green)
 
 @p.database_ingests
 
