@@ -33,10 +33,11 @@ namespace :process do
 end
 
 
-task :inspect, :field, :path do |t, args|
-  field = args[:field]
+task :inspect, :path, :field, :type do |t, args|
   path = args[:path]
-  system("bundle exec ruby bin/parse_test.rb #{field} #{path}")
+  field = args[:field]
+  field_type = args[:type] || 'string'
+  system("bundle exec ruby bin/parse_test.rb #{path} #{field} #{field_type}")
 end
 
 
