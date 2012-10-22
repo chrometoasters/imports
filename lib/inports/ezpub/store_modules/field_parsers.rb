@@ -7,6 +7,14 @@ module FieldParsers
   def get_title(doc)
     if doc.css('p.header').first
       doc.css('p.header').first.content.to_s
+
+    elsif doc.css('p.header-dk-blue').first
+      doc.css('p.header-dk-blue').first.content.to_s
+
+    # # Example => ./input/curriculum-support/Teacher-Education/PTTER-framework/E1/E1A2.htm
+    # elsif doc.css('p.subhead.PTTER-element').first
+    #   doc.css('p.PTTER-element').children.css('span.subhead').first.content.to_s
+
     else
       nil
     end

@@ -19,6 +19,10 @@ RemoveHeader = lambda do |env|
   if node[:class] == 'header' && name == 'p'
     node.remove
   end
+
+  if node[:class] == 'header-dk-blue' && name == 'p'
+    node.remove
+  end
 end
 
 
