@@ -33,6 +33,13 @@ namespace :process do
 end
 
 
+task :inspect, :field, :path do |t, args|
+  field = args[:field]
+  path = args[:path]
+  system("bundle exec ruby bin/parse.rb #{field} #{path}")
+end
+
+
 namespace :delete do
   namespace :helpers do
     task :output, :section, :silent do |t, args|
