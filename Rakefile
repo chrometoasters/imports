@@ -36,7 +36,7 @@ end
 task :inspect, :field, :path do |t, args|
   field = args[:field]
   path = args[:path]
-  system("bundle exec ruby bin/parse.rb #{field} #{path}")
+  system("bundle exec ruby bin/parse_test.rb #{field} #{path}")
 end
 
 
