@@ -23,13 +23,15 @@ module EzPub
     def self.store(path)
       # Paths passed to MediaFolder::store should be of the non-standard form:
       #
-      # media:files:./input/etc/etc
+      # media:files:./input/etc/etc/
       # or
-      # media:images:./input/etc/etc
+      # media:images:./input/etc/etc/
 
       unless path =~ /^media:\w+:\.\//
         raise BadPath, "Passed a non media path to MediaFolder::store."
       end
+
+      path = path + '/' unless path =~ /\/$/
 
       $r.log_key(path)
 

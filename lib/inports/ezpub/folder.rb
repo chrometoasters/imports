@@ -28,6 +28,8 @@ module EzPub
         raise NotJustAFolder, "#{path} has an index.htm!"
       end
 
+      path = path + '/' unless path =~ /\/$/
+
       $r.log_key(path)
 
       $r.hset path, 'id', $r.get_id

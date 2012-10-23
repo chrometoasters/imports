@@ -7,6 +7,7 @@ module EzPub
     extend IncludeOrPage
     extend IncludeResolver
     extend FieldParsers
+    extend HasValidIndex
 
     # Identifying general_content is primarily a case of elimination.
     # We place general_content last among our content handlers as
@@ -26,6 +27,10 @@ module EzPub
 
 
     def self.store(path)
+      if has_valid_index? path
+        path = path + '/' unless path =~ /\/$/
+      end
+
       filepath = path
 
       $r.log_key(path)

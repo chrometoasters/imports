@@ -17,7 +17,8 @@ module NameMaker
 
   def pretify_foldername(path)
     # Get just foldername
-    path = /[^\/]+$/.match(path)[0]
+    path = /\/([^\/]+)\/$/.match(path)[1]
+
 
     # Replace characters with spaces.
     path.gsub!(/-|_|\./, ' ')

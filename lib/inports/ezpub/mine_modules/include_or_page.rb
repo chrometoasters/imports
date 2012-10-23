@@ -12,7 +12,7 @@ module IncludeOrPage
     if path =~ /.(htm|html)$/
 
       # Check it's not an index,
-      # as these are handled in their ./path form.
+      # as these are handled in their ./path/ form.
 
       if path !~ /index\.(htm|html)$/
         response = true

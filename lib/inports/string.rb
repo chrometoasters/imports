@@ -3,9 +3,20 @@ class String
   # a level from /hello/world => /hello
 
   def _parentize
-    str = self.gsub(/\/$/, '')
-    match = /(.+|.?)\/[^\/]+$/.match(str)
-    match ? match[1] : self
+    if self =~ /\/$/
+      str = self
+    else
+      str = self.gsub(/\/$/, '')
+      match = /(.+|.?)\/[^\/]+$/.match(str)
+
+      if match
+        str = match[1] + '/'
+      else
+        raise "Problem with _parentize - no match made."
+      end
+    end
+
+    str
   end
 
 

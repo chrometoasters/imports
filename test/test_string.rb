@@ -8,47 +8,49 @@ class TestString < MiniTest::Unit::TestCase
   end
 
 
-  def test_parentize_returns_string
-    assert_instance_of String, 'string'._parentize
-  end
+  # replace with test for exception
+  # def test_parentize_returns_string
+  #   assert_instance_of String, 'string'._parentize
+  # end
 
 
   def test_parentize_shortens_path_one_level
-    assert_equal './one1/b/c', './one1/b/c/d'._parentize
-    assert_equal './2two/abc/abc', './2two/abc/abc/abc'._parentize
-    assert_equal '/three/abc/abc', '/three/abc/abc/abc'._parentize
+    assert_equal './one1/b/c/', './one1/b/c/d'._parentize
+    assert_equal './2two/abc/abc/', './2two/abc/abc/abc'._parentize
+    assert_equal '/three/abc/abc/', '/three/abc/abc/abc'._parentize
   end
 
 
-  def test_parentize_shortens_path_one_level_disregarding_slash
-    assert_equal './one1/b/c', './one1/b/c/d/'._parentize
-    assert_equal './2two/a-b-c/a_b_c', './2two/a-b-c/a_b_c/a-b_c/'._parentize
-    assert_equal '/three/b/c', '/three/b/c/d/'._parentize
+  def test_parentize_ignores_directories
+    assert_equal './one1/b/c/d/', './one1/b/c/d/'._parentize
+    assert_equal './2two/a-b-c/a_b_c/a-b_c/', './2two/a-b-c/a_b_c/a-b_c/'._parentize
+    assert_equal '/three/b/c/d/', '/three/b/c/d/'._parentize
   end
 
 
-  def test_parentize_returns_self_if_not_a_path
-    assert_equal '.1bc', '.1bc'._parentize
-  end
+  # Is this desirable behaviour?
+  # def test_parentize_returns_self_if_not_a_path
+  #   assert_equal '.1bc', '.1bc'._parentize
+  # end
 
 
   def test_parentize_handles_spaces
-    assert_equal './input', './input/curriculum support'._parentize
+    assert_equal './input/', './input/curriculum support'._parentize
   end
 
 
   def test_parentize_shortens_all_way_down
-    assert_equal '.', './a'._parentize
-    assert_equal '.', './a/'._parentize
-    assert_equal '', '/a'._parentize
-    assert_equal '', '/a/'._parentize
+    assert_equal './', './a'._parentize
+    assert_equal './a/', './a/'._parentize
+    assert_equal '/', '/a'._parentize
+    assert_equal '/a/', '/a/'._parentize
   end
 
 
   def test_parentize_handles_media_paths
-    assert_equal 'media:files:./a/b', 'media:files:./a/b/hello.jpg'._parentize
-    assert_equal 'media:files:./a', 'media:files:./a/b'._parentize
-    assert_equal 'media:files:.', 'media:files:./a'._parentize
+    assert_equal 'media:files:./a/b/', 'media:files:./a/b/hello.jpg'._parentize
+    assert_equal 'media:files:./a/', 'media:files:./a/b'._parentize
+    assert_equal 'media:files:./', 'media:files:./a'._parentize
   end
 
 

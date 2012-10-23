@@ -14,7 +14,7 @@ Run tasks via rake:
 @$ rake delete:output:images[shh]@  similar but no confirmation question
 @$ rake flush@                      wipe clean output and redis data (silently)
 @$ rake process:static@             process input using the static file handler set
-@$ rake inspect[title,'./input/folder/file.htm']@  see parser output for a field
+@$ rake inspect['./input/folder/file.htm',title]@  see parser output for a field
 
 etc.
 

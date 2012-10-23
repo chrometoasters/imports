@@ -49,7 +49,7 @@ module IncludeResolver
 
   def make_path_absolute(template_path, path)
     unless template_path =~ /^\//
-      path._parentize + '/' + template_path
+      path._parentize + template_path
     else
       CONFIG['directories']['input'] + template_path
     end

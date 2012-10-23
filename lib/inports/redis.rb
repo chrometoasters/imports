@@ -52,5 +52,5 @@ $r.set 'idcount', CONFIG['ids']['start']
 $r.hset CONFIG['directories']['input'], 'id', CONFIG['ids']['homepage']
 
 # Set media folders paths as having the appropriate remote ids.
-$r.hset 'media:files:.', 'id', CONFIG['ids']['files']
-$r.hset 'media:images:.', 'id', CONFIG['ids']['images']
+$r.hset 'media:files:./', 'id', CONFIG['ids']['files']
+$r.hset 'media:images:./', 'id', CONFIG['ids']['images']

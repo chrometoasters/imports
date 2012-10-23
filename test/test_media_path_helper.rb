@@ -5,11 +5,11 @@ class TestMediaPathHelper < MiniTest::Unit::TestCase
   include MediaPathHelper
 
   def setup
-    EzPub::MediaFolder.store 'media:files:./input'
-    EzPub::MediaFolder.store 'media:files:./input/folder'
-    EzPub::MediaFolder.store 'media:images:./input'
-    EzPub::MediaFolder.store 'media:images:./input/folder'
-    EzPub::MediaFolder.store 'media:images:./input/imagefolder'
+    EzPub::MediaFolder.store 'media:files:./input/'
+    EzPub::MediaFolder.store 'media:files:./input/folder/'
+    EzPub::MediaFolder.store 'media:images:./input/'
+    EzPub::MediaFolder.store 'media:images:./input/folder/'
+    EzPub::MediaFolder.store 'media:images:./input/imagefolder/'
   end
 
 
@@ -44,11 +44,11 @@ class TestMediaPathHelper < MiniTest::Unit::TestCase
   def test_create_media_path_gracefully_ignores_existing_heirarchy_members
     assert has_media_path?('./input/folder/file.pdf', 'files')
 
-    id = $r.hget 'media:files:./input/folder', 'id'
+    id = $r.hget 'media:files:./input/folder/', 'id'
 
     create_media_path('./input/folder/inner-folder/file.pdf', 'files')
 
-    id_after = $r.hget 'media:files:./input/folder', 'id'
+    id_after = $r.hget 'media:files:./input/folder/', 'id'
 
     assert_equal id, id_after
 

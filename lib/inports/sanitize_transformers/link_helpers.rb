@@ -7,7 +7,7 @@ class LinkHelpers
   def self.parse(path, context_path)
     # Make link absolute (without the full key path) => '/some/page.html'
     if path !~ /^\//
-      path = context_path._parentize + '/' + path
+      path = context_path._parentize + path
     end
 
     # Return a new linkhelper object.
@@ -20,7 +20,7 @@ class LinkHelpers
 
   def initialize(path)
     # Normalize away /index.html
-    path.gsub!(/\/index\.html?/, '')
+    path.gsub!(/index\.html?/, '')
 
     # Parse and store anchor.
     if m = /#\w+$/.match(path)
@@ -32,7 +32,7 @@ class LinkHelpers
     # Remove anchor for path and key values.
     path.gsub!(/#\w+$/, '')
 
-    @key = CONFIG['directories']['input'] + path
+    @key = CONFIG['directories']['input'] + path.gsub(/^\//, '')
 
     @path = path
   end

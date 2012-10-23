@@ -1,5 +1,5 @@
 directories:
-  input: './input'
+  input: './input/'
   output:
     files: './output/files'
     images: './output/images'

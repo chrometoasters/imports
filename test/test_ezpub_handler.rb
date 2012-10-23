@@ -63,15 +63,15 @@ class TestEzPubHandler < MiniTest::Unit::TestCase
 
   def test_parent_id_returns_parents_id
     CONFIG['ids']['safety'] = 50
-    CONFIG['directories']['input'] = './test'
+    CONFIG['directories']['input'] = './test/'
 
     load './lib/inports/redis.rb'
 
-    $r.hset './test/hello', 'id', $r.get_id
-    $r.log_key './test/hello'
+    $r.hset './test/hello/', 'id', $r.get_id
+    $r.log_key './test/hello/'
 
-    $r.hset './test/another', 'id', $r.get_id
-    $r.log_key './test/another'
+    $r.hset './test/another/', 'id', $r.get_id
+    $r.log_key './test/another/'
 
     assert_equal '8238101f03021090a2799fcf145103c3', EzPub::Handler.parent_id('./test/hello/index.htm')
     assert_equal '8238101f03021090a2799fcf145103c3', EzPub::Handler.parent_id('./test/hello/thing.htm')
@@ -80,7 +80,7 @@ class TestEzPubHandler < MiniTest::Unit::TestCase
 
 
   def test_parent_id_returns_homepage_id_from_config_for_root
-    CONFIG['directories']['input'] = './thing'
+    CONFIG['directories']['input'] = './thing/'
     CONFIG['ids']['homepage'] = 1
 
     load './lib/inports/redis.rb'
@@ -90,6 +90,6 @@ class TestEzPubHandler < MiniTest::Unit::TestCase
 
 
   def test_parent_id_fails_on_orphaned_path
-    assert_raises(Orphanity) { EzPub::Handler.parent_id('z') }
+    assert_raises(Orphanity) { EzPub::Handler.parent_id('./z/') }
   end
 end

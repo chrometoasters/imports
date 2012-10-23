@@ -17,6 +17,8 @@ class TestIncludeResolver < MiniTest::Unit::TestCase
     path = make_path_absolute('relative_include.cfm', './test/mocks/things/somefile.htm')
     assert_equal path, './test/mocks/things/relative_include.cfm'
 
+    # Input path always leads, even for absolute urls, in this case.
+
     path = make_path_absolute('/absolute_include.cfm', './test/mocks/somefile.htm')
     assert_equal path, './test/mocks/absolute_include.cfm'
 
@@ -52,6 +54,7 @@ class TestIncludeResolver < MiniTest::Unit::TestCase
     shh { @str = resolve_includes('./test/mocks/has_includes.htm') }
     assert_match /footer-links/, @str
   end
+
 
   def test_resolved_includes_returns_doc_with_return_argument
     shh { @doc = resolve_includes('./test/mocks/has_includes.htm', :return => :doc) }
