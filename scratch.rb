@@ -2,7 +2,16 @@ require './lib/inports'
 
 $r.kill_keys
 
-puts EzPub::File.mine?('./input/latest-news/resources/articles/teched-key.pdf')
+#puts EzPub::File.mine?('./input/curriculum-support/Teacher-Education/PTTER-framework/E1/E1A2.htm')
+
+
+str = StringFromPath.get_case_insensitive('./input/curriculum-support/Teacher-Education/PTTER-framework/E1/E1A2.htm')
+
+doc = Nokogiri::HTML(str)
+
+include FieldParsers
+
+puts get_title(doc)
 
 # include IsARedirect
 

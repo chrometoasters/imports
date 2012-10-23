@@ -45,7 +45,7 @@ module EzPub
       @doc = resolve_includes(filepath, :return => :doc)
 
 
-      title = get_title(@doc)
+      title = get_title(@doc, path)
 
       if title
         $r.hset path, 'field_title', title
@@ -55,7 +55,7 @@ module EzPub
       end
 
 
-      body = get_body(@doc)
+      body = get_body(@doc, path)
 
       if body
         $r.hset path, 'field_body', body

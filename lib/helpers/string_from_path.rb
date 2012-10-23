@@ -2,6 +2,9 @@ module StringFromPath
   def self.get_case_insensitive(path)
     # Case insensitive file lookup. Will not work on all linuxs.
 
+    puts path
+    puts Dir.glob(path, File::FNM_CASEFOLD).first
+
     if Dir.glob(path, File::FNM_CASEFOLD).first
       StringFromPath.get(Dir.glob(path, File::FNM_CASEFOLD).first)
     else
@@ -24,8 +27,14 @@ module StringFromPath
       if File.exists?(path + '/index.htm')
         get_string(path + '/index.htm')
 
+      elsif File.exists?(path + 'index.htm')
+        get_string(path + 'index.htm')
+
       elsif File.exists?(path + '/index.html')
         get_string(path + '/index.html')
+
+      elsif File.exists?(path + 'index.html')
+        get_string(path + 'index.html')
 
       else
         nil

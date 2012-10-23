@@ -69,9 +69,6 @@ InternalLink = lambda do |env|
 
       new_href = 'eznode://' + new_href
 
-      puts node[:href]
-      puts new_href
-
       node[:href] = new_href
     else
       Logger.warning "#{context_path} -> #{node[:href]}", 'unresolved internal links'
@@ -98,16 +95,12 @@ MediaLink = lambda do |env|
 
       link = LinkHelpers.parse node[:href], context_path
 
-      puts node[:href]
-
       node.name = 'link'
 
       id = $r.hget(link.key, 'id')
 
       if id
         new_href = 'eznode://' + id
-
-        puts new_href
 
         node[:href] = new_href
       else

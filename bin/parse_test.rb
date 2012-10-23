@@ -8,9 +8,9 @@ path = ARGV[0]
 field = ARGV[1]
 field_type = ARGV[2] || nil
 
-doc = get_nokogiridoc_from_path(path)
+doc = resolve_includes(path, :return => :doc)
 
-output = send "get_#{field}".to_sym, doc
+output = send "get_#{field}".to_sym, doc, path
 
 if output
   if field == 'body' || field_type == 'ezxml'

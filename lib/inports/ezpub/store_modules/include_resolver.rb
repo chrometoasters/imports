@@ -6,30 +6,33 @@ module IncludeResolver
 
     doc = get_nokogiridoc_from_path(path)
 
-    doc.xpath('//cfinclude[@template]').each do |cfinclude|
-      template_path = cfinclude[:template]
+    if doc.xpath('//cfinclude[@template]').first
 
-      # Sometimes template attributes have jibberish in them,
-      # so we check it's a valid path.
+      doc.xpath('//cfinclude[@template]').each do |cfinclude|
+        template_path = cfinclude[:template]
 
-      if template_path =~ /\.cfm$/
+        # Sometimes template attributes have jibberish in them,
+        # so we check it's a valid path.
 
-        # Template paths are a mix of relative and absolute paths.
-        # In both cases we want to modify the template path to sit
-        # in our input directory.
+        if template_path =~ /\.cfm$/
 
-        template_path = make_path_absolute(template_path, path)
+          # Template paths are a mix of relative and absolute paths.
+          # In both cases we want to modify the template path to sit
+          # in our input directory.
 
-        include_nodes = get_nokogiridoc_from_path(template_path, 'fragment')
+          template_path = make_path_absolute(template_path, path)
 
-        # We insert the include nodes as a child of the cfinclude tag in order
-        # as a means of handling the revolting nesting going on in the source,
-        # and to provide traceability.
+          include_nodes = get_nokogiridoc_from_path(template_path, 'fragment')
 
-        cfinclude.add_child include_nodes
+          # We insert the include nodes as a child of the cfinclude tag in order
+          # as a means of handling the revolting nesting going on in the source,
+          # and to provide traceability.
+
+          cfinclude.add_child include_nodes
+        end
       end
-    end
 
+    end
     # Sometimes it's much more efficient to return a doc (making further file loads
     # and parses unecessary).
 
