@@ -10,6 +10,14 @@ class LinkHelpers
       path = context_path._parentize + path
     end
 
+    # Remove full config path if it's present. We only want that for the
+    # #key attribute.
+
+    if path =~ /^#{Regexp.escape(CONFIG['directories']['input'])}/
+      path = path.gsub(CONFIG['directories']['input'], '')
+      path = '/' + path
+    end
+
     # Return a new linkhelper object.
     self.new(path)
   end
