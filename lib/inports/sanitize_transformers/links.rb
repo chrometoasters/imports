@@ -100,7 +100,7 @@ MediaLink = lambda do |env|
       id = $r.hget(link.key, 'id')
 
       if id
-        new_href = 'eznode://' + id
+        new_href = 'importmedia://' + id
 
         node[:href] = new_href
       else
