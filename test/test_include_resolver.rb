@@ -25,6 +25,12 @@ class TestIncludeResolver < MiniTest::Unit::TestCase
     path = make_path_absolute('/things/absolute_include.cfm', './test/mocks/things/somefile.htm')
     assert_equal path, './test/mocks/things/absolute_include.cfm'
 
+    path = make_path_absolute('../absolute_include.cfm', './test/mocks/things/somefile.htm')
+    assert_equal path, './test/mocks/absolute_include.cfm'
+
+    path = make_path_absolute('../absolute_include.cfm', './test/mocks/things/')
+    assert_equal path, './test/mocks/absolute_include.cfm'
+
     CONFIG['directories']['input'] = './input'
 
     path = make_path_absolute('/things/absolute_include.cfm', './input/mocks/things/somefile.htm')

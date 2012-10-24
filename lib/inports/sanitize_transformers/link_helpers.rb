@@ -7,16 +7,37 @@ class LinkHelpers
   def self.parse(path, context_path)
     # Make link absolute (without the full key path) => '/some/page.html'
     if path !~ /^\//
-      path = context_path._parentize + path
+      if path =~ /^\.\./
+        # Handling for ../../ type paths.
+
+        require 'pathname'
+
+        path_pathname_obj = Pathname.new(path)
+        context_path_pathname_obj = Pathname.new(context_path._parentize)
+
+        path = context_path_pathname_obj + path_pathname_obj
+
+        path = path.to_s
+
+      else
+        path = context_path._parentize + path
+      end
     end
+
+
 
     # Remove full config path if it's present. We only want that for the
     # #key attribute.
-
     if path =~ /^#{Regexp.escape(CONFIG['directories']['input'])}/
       path = path.gsub(CONFIG['directories']['input'], '')
       path = '/' + path
     end
+
+    # Hard slash any directory paths.
+    if File.directory?(CONFIG['directories']['input'] + path) && path !~ /\/$/
+      path = path + '/'
+    end
+
 
     # Return a new linkhelper object.
     self.new(path)
