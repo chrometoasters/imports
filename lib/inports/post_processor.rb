@@ -49,6 +49,16 @@ module PostProcessor
 
             Logger.warning k, "Postprocessed field #{name}", 'shh'
 
+          elsif type == 'eztext'
+
+            text = $r.hget(k, 'field_' + name)
+
+            clean_text = Sanitize.clean(text)
+
+            $r.hset k, 'field_' + name, clean_text
+
+            Logger.warning k, "Postprocessed field #{name}", 'shh'
+
           end # type check
         end # field
       end # fields
