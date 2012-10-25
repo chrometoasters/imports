@@ -23,7 +23,12 @@ module EzPub
       # Overide in child classes if necessary.
 
       def parent_id(path)
-        parent = $r.hget path._parentize, 'id'
+        if path._parentize == path
+          # hard parentize
+        else
+          parent = $r.hget path._parentize, 'id'
+        end
+
         if parent
           parent
         else

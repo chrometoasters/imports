@@ -58,12 +58,12 @@ module EzPub
 
       $r.log_key(path)
 
-      $r.hset path, 'id', $r.get_id
-
       # Pass in a "media:files:./xyz" path, rather than a standard path.
       # (Since we want to match against the various Media locations).
 
       $r.hset path, 'parent', parent_id(mediaize_path(path, 'images'))
+
+      $r.hset path, 'id', $r.get_id
 
       $r.hset path, 'priority', '0'
 
