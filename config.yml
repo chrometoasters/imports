@@ -11,6 +11,9 @@ ids:
   images: 'e7ff633c6b8e0fd3531e74c6e712bead'
   files: '732a5acd01b51a6fe6eab448ad4138a9'
   glossary: 'e629dd41065094794250a31e0eb53bd1'
+  research: '71f260752b4b1d6a5401f65f55be6d74'
+  publication: '7336fec2506aa8a995ec6b8ddf8bfa05'
+  question: '3424a0b93004d1b6c578e636a4fd50eb'
   start: 10000
 
 db: 3
