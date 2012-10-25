@@ -73,12 +73,19 @@ class LinkHelpers
   # for exceptional link resolutions, returning either a remote_id or
   # nil.
 
+
   def self.special_resolvers(path)
+    extend ::IsARedirect
+
     response = nil
 
     # Send all glossary item links to glossary parent, for now.
     if path =~ /(GlossaryItem|glossarylist|glossary)\.htm\?\w+=/i
       response = CONFIG['ids']['glossary']
+
+    elsif redirect_endpoint = redirect?(path)
+      link = LinkHelpers.new(redirect_endpoint)
+      $r.hget(link.key, 'id')
     end
 
     response
