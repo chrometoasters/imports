@@ -26,8 +26,6 @@ module DatabaseImporters
     def self.store(a)
       path = "DBIMPORT:/Publication?GID=#{a[0]}"
 
-      puts path
-
       $r.log_key(path)
 
       $r.hset path, 'id', $r.get_id
