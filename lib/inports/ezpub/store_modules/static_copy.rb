@@ -37,6 +37,6 @@ module StaticCopy
   # Adds current timestamp at end of filename.
 
   def make_unique(path)
-    path.gsub(/(\.\w+$)/, "-#{Time.now.to_i}" + '\1')
+    path.gsub(/(\.\w+$)/, "-#{$r.incr('unique-file-id')}" + '\1')
   end
 end

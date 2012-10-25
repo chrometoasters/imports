@@ -56,14 +56,17 @@ module IncludeResolver
         require 'pathname'
 
         template_pathname_obj = Pathname.new(template_path)
-        path_pathname_obj = Pathname.new(path._parentize)
+
+        path = path._parentize if path !~ /\/$/
+
+        path_pathname_obj = Pathname.new(path)
 
         path = path_pathname_obj + template_pathname_obj
 
         path.to_s
       else
-
-        path._parentize + template_path
+        path = path._parentize if path !~ /\/$/
+        path + template_path
       end
 
     else
