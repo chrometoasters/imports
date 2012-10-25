@@ -13,17 +13,20 @@ class LinkHelpers
         require 'pathname'
 
         path_pathname_obj = Pathname.new(path)
-        context_path_pathname_obj = Pathname.new(context_path._parentize)
+
+        context_path = context_path._parentize if context_path !~ /\/$/
+
+        context_path_pathname_obj = Pathname.new(context_path)
 
         path = context_path_pathname_obj + path_pathname_obj
 
         path = path.to_s
 
       else
-        path = context_path._parentize + path
+        context_path = context_path._parentize if context_path !~ /\/$/
+        path = context_path + path
       end
     end
-
 
 
     # Remove full config path if it's present. We only want that for the
