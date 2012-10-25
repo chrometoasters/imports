@@ -48,6 +48,8 @@ $r.select CONFIG['db']
 # Set node id incrementer to our safe offset.
 $r.set 'idcount', CONFIG['ids']['start']
 
+$r.set 'unique-file-id', '1'
+
 # Set input directory path as having the eZPublish homepage remote id.
 $r.hset CONFIG['directories']['input'], 'id', CONFIG['ids']['homepage']
 
