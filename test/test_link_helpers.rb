@@ -2,6 +2,10 @@ require './lib/inports'
 Bundler.require(:test)
 
 class TestLinkHelpers < MiniTest::Unit::TestCase
+  def teardown
+    $r.kill_keys
+  end
+
   def test_parse_returns_link_helpers_object
     l = LinkHelpers.parse('./', './')
     assert_kind_of LinkHelpers, l
@@ -86,20 +90,46 @@ class TestLinkHelpers < MiniTest::Unit::TestCase
 
 
   def test_special_resolvers_return_nil_for_regular_links
-    refute LinkHelpers.special_resolvers('/some/url/thing.htm')
-    refute LinkHelpers.special_resolvers('some/url/thing.html')
-    refute LinkHelpers.special_resolvers('somewhere/here')
+    link = LinkHelpers.new('/some/url/thing.htm')
+    refute LinkHelpers.special_resolvers(link)
+    link = LinkHelpers.new('some/url/thing.html')
+    refute LinkHelpers.special_resolvers(link)
+    link = LinkHelpers.new('somewhere/here')
+    refute LinkHelpers.special_resolvers(link)
   end
 
 
   def test_special_resolvers_return_ids_for_glossary_links
-    id = LinkHelpers.special_resolvers('/GlossaryItem.htm?GID=227')
+    link = LinkHelpers.new('/GlossaryItem.htm?GID=227')
+    id = LinkHelpers.special_resolvers(link)
     assert_equal id, CONFIG['ids']['glossary']
 
-    id = LinkHelpers.special_resolvers('/glossaryitem.htm?GID=276')
+    link = LinkHelpers.new('/glossaryitem.htm?GID=276')
+    id = LinkHelpers.special_resolvers(link)
     assert_equal id, CONFIG['ids']['glossary']
 
-    id = LinkHelpers.special_resolvers('/glossary.htm?GID=276')
+    link = LinkHelpers.new('/glossary.htm?GID=276')
+    id = LinkHelpers.special_resolvers(link)
+    assert_equal id, CONFIG['ids']['glossary']
+  end
+
+
+  def test_special_resolvers_return_ids_for_redirects
+    CONFIG['directories']['input'] = './test/mocks/'
+
+    $r.hset './test/mocks/curriculum-support/Teacher-Education/In-service/CSP/', 'id', '123'
+    $r.log_key './test/mocks/curriculum-support/Teacher-Education/In-service/CSP/'
+
+    link = LinkHelpers.new('/index-test')
+    id = LinkHelpers.special_resolvers(link)
+    assert_equal '123', id
+
+    link = LinkHelpers.new('/glossaryitem.htm?GID=276')
+    id = LinkHelpers.special_resolvers(link)
+    assert_equal id, CONFIG['ids']['glossary']
+
+    link = LinkHelpers.new('/glossary.htm?GID=276')
+    id = LinkHelpers.special_resolvers(link)
     assert_equal id, CONFIG['ids']['glossary']
   end
 end

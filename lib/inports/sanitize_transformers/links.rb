@@ -61,7 +61,7 @@ InternalLink = lambda do |env|
     link = LinkHelpers.parse node[:href], context_path
 
     # Look for a direct key match, or run through our special cases.
-    new_href = $r.hget(link.key, 'id') || LinkHelpers.special_resolvers(link.path)
+    new_href = $r.hget(link.key, 'id') || LinkHelpers.special_resolvers(link)
 
     if new_href
       # Add anchor back to link now that we're matched.
