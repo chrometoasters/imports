@@ -28,6 +28,9 @@ class TestLinkHelpers < MiniTest::Unit::TestCase
 
     l = LinkHelpers.parse('123/abc/', '/ABC/')
     assert_equal '/ABC/123/abc/', l.path
+
+    l = LinkHelpers.parse('../absolute_include.cfm', '/things/')
+    assert_equal '/absolute_include.cfm', l.path
   end
 
 

@@ -56,11 +56,16 @@ class TestLinkResolution < MiniTest::Unit::TestCase
     assert_match '<link href="eznode://190cc4bfddadcf791a5c246a5bb85027">', @converted_2
     assert_match '<link href="eznode://074be90af66f157223e71ace9b4e0319">', @converted_2
     assert_match '<link href="eznode://08e2c35e8117a07de59eb43c0cc877cb">', @converted_2
-    assert_match '<link href="eznode://63a3bbd480c01246630c314196819fca">', @converted_2
+    assert_match '<link href="eznode://63a3bbd480c01246630c314196819fca"', @converted_2
   end
 
 
   def test_link_resolution_doesnt_nuke_external_links
     assert_match '<link href="http://thing.com">', @converted_2
+  end
+
+
+  def test_attributes_dont_cause_issues
+    assert_match '<link href="eznode://63a3bbd480c01246630c314196819fca"', @converted_2
   end
 end

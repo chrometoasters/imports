@@ -92,4 +92,17 @@ class TestEzPubHandler < MiniTest::Unit::TestCase
   def test_parent_id_fails_on_orphaned_path
     assert_raises(Orphanity) { EzPub::Handler.parent_id('./z/') }
   end
+
+
+  def test_parent_id_returned_for_media_basepaths
+    CONFIG['ids']['files'] = '1'
+    $r.hset 'media:files:./', 'id', CONFIG['ids']['files']
+
+    assert_equal '1', EzPub::Handler.parent_id('media:files:./input/')
+
+    CONFIG['ids']['images'] = '2'
+    $r.hset 'media:images:./', 'id', CONFIG['ids']['images']
+
+    assert_equal '2', EzPub::Handler.parent_id('media:images:./input/')
+  end
 end
