@@ -26,7 +26,7 @@ module DatabaseImporters
 
       $r.log_key(path)
 
-      $r.hset path, 'id', $r.get_id
+      $r.hset path, 'id', $r.get_id(path)
 
       $r.hset path, 'parent', CONFIG['ids']['glossary']
 

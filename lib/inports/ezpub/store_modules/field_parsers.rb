@@ -163,7 +163,7 @@ module FieldParsers
   def get_case_study_image_path(doc, path)
     extend ::MediaPathHelper
     if doc.xpath('//p[@style]').first
-      img = doc.xpath('//p[@style]').first.children.first
+      img = doc.xpath('//p[@style]').first.css('img').first
 
       url = img['src']
 

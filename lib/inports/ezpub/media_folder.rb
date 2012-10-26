@@ -39,7 +39,7 @@ module EzPub
 
       $r.hset path, 'parent', parent
 
-      $r.hset path, 'id', $r.get_id
+      $r.hset path, 'id', $r.get_id(path)
 
       $r.hset path, 'priority', '0'
 

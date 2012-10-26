@@ -36,7 +36,7 @@ module EzPub
           response = true
         else
           # Only log interesting things.
-          if ::File.binary?(path) || path !~ /Thumbs\.db/
+          if ::File.binary?(path)
             Logger.warning path, 'Unknown ext for file'
           end
         end
@@ -51,7 +51,7 @@ module EzPub
 
       $r.log_key(path)
 
-      $r.hset path, 'id', $r.get_id
+      $r.hset path, 'id', $r.get_id(path)
 
       # Pass in a "media:files:./xyz" path, rather than a standard path.
       # (Since we want to match against the various Media locations).

@@ -32,7 +32,7 @@ $r.kill_keys
 
 # puts to_ezp(str, :config => Sanitize::InportConfig::EZXML)
 
-path = './input/Case-studies/Technological-practice/Soft-Materials/Conscious-Cloth/'
+path = './input/Case-studies/Technological-practice/Food-and-Biological/Gluten-free-cookies/'
 
 puts EzPub::CaseStudy.mine?(path)
 EzPub::CaseStudy.store(path)

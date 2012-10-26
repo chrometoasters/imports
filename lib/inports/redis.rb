@@ -29,9 +29,9 @@ class Redis
   # Helper for getting and incrementing node id
   # value and returning a derived hash.
 
-  def get_id
+  def get_id(path = nil)
     $r.incr 'idcount'
-    id = $r.get 'idcount'
+    id = path || $r.get('idcount')
     Digest::MD5.hexdigest('not a date :D' + id )
   end
 
