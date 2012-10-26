@@ -10,12 +10,13 @@ class Sanitize
       ],
 
       :attributes => {
-        'heading' => ['level'],
+        'header' => ['level'],
         'link' => ['href', 'title'],
         'anchor' => ['name'],
         'custom' => ['name'],
         'table' => ['class', 'width', 'border'],
-        'td' => ['colspan'],
+        'tr' => ['class'],
+        'td' => ['colspan', 'class'],
         'embed' => [''],
         'embed-inline' => ['view', 'size', 'object_id'],
       },
@@ -25,7 +26,7 @@ class Sanitize
       },
 
       :protocols => {
-        'link' => {'href' => ['#', 'mailto', 'http', 'https', 'eznode', :relative]},
+        'link' => {'href' => ['#', 'mailto', 'http', 'https', 'eznode', 'importmedia', :relative]},
       },
 
       :output => :xhtml,
