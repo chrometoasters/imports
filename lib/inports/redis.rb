@@ -1,6 +1,31 @@
 class Redis
   require 'digest/md5'
 
+
+  # alias_method :orig_hget, :hget
+
+  # def hget(key, id)
+  #   orig_hget(key.downcase, id)
+  # end
+
+
+  # alias_method :orig_hgetall, :hgetall
+
+  # def hgetall(key)
+  #   orig_hgetall(key.downcase, id)
+  # end
+
+  # alias_method :orig_hset, :hset
+
+  # def hset(key, id, value)
+  #   key = key.downcase
+  #   orig_hset(key, id, value)
+  # end
+
+
+
+
+
   # Helper for getting and incrementing node id
   # value and returning a derived hash.
 

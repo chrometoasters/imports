@@ -43,7 +43,7 @@ module DatabaseImporters
       $r.hset path, 'field_email', a[6] || 'anonymous@example.com'
       $r.hset path, 'field_answered_by', a[8] || 'Unknown'
       $r.hset path, 'field_answer', a[3]
-      $r.hset path, 'field_make_public', 'true'
+      $r.hset path, 'field_make_public', '1'
 
       # Register general content for post_processing.
       PostProcessor.register path

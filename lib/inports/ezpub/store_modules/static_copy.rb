@@ -21,7 +21,9 @@ module StaticCopy
       dest = make_unique(dest)
     end
 
-    FileUtils.cp(path, dest)
+    if Dir.glob(path, File::FNM_CASEFOLD).first
+      FileUtils.cp(Dir.glob(path, File::FNM_CASEFOLD).first, dest)
+    end
     dest
   end
 

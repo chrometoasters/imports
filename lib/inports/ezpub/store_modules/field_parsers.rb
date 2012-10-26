@@ -112,9 +112,6 @@ module FieldParsers
       end
 
 
-      # puts path.gsub('index.htm', '').downcase
-      # puts link.gsub('index.htm', '').downcase
-
       if link.gsub('/index.htm', '').downcase == path.gsub('/index.htm', '').downcase
         title = anchor.content
 
@@ -128,6 +125,52 @@ module FieldParsers
       end
     end
     title
+  end
+
+
+
+  def get_case_study_title(doc, path)
+    title = nil
+
+    if doc.css('table.cover-table')
+      tables = doc.css('table.cover-table')
+
+      if tables.css('td.cover-table-subhead')
+        title = tables.css('td.cover-table-subhead').first.content
+      end
+    end
+    title
+  end
+
+
+  def get_case_study_details(doc, path)
+    h = {}
+    if doc.xpath("//td[@bgcolor='#6D2C91']")
+      h[:date] = doc.xpath("//td[@bgcolor='#6D2C91']")[1].content
+
+    elsif doc.xpath("//td[@bgcolor='#AED13C']")
+      h[:date] = doc.xpath("//td[@bgcolor='#AED13C']")[1].content
+
+    end
+
+    h[:category] = doc.xpath("//td[@bgcolor='#D2222A']")[0].content
+    h[:level] = doc.xpath("//td[@bgcolor='#D2222A']")[1].content
+
+    h
+  end
+
+
+  def get_case_study_image_path(doc, path)
+    extend ::MediaPathHelper
+    if doc.xpath('//p[@style]').first
+      img = doc.xpath('//p[@style]').first.children.first
+
+      url = img['src']
+
+      link = LinkHelpers.parse(url, path)
+
+      link.key
+    end
   end
 end
 

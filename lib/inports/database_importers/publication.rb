@@ -36,7 +36,7 @@ module DatabaseImporters
 
       $r.hset path, 'type', 'publication'
 
-      $r.hset path, 'fields', 'author:ezstring,year_published:ezstring,reference_details:eztext,abstract:eztext,name:ezstring,email:ezemail,make_public:ezboolean'
+      $r.hset path, 'fields', 'author:ezstring,year_published:ezinteger,reference_details:eztext,abstract:eztext,name:ezstring,email:ezemail,make_public:ezboolean'
 
       $r.hset path, 'field_author', a[5]
       $r.hset path, 'field_year_published', a[6]
@@ -44,7 +44,7 @@ module DatabaseImporters
       $r.hset path, 'field_abstract', a[3]
       $r.hset path, 'field_name', a[7] || 'Anonymous'
       $r.hset path, 'field_email', a[8] || 'anonymous@example.com'
-      $r.hset path, 'field_make_public', 'true'
+      $r.hset path, 'field_make_public', '1'
 
       # Register general content for post_processing.
       PostProcessor.register path

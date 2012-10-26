@@ -1,5 +1,5 @@
 module ImportPathHelper
   def trim_for_ezp(path)
-    path.gsub(/^\.\//, '')
+    path.gsub(/^\.\/output\//, '')
   end
 end

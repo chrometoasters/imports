@@ -37,5 +37,18 @@ RemoveHiddenElements = lambda do |env|
   end
 end
 
-Removers = [RemoveTitle, RemoveHeader, RemoveHiddenElements]
+# cfquery <cfquery name="get_id" datasource="techlink">
+# select * from careers where name = '#get_careers.name#' </cfquery>
+RemoveQueries = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if name == 'cfquery'
+    node.remove
+  end
+end
+
+
+Removers = [RemoveTitle, RemoveHeader, RemoveHiddenElements, RemoveQueries]
 

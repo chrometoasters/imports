@@ -5,7 +5,7 @@ SubheadToHeading2 = lambda do |env|
   return if env[:is_whitelisted] || !node.element?
 
   if node[:class] == 'subhead' && name == 'p'
-    node.name = 'heading'
+    node.name = 'header'
     node[:level] = '2'
   end
 end
@@ -18,7 +18,7 @@ SubsubheadToHeading3 = lambda do |env|
   return if env[:is_whitelisted] || !node.element?
 
   if node[:class] == 'subsubhead' && name == 'p'
-    node.name = 'heading'
+    node.name = 'header'
     node[:level] = '3'
   end
 end
@@ -30,7 +30,7 @@ RemoveRedundantStrongs = lambda do |env|
   name = env[:node_name]
   return if env[:is_whitelisted] || !node.element?
 
-  if name == 'heading' && node.child && node.child.name == 'strong'
+  if name == 'header' && node.child && node.child.name == 'strong'
     node.child.swap(node.child.children)
   end
 end
