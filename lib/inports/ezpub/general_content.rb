@@ -49,7 +49,6 @@ module EzPub
 
       @doc = resolve_includes(filepath, :return => :doc)
 
-
       title = get_title(@doc, path)
 
       if title

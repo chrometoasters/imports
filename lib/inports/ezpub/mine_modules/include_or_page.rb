@@ -19,7 +19,6 @@ module IncludeOrPage
       end
 
     else
-
       if has_valid_index?(path)
         response = true
       end
