@@ -8,6 +8,7 @@ module EzPub
     extend IncludeResolver
     extend FieldParsers
     extend StaticCopy
+    extend ImportPathHelper
 
     # Identifying general_content is primarily a case of elimination.
     # We place general_content last among our content handlers as
@@ -106,7 +107,7 @@ module EzPub
 
       dest = move_to_images(get_case_study_image_path(@doc, path))
 
-      $r.hset path, 'field_cover_image', dest
+      $r.hset path, 'field_cover_image', trim_for_ezp(dest)
 
 
       details = get_case_study_details(@doc, path)
