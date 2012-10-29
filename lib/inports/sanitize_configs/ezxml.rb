@@ -3,7 +3,7 @@ class Sanitize
 
     EZXML = {
       :elements => %w[
-        heading paragraph emphasize link strong anchor custom
+        header paragraph emphasize link strong anchor custom
         li ul br
         table tr th td
         embed embed-inline
@@ -17,7 +17,7 @@ class Sanitize
         'table' => ['class', 'width', 'border'],
         'tr' => ['class'],
         'td' => ['colspan', 'class'],
-        'embed' => [''],
+        'embed' => ['alt', 'size', 'object_id'],
         'embed-inline' => ['view', 'size', 'object_id'],
       },
 
@@ -32,7 +32,7 @@ class Sanitize
       :output => :xhtml,
 
       # Order is important.
-      :transformers => Links + Removers + Headings + Paragraphs + Styles + Tables
+      :transformers => Links + ImageEmbeds + Removers + Headings + Paragraphs + Styles + Tables
     }
 
   end
