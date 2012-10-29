@@ -16,8 +16,10 @@ require './lib/inports/ezpub/image'
 require './lib/inports/ezpub/file'
 require './lib/inports/ezpub/redirect'
 
-
+require './lib/inports/ezpub/abstract'
 require './lib/inports/ezpub/case_study'
 require './lib/inports/ezpub/folder'
 require './lib/inports/ezpub/general_content'
+
+require './lib/inports/ezpub/ignorable'
 
