@@ -132,23 +132,25 @@ module FieldParsers
   def get_case_study_title(doc, path)
     title = nil
 
-    if doc.css('table.cover-table')
+    if doc.css('table.cover-table').first
       tables = doc.css('table.cover-table')
 
-      if tables.css('td.cover-table-subhead')
+      if tables.css('td.cover-table-subhead').first
         title = tables.css('td.cover-table-subhead').first.content
       end
     end
+
     title
   end
 
 
   def get_case_study_details(doc, path)
     h = {}
-    if doc.xpath("//td[@bgcolor='#6D2C91']")
+
+    if doc.xpath("//td[@bgcolor='#6D2C91']").first
       h[:date] = doc.xpath("//td[@bgcolor='#6D2C91']")[1].content
 
-    elsif doc.xpath("//td[@bgcolor='#AED13C']")
+    elsif doc.xpath("//td[@bgcolor='#AED13C']").first
       h[:date] = doc.xpath("//td[@bgcolor='#AED13C']")[1].content
 
     end
@@ -171,6 +173,34 @@ module FieldParsers
 
       link.key
     end
+  end
+
+
+  def get_abstract_title(doc, path)
+     title = nil
+
+    if doc.css('strong').first
+      doc.css('strong').each do |strong|
+        if strong.content =~ /Title:/
+          title = strong.next_sibling.to_s
+        end
+      end
+    end
+    title
+  end
+
+
+  def get_abstract_reference(doc, path)
+    reference = nil
+
+    if doc.css('strong')
+      doc.css('strong').each do |strong|
+        if strong.content =~ /Reference:/
+          reference = strong.next_sibling.to_s
+        end
+      end
+    end
+    reference
   end
 end
 

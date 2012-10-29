@@ -44,12 +44,12 @@ module EzPub
       str = StringFromPath.get_case_insensitive(path)
       doc = Nokogiri::HTML(str)
 
-      if doc.xpath("//td[@bgcolor='#6D2C91']") && doc.xpath("//td[@bgcolor='#D2222A']")
+      if doc.xpath("//td[@bgcolor='#6D2C91']").first && doc.xpath("//td[@bgcolor='#D2222A']").first
         if doc.xpath("//td[@bgcolor='#6D2C91']").count == 2
           response = true
         end
 
-      elsif doc.xpath("//td[@bgcolor='#AED13C']") && doc.xpath("//td[@bgcolor='#D2222A']")
+      elsif doc.xpath("//td[@bgcolor='#AED13C']").first && doc.xpath("//td[@bgcolor='#D2222A']").first
         if doc.xpath("//td[@bgcolor='#AED13C']").count == 2
           response = true
         end
