@@ -87,7 +87,11 @@ class LinkHelpers
       redirect_link = LinkHelpers.new(redirect_endpoint)
 
       response = $r.hget(redirect_link.key, 'id')
+
+
     end
+
+
 
     response
   end
