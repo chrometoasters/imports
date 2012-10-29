@@ -3,7 +3,18 @@ Bundler.require(:test)
 
 class TestRedis < MiniTest::Unit::TestCase
   def setup
-    load './lib/inports/redis.rb'
+    # Set node id incrementer to our safe offset.
+    $r.set 'idcount', CONFIG['ids']['start']
+
+    # Set an id for generating unique filenames.
+    $r.set 'unique-file-id', '1'
+
+    # Set input directory path as having the eZPublish homepage remote id.
+    $r.hset CONFIG['directories']['input'], 'id', CONFIG['ids']['homepage']
+
+    # Set media folders paths as having the appropriate remote ids.
+    $r.hset 'media:files:./', 'id', CONFIG['ids']['files']
+    $r.hset 'media:images:./', 'id', CONFIG['ids']['images']
   end
 
 
@@ -87,4 +98,10 @@ class TestRedis < MiniTest::Unit::TestCase
     assert_equal ['1', '2'], a
   end
 
+
+  def test_redis_case_insensitive
+    $r.log_key 'ABC'
+    refute_includes $r.lrange('keys', 0, -1), 'ABC'
+    assert_includes $r.lrange('keys', 0, -1), 'abc'
+  end
 end

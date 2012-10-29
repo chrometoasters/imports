@@ -2,28 +2,48 @@ class Redis
   require 'digest/md5'
 
 
-  # alias_method :orig_hget, :hget
+  # Rendering Redis case insensitive as used in this script.
+  # Check for existence of $r as multiple evaluation of this code
+  # will cause StackToDeep exceptions.
 
-  # def hget(key, id)
-  #   orig_hget(key.downcase, id)
-  # end
+  unless $r
 
+    alias_method :orig_hget, :hget
 
-  # alias_method :orig_hgetall, :hgetall
+    def hget(key, id)
+      orig_hget(key.downcase, id)
+    end
 
-  # def hgetall(key)
-  #   orig_hgetall(key.downcase, id)
-  # end
+    alias_method :orig_hgetall, :hgetall
 
-  # alias_method :orig_hset, :hset
-
-  # def hset(key, id, value)
-  #   key = key.downcase
-  #   orig_hset(key, id, value)
-  # end
+    def hgetall(key)
+      orig_hgetall(key.downcase, id)
+    end
 
 
+    alias_method :orig_hset, :hset
 
+    def hset(key, id, value)
+      key = key.downcase
+      orig_hset(key, id, value)
+    end
+
+    alias_method :orig_rpush, :rpush
+
+    def rpush(key, value)
+      key = key.downcase
+      value = value.downcase
+      orig_rpush(key, value)
+    end
+
+    alias_method :orig_del, :del
+
+    def del(key)
+      key = key.downcase
+      orig_del(key)
+    end
+
+  end
 
 
   # Helper for getting and incrementing node id

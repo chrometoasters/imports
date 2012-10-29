@@ -65,8 +65,6 @@ class TestEzPubHandler < MiniTest::Unit::TestCase
     CONFIG['ids']['safety'] = 50
     CONFIG['directories']['input'] = './test/'
 
-    load './lib/inports/redis.rb'
-
     $r.hset './test/hello/', 'id', $r.get_id
     $r.log_key './test/hello/'
 
