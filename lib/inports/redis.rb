@@ -17,7 +17,7 @@ class Redis
     alias_method :orig_hgetall, :hgetall
 
     def hgetall(key)
-      orig_hgetall(key.downcase, id)
+      orig_hgetall(key.downcase)
     end
 
 
@@ -39,10 +39,14 @@ class Redis
     alias_method :orig_del, :del
 
     def del(key)
-      key = key.downcase
+      if key.class == String
+        key = key.downcase
+      elsif key.class == Array
+        key.each {|s| s.downcase!}
+      end
+
       orig_del(key)
     end
-
   end
 
 
