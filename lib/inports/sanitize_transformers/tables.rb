@@ -18,9 +18,11 @@ CaseStudiesTable = lambda do |env|
   return if env[:is_whitelisted] || !node.element?
 
   if name == 'table' && node[:class] == 'cover-table'
+    node.remove_attribute 'cellpadding'
+    node.remove_attribute 'cellspacing'
+
     {:node_whitelist => [node]}
   end
 end
-
 
 Tables = [CaseStudiesTable, SimpleTable]
