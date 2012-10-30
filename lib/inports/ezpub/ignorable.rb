@@ -27,22 +27,44 @@ module EzPub
         response = true
       end
 
+      if path =~ /teaching-snapshot\/Audio_Snapshots/
+        response = true
+      end
+
+      if path.gsub(CONFIG['directories']['input'], '') =~ /^index(\-\w+(\-\w+)?)?\.html?$/
+        response = true
+      end
+
       response
     end
 
 
     def self.regex_list
-      escaped_urls = [
+      tailed_urls = [
         'interview.htm', 'tdl.html', 'google.htm', 'index-wide.htm', 'copyright popups.html',
-        'latest-TS.htm', 'index-teachers-wide.htm', 'scholarship', 'scholarship/index-2009.htm',
-        'scholarship/index.htm',
+        'latest-TS.htm', 'index-teachers-wide.htm', 'subscribe.htm', 'Event.htm', 'Item.htm', 'accessibility.htm',
+        'Teacher_Education/In-service/Ask-an-expert', 'career.htm', 'contact.htm', 'copyright popups.html',
+        'disclaimer.htm', 'error.htm', 'feedback.htm', 'glossary.htm', 'glossaryItem.htm', 'glossarylist-enhanced.htm',
+        'glossarylist.htm', 'sitemap.htm', 'subscribe.htm', 'tbd-assessment.html',
       ]
 
-      escaped_urls.each do |str|
-        str = Regexp.escape(CONFIG['directories']['input'] + str)
+      bucket_urls = [
+        'ts', 'tki', 'styles',
+        'people-in-technology', 'parents', 'latest-news', 'images', 'gallery-images', 'TPP', 'Right-links',
+        'Resources', 'RSS', 'PTTER-framework', 'Navigation', 'Media', 'scholarship'
+      ]
+
+      escaped_urls = []
+
+      tailed_urls.map do |str|
+        escaped_urls << Regexp.escape(CONFIG['directories']['input'] + str) + '$'
       end
 
-      /#{escaped_urls.join('$|\.')}$/i
+      bucket_urls.map do |str|
+        escaped_urls << Regexp.escape(CONFIG['directories']['input'] + str)
+      end
+
+      /#{escaped_urls.join('|')}/i
     end
 
 
