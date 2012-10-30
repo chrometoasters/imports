@@ -8,6 +8,7 @@ module EzPub
     extend IncludeResolver
     extend FieldParsers
     extend HasValidIndex
+    extend TechlinkUrl
 
     # Identifying general_content is primarily a case of elimination.
     # We place general_content last among our content handlers as
@@ -35,7 +36,7 @@ module EzPub
 
       $r.log_key(path)
 
-      $r.hset path, 'parent', parent_id(path)
+      #$r.hset path, 'parent', parent_id(path)
 
       $r.hset path, 'id', $r.get_id(path)
 
@@ -43,7 +44,9 @@ module EzPub
 
       $r.hset path, 'type', 'general_content'
 
-      $r.hset path, 'fields', 'title:ezstring,body:ezxmltext'
+      $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,body:ezxmltext'
+
+      $r.hset path, 'field_old_site_url', techlink_url(path + '#general_content')
 
       # Resolve includes and get a nokogiri doc at the same time.
 

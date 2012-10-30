@@ -9,6 +9,7 @@ module EzPub
     extend FieldParsers
     extend StaticCopy
     extend ImportPathHelper
+    extend TechlinkUrl
 
     # Identifying general_content is primarily a case of elimination.
     # We place general_content last among our content handlers as
@@ -90,7 +91,9 @@ module EzPub
 
       $r.hset path, 'type', 'case_study'
 
-      $r.hset path, 'fields', 'title:ezstring,cover_image:ezimage,body:ezxmltext,category:ezstring,year_level:ezstring,case_study_date:ezstring'
+      $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,cover_image:ezimage,body:ezxmltext,category:ezstring,year_level:ezstring,case_study_date:ezstring'
+
+      $r.hset path, 'field_old_site_url', techlink_url(path + '#case_study')
 
       # Resolve includes and get a nokogiri doc at the same time.
 
