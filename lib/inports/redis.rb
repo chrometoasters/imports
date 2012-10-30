@@ -7,6 +7,12 @@ class Redis
   # will cause StackToDeep exceptions.
 
   unless $r
+    alias_method :orig_exists, :exists
+
+    def exists(key)
+      key = key.downcase
+      orig_exists(key)
+    end
 
     alias_method :orig_hget, :hget
 
@@ -19,7 +25,6 @@ class Redis
     def hgetall(key)
       orig_hgetall(key.downcase)
     end
-
 
     alias_method :orig_hset, :hset
 
