@@ -32,4 +32,15 @@ class String
 
     field_info
   end
+
+
+  def _sentence_case
+    if self =~ /[A-Z]{2,}/
+      str = ""
+      self.each("\s") {|w| str << w.capitalize}
+      str
+    else
+      self
+    end
+  end
 end
