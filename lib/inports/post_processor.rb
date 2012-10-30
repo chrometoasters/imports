@@ -66,7 +66,6 @@ module PostProcessor
   end
 
 
-
   def to_ezp(html, opts = {})
     config = opts[:config] || Sanitize::InportConfig::EZXML
 
@@ -79,6 +78,7 @@ module PostProcessor
   # Convert weirdly handled carriage returns to newlines.
 
   def strip(str)
-    str.gsub('&#13;', "\n")
+    str = str.gsub('&#13;', "\n")
+    str.gsub(/\n\n/, "\n")
   end
 end
