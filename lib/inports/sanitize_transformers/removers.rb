@@ -50,5 +50,6 @@ RemoveQueries = lambda do |env|
 end
 
 
+
 Removers = [RemoveTitle, RemoveHeader, RemoveHiddenElements, RemoveQueries]
 

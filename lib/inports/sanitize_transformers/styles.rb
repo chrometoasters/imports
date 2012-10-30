@@ -10,7 +10,7 @@ EmToEmphasize = lambda do |env|
 end
 
 
-# <div class="glossarybox> => <custom name="factbox" custom:title="Title goes here" custom:heading-type="h4">
+# <div class="glossarybox> => <custom name="glossarybox"
 GlossaryBoxToCustomTag = lambda do |env|
   node = env[:node]
   name = env[:node_name]
@@ -23,4 +23,19 @@ GlossaryBoxToCustomTag = lambda do |env|
 end
 
 
-Styles = [EmToEmphasize, GlossaryBoxToCustomTag]
+# http://www.techlink.org.nz/info-for-parents/index.htm
+# <div class="round-box"> => <custom name="round-box"
+RoundBoxToCustomTag = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if name == 'div' && node[:class] == 'round-box'
+    node.name = 'custom'
+    node[:name] = 'round-box'
+  end
+end
+
+
+
+Styles = [EmToEmphasize, GlossaryBoxToCustomTag, RoundBoxToCustomTag]
