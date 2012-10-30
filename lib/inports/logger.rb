@@ -12,7 +12,7 @@ module Logger
   def self.warning(path, type, quiet = nil)
     log_file = './log/' + type.gsub(/\s|:/, '-').downcase + '.log'
 
-    puts $term.color("Logging item as #{type} => #{log_file}", :blue) unless quiet
+    #puts $term.color("Logging item as #{type} => #{log_file}", :blue) unless quiet
 
     File.open(log_file, 'a') {|f| f.write(path + "\n") }
   end
