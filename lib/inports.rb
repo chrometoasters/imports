@@ -26,6 +26,7 @@ Dir['./lib/inports/sanitize_configs/*.rb'].each {|file| require file }
 
 
 # load code
+require './lib/inports/file'
 require './lib/inports/string'
 require './lib/inports/exceptions'
 require './lib/inports/redis'
