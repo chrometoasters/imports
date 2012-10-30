@@ -15,4 +15,3 @@ module HasValidIndex
     response
   end
 end
-

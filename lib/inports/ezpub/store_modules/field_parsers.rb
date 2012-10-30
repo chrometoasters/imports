@@ -5,7 +5,6 @@ module FieldParsers
   #$r.hset path, 'field_title', get_title @doc
   #$r.hset path, 'field_body', store_body @doc
 
-
   def get_body(doc, path)
     if doc.css('div#content').first
       doc.css('div#content').first.to_s
@@ -70,7 +69,7 @@ module FieldParsers
   end
 
 
-# Make absolute, make non index, make downase.
+  # Make absolute, make non index, make downase.
 
 
   # Try and parse a page title from the left-hand navigation box.
@@ -79,7 +78,7 @@ module FieldParsers
   # deciding page titles.
 
   def get_title_via_navigation(doc, path)
-    path = path.gsub(CONFIG['directories']['input'], '')
+    path = path.gsub(CONFIG['directories']['input'], '/')
     title = nil
 
     nodes = Nokogiri::XML::NodeSet.new(Nokogiri::XML::Document.new)
@@ -97,24 +96,23 @@ module FieldParsers
       # Checking all nav paths against page path.
       # Also normalizing out index.htm
 
-      link = anchor[:href]
+      url = anchor[:href]
 
-      next unless link
+      next unless url
 
       # Painful absoluting of link.
 
-      if link && link !~ /^\//
+      if url && url !~ /^\//
         if path =~ /.htm$|.html$/
-          link = path._parentize + '/' + link
+          url = path._parentize + '/' + url
         else
-          link = path + '/' + link
+          url = path + '/' + url
         end
       end
 
 
-      if link.gsub('/index.htm', '').downcase == path.gsub('/index.htm', '').downcase
+      if url.gsub('index.htm', '').downcase == path.gsub('index.htm', '').downcase
         title = anchor.content
-
 
         # Some basic tidyup.
 
@@ -124,9 +122,13 @@ module FieldParsers
         break
       end
     end
+
+    if title
+      title = title._sentence_case
+    end
+
     title
   end
-
 
 
   def get_case_study_title(doc, path)
@@ -203,6 +205,3 @@ module FieldParsers
     reference
   end
 end
-
-
-
