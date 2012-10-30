@@ -3,6 +3,8 @@
 BasicImage = lambda do |env|
   node = env[:node]
   name = env[:node_name]
+  context_path = env[:config][:path]
+
   return if env[:is_whitelisted] || !node.element?
 
   if name == 'img'
@@ -10,11 +12,12 @@ BasicImage = lambda do |env|
     node[:size] = 'original'
     src = node[:src]
 
-    link = LinkHelpers.new(src)
+    link = LinkHelpers.parse(src, context_path)
 
     include MediaPathHelper
 
     id = $r.hget(mediaize_path(link.key, 'images'), 'id')
+
     if id
       node[:object_id] = id
     end
