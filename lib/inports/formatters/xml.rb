@@ -17,7 +17,7 @@ module Formatter
       output_path = dir + "/#{name}.xml"
 
       file = File.new(output_path, "w")
-      file.write(@builder.to_xml.to_s)
+      file.write(@builder.to_xml.to_s._force_utf8)
       file.close
 
       output_path

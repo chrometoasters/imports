@@ -43,4 +43,10 @@ class String
       self
     end
   end
+
+  def _force_utf8
+    require 'iconv'
+
+    ::Iconv.conv('UTF-8//IGNORE', 'UTF-8', self + ' ')[0..-2]
+  end
 end
