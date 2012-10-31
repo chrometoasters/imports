@@ -41,7 +41,7 @@ module EzPub
 
     def self.regex_list
       tailed_urls = [
-        'interview.htm', 'tdl.html', 'google.htm', 'index-wide.htm', 'copyright popups.html',
+        'interview.htm', 'tdl.html', 'about.htm', 'google.htm', 'index-wide.htm', 'copyright popups.html',
         'latest-TS.htm', 'index-teachers-wide.htm', 'subscribe.htm', 'Event.htm', 'Item.htm', 'accessibility.htm',
         'Teacher_Education/In-service/Ask-an-expert', 'career.htm', 'contact.htm', 'copyright popups.html',
         'disclaimer.htm', 'error.htm', 'feedback.htm', 'glossary.htm', 'glossaryItem.htm', 'glossarylist-enhanced.htm',
