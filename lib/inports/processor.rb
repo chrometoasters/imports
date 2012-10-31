@@ -32,7 +32,9 @@ class Processor
         #
         # These are then logged in Processor#log_unhandled
 
-        $r.sadd "unhandled-#{@@runs}", path
+        unless path =~ /\.cfm$/
+          $r.sadd "unhandled-#{@@runs}", path
+        end
       end
     end
 
