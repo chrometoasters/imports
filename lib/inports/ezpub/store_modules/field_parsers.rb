@@ -217,4 +217,61 @@ module FieldParsers
       doc.css('title').first.content.to_s
     end
   end
+
+
+  def get_review_title(doc,path)
+    if doc.css('p.header').first
+      title = doc.css('p.header').first.content.to_s
+      title.gsub!("\r\n", ' ')
+      title.gsub("\342\200\223", '')
+    end
+  end
+
+
+  def get_review_image_path(doc, path)
+    extend ::MediaPathHelper
+    if doc.css('div#content').first
+      img = doc.css('div#content').first.css('img').first
+
+      url = img['src']
+
+      link = LinkHelpers.parse(url, path)
+
+      link.key
+    end
+  end
+
+
+  def get_review_element(doc, regex)
+    nodes = Nokogiri::XML::NodeSet.new(Nokogiri::XML::Document.new)
+
+
+    if doc.css('p.subsubhead').first
+
+      doc.css('p.subsubhead').each do |node|
+
+        if node.child.content.downcase.gsub('  ', '') =~ regex
+          node.remove_attribute 'class'
+
+          until node.next_sibling[:class] == 'subsubhead' || node.next_sibling.name == 'cfinclude'
+
+            nodes.push node.next_sibling
+
+            if node.next_sibling.next_sibling
+              node = node.next_sibling
+            else
+              break
+            end
+
+          end
+        end
+      end
+    end
+
+    if nodes.empty?
+      nil
+    else
+      nodes
+    end
+  end
 end
