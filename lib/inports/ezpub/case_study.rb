@@ -10,6 +10,7 @@ module EzPub
     extend StaticCopy
     extend ImportPathHelper
     extend TechlinkUrl
+    extend HasValidIndex
 
     # Identifying general_content is primarily a case of elimination.
     # We place general_content last among our content handlers as

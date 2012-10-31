@@ -3,12 +3,11 @@ module EzPub
     EzPub::HandlerSets::All << self
     EzPub::HandlerSets::Content << self
 
-    extend NameMaker
     extend IncludeOrPage
     extend IncludeResolver
     extend FieldParsers
-    extend HasValidIndex
     extend TechlinkUrl
+    extend HasValidIndex
 
     # Identifying general_content is primarily a case of elimination.
     # We place general_content last among our content handlers as
