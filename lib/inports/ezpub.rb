@@ -18,6 +18,7 @@ require './lib/inports/ezpub/redirect'
 
 require './lib/inports/ezpub/abstract'
 require './lib/inports/ezpub/review'
+require './lib/inports/ezpub/reviews_landing_page'
 require './lib/inports/ezpub/case_study'
 require './lib/inports/ezpub/case_study_landing_page'
 require './lib/inports/ezpub/folder'

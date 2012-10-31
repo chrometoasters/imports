@@ -78,7 +78,7 @@ module PostProcessor
   # Convert weirdly handled carriage returns to newlines.
 
   def strip(str)
-    str = str.gsub('&#13;', "\n")
+    str.gsub!('&#13;', "\n")
     str.gsub(/\n\n/, "\n")
   end
 end

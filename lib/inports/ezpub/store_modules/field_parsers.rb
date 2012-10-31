@@ -99,10 +99,6 @@ module FieldParsers
       url = anchor[:href]
 
       next unless url
-      puts anchor.content
-
-      puts url + '  url !'
-      puts path + '  path !'
 
       # Painful absoluting of link.
 
@@ -113,9 +109,6 @@ module FieldParsers
           url = path + '/' + url
         end
       end
-
-      puts url.gsub('index.htm', '').downcase + '  url !!!'
-      puts path.gsub('index.htm', '').downcase + '  path !!!'
 
       if url.gsub('index.htm', '').downcase == path.gsub('index.htm', '').downcase
         title = anchor.content

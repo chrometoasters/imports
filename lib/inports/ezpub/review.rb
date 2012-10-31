@@ -42,7 +42,7 @@ module EzPub
 
       $r.log_key(path)
 
-      #$r.hset path, 'parent', parent_id(path)
+      $r.hset path, 'parent', parent_id(path)
 
       $r.hset path, 'id', $r.get_id(path)
 
@@ -52,7 +52,7 @@ module EzPub
 
       $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,image:ezimage,introduction:ezxmltext,description:ezxmltext,curriculum_links:ezxmltext,content:ezxmltext,ease_of_use:ezxmltext,rating:ezxmltext,accessibility:ezxmltext'
 
-      $r.hset path, 'field_old_site_url', techlink_url(path + '#case_study')
+      $r.hset path, 'field_old_site_url', techlink_url(path + '#review')
 
       # Resolve includes and get a nokogiri doc at the same time.
 
