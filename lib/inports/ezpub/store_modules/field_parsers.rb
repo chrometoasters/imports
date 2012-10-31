@@ -99,6 +99,10 @@ module FieldParsers
       url = anchor[:href]
 
       next unless url
+      puts anchor.content
+
+      puts url + '  url !'
+      puts path + '  path !'
 
       # Painful absoluting of link.
 
@@ -110,6 +114,8 @@ module FieldParsers
         end
       end
 
+      puts url.gsub('index.htm', '').downcase + '  url !!!'
+      puts path.gsub('index.htm', '').downcase + '  path !!!'
 
       if url.gsub('index.htm', '').downcase == path.gsub('index.htm', '').downcase
         title = anchor.content
@@ -203,5 +209,12 @@ module FieldParsers
       end
     end
     reference
+  end
+
+
+  def get_case_study_landing_page_title(doc, path)
+    if doc.css('title').first
+      doc.css('title').first.content.to_s
+    end
   end
 end
