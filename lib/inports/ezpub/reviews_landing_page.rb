@@ -52,7 +52,7 @@ module EzPub
 
       $r.log_key(path)
 
-      #$r.hset path, 'parent', parent_id(path)
+      $r.hset path, 'parent', parent_id(path)
 
       $r.hset path, 'id', $r.get_id(path)
 
@@ -75,6 +75,7 @@ module EzPub
         $r.hset path, 'field_body', strip_redundant_content(@doc.css('div#content').first)
       else
         $r.hset path, 'field_body', 'BODY NOT FOUND'
+        Logger.warning path, 'Body not found'
       end
 
 

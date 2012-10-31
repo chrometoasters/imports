@@ -106,6 +106,7 @@ module EzPub
         $r.hset path, 'field_title', title
       else
         $r.hset path, 'field_title', 'CASESTUDY TITLE NOT FOUND'
+        Logger.warning path, 'No title found'
       end
 
 

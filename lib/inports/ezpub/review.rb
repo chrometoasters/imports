@@ -65,6 +65,7 @@ module EzPub
         $r.hset path, 'field_title', title
       else
         $r.hset path, 'field_title', 'REVIEW TITLE NOT FOUND'
+        Logger.warning path, 'No title found'
       end
 
 
@@ -74,6 +75,7 @@ module EzPub
         $r.hset path, 'field_description', description
       else
         $r.hset path, 'field_description', ''
+        Logger.warning path, 'Content element not found'
       end
 
 
@@ -83,6 +85,7 @@ module EzPub
         $r.hset path, 'field_curriculum_links', curriculum_links
       else
         $r.hset path, 'field_curriculum_links', ''
+        Logger.warning path, 'Content element not found'
       end
 
 
@@ -92,6 +95,7 @@ module EzPub
         $r.hset path, 'field_content', content
       else
         $r.hset path, 'field_content', ''
+        Logger.warning path, 'Content element not found'
       end
 
 
@@ -101,6 +105,7 @@ module EzPub
         $r.hset path, 'field_ease_of_use', ease
       else
         $r.hset path, 'field_content', ''
+        Logger.warning path, 'Content element not found'
       end
 
 
@@ -110,6 +115,7 @@ module EzPub
         $r.hset path, 'field_rating', rating
       else
         $r.hset path, 'field_content', ''
+        Logger.warning path, 'Content element not found'
       end
 
 
@@ -119,11 +125,17 @@ module EzPub
         $r.hset path, 'field_accessibility', accessibility
       else
         $r.hset path, 'field_content', ''
+        Logger.warning path, 'Content element not found'
       end
 
-      dest = move_to_images(get_review_image_path(@doc, path))
+      img_path = get_review_image_path(@doc, path)
 
-      $r.hset path, 'field_image', trim_for_ezp(dest)
+      if img_path
+        dest = move_to_images(img_path)
+        $r.hset path, 'field_image', trim_for_ezp(dest)
+      else
+        Logger.warning path, 'No image field path found'
+      end
 
       # Register general content for post_processing.
       PostProcessor.register path
