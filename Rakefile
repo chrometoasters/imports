@@ -30,6 +30,11 @@ namespace :process do
   task :content do
     system("bundle exec ruby bin/content.rb")
   end
+
+
+  task :split_static do
+    system("bundle exec ruby bin/split_static.rb")
+  end
 end
 
 
