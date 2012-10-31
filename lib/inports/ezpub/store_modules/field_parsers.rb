@@ -226,11 +226,13 @@ module FieldParsers
     if doc.css('div#content').first
       img = doc.css('div#content').first.css('img').first
 
-      url = img['src']
+      if img
+        url = img['src']
 
-      link = LinkHelpers.parse(url, path)
+        link = LinkHelpers.parse(url, path)
 
-      link.key
+        link.key
+      end
     end
   end
 
