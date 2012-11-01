@@ -23,5 +23,7 @@ require './lib/inports/ezpub/case_study'
 require './lib/inports/ezpub/case_study_landing_page'
 require './lib/inports/ezpub/folder'
 require './lib/inports/ezpub/general_content'
+require './lib/inports/ezpub/showcases_landing_page'
+require './lib/inports/ezpub/showcase'
 
 require './lib/inports/ezpub/ignorable'

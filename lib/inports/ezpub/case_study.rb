@@ -28,7 +28,6 @@ module EzPub
         # Narrow down to the section
 
         if path =~ /\/Case-studies\/(Classroom-practice|Technological-practice)\//
-
           if has_case_studies_table?(path)
             response = true
           end

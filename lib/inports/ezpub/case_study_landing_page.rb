@@ -21,7 +21,6 @@ module EzPub
       response = nil
 
       if page?(path)
-
         # Narrow down to the section
 
         if path =~ case_study_landing_pages_regex
@@ -35,26 +34,26 @@ module EzPub
 
     def self.case_study_landing_pages_regex
       urls = [
-        'case-studies/Classroom-practice/?',
-        'Case-studies/Classroom-practice/materials/?',
-        'Case-studies/Classroom-practice/Food-and-Biological/?',
-        'Case-studies/Classroom-practice/ICT/?',
-        'Case-studies/Classroom-practice/Electronics/?',
-        'Case-studies/Classroom-practice/Teaching-Practice/?',
-        'Case-studies/Classroom-practice/Graphics/?',
+        'case-studies/Classroom-practice/',
+        'Case-studies/Classroom-practice/materials/',
+        'Case-studies/Classroom-practice/Food-and-Biological/',
+        'Case-studies/Classroom-practice/ICT/',
+        'Case-studies/Classroom-practice/Electronics/',
+        'Case-studies/Classroom-practice/Teaching-Practice/',
+        'Case-studies/Classroom-practice/Graphics/',
 
-        'case-studies/Technological-practice/?',
-        'Case-studies/Technological-practice/materials/?',
-        'Case-studies/Technological-practice/soft-materials/?',
-        'Case-studies/Technological-practice/Food-and-Biological/?',
-        'Case-studies/Technological-practice/Electronics/?',
-        'Case-studies/Technological-practice/ICT/?',
+        'case-studies/Technological-practice/',
+        'Case-studies/Technological-practice/materials/',
+        'Case-studies/Technological-practice/soft-materials/',
+        'Case-studies/Technological-practice/Food-and-Biological/',
+        'Case-studies/Technological-practice/Electronics/',
+        'Case-studies/Technological-practice/ICT/',
       ]
 
       escaped_urls = []
 
       urls.map do |str|
-        escaped_urls << Regexp.escape(CONFIG['directories']['input'] + str) + '$'
+        escaped_urls << Regexp.escape(CONFIG['directories']['input'] + str) + '?$'
       end
 
        /#{escaped_urls.join('|')}/i
