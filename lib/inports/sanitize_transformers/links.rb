@@ -80,6 +80,8 @@ end
 
 #<a href="/thing.pdf"></a> => <link href="eznode://49827349872349"> <link/>
 MediaLink = lambda do |env|
+  include MediaPathHelper
+
   node = env[:node]
   name = env[:node_name]
   context_path = env[:config][:path]
@@ -97,7 +99,7 @@ MediaLink = lambda do |env|
 
       node.name = 'link'
 
-      id = $r.hget(link.key, 'id')
+      id = $r.hget(mediaize_path(link.key, 'files'), 'id')
 
       if id
         new_href = 'importmedia://' + id
