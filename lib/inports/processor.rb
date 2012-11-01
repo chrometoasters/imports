@@ -67,7 +67,7 @@ class Processor
     # This should be all paths unhandled in any run.
 
     $r.sinter(*sets).each do |k|
-      Logger.warning k, 'Unhandled', 'shh'
+      Logger.warning k, 'Unhandled'
     end
 
     $r.del sets
@@ -109,7 +109,11 @@ class Processor
   end
 
 
-  def list
-    Dir.glob(@root + "**/**/**")
+  def list(paths = nil)
+    unless paths
+      Dir.glob(@root + "**/**/**")
+    else
+      paths
+    end
   end
 end
