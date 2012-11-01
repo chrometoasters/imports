@@ -37,7 +37,7 @@ module EzPub
         else
           # Only log interesting things.
           if ::File.binary?(path)
-            Logger.warning path, 'Unknown ext for file'
+            Logger.warning path, 'Unknown ext for file' unless path =~ /\/Thumbs\.db$/
           end
         end
       end
@@ -49,6 +49,8 @@ module EzPub
     def self.store(path)
       dest = move_to_files path
 
+      path = mediaize_path(path, 'files')
+
       $r.log_key(path)
 
       $r.hset path, 'id', $r.get_id(path)
@@ -56,7 +58,7 @@ module EzPub
       # Pass in a "media:files:./xyz" path, rather than a standard path.
       # (Since we want to match against the various Media locations).
 
-      $r.hset path, 'parent', parent_id(mediaize_path(path, 'files'))
+      $r.hset path, 'parent', parent_id(path)
 
       $r.hset path, 'priority', '0'
 
