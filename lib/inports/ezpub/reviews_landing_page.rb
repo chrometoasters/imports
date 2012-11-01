@@ -24,7 +24,7 @@ module EzPub
 
         # Narrow down to the section
 
-        if path =~ /\/teaching-snapshot\/Resource\-Reviews\/$/i
+        if path =~ /\/teaching-snapshot\/Resource\-Reviews\/?$/i
           response = true
         end
       end

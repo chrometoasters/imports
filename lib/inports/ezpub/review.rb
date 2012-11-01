@@ -48,7 +48,7 @@ module EzPub
 
       $r.hset path, 'priority', '0'
 
-      $r.hset path, 'type', 'case_study'
+      $r.hset path, 'type', 'review'
 
       $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,image:ezimage,introduction:ezxmltext,description:ezxmltext,curriculum_links:ezxmltext,content:ezxmltext,ease_of_use:ezxmltext,rating:ezxmltext,accessibility:ezxmltext'
 
@@ -119,7 +119,7 @@ module EzPub
       end
 
 
-      accessibility = get_review_element(@doc, /^accessibility/i)
+      accessibility = get_review_element(@doc, /^accessibility|^availability/i)
 
       if accessibility
         $r.hset path, 'field_accessibility', accessibility
