@@ -23,30 +23,20 @@ module EzPub
       # of a previously unhandled directory.
 
       unless ::File.directory? path
+        # Check the extension is a valid image extension.
 
+        exts = /\.#{EZP_ICON_IMAGE_EXTENSIONS.join('$|\.')}$/i
 
-        # Check if an image - basic check from ptools gem.
+        if exts.match(path.downcase)
 
-        if ::File.image?(path)
+          # Use MediaPathHelper module to create a heirarchy of media library
+          # folders for this path, if needed.
 
-          # Check the extension is a valid image extension.
-
-          exts = /\.#{EZP_ICON_IMAGE_EXTENSIONS.join('$|\.')}$/i
-
-          if exts.match(path.downcase)
-
-            # Use MediaPathHelper module to create a heirarchy of media library
-            # folders for this path, if needed.
-
-            unless has_media_path? path, 'images'
-              create_media_path(path, 'images')
-            end
-
-            response = true
-
-          else
-            Logger.warning path, 'Unknown ext for image'
+          unless has_media_path? path, 'images'
+            create_media_path(path, 'images')
           end
+
+          response = true
         end
       end
       response
@@ -56,12 +46,14 @@ module EzPub
     def self.store(path)
       dest = move_to_images path
 
+      path = mediaize_path(path, 'images')
+
       $r.log_key(path)
 
       # Pass in a "media:files:./xyz" path, rather than a standard path.
       # (Since we want to match against the various Media locations).
 
-      $r.hset path, 'parent', parent_id(mediaize_path(path, 'images'))
+      $r.hset path, 'parent', parent_id(path)
 
       $r.hset path, 'id', $r.get_id(path)
 
