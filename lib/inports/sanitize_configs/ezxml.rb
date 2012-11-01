@@ -17,7 +17,7 @@ class Sanitize
         'table' => ['class', 'width', 'border'],
         'tr' => ['class'],
         'td' => ['colspan', 'class'],
-        'embed' => ['alt', 'size', 'object_id'],
+        'embed' => ['size', 'object_id'],
         'embed-inline' => ['view', 'size', 'object_id'],
       },
 
