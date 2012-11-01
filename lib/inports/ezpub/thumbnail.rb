@@ -21,7 +21,9 @@ module EzPub
 
         # Check if an image - basic check from ptools gem.
 
-        if ::File.image?(path)
+        exts = /\.#{EZP_ICON_IMAGE_EXTENSIONS.join('$|\.')}$/i
+
+        if exts.match(path.downcase)
 
           # Check the extension is a thumbnail.
           # This is pretty inexact currently, and may cause issues for links.
