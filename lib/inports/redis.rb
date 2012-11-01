@@ -91,6 +91,17 @@ class Redis
     # Attempt to delete unhandled sets in the event of a broken run.
     5.times {|i| $r.del "unhandled-#{i}"}
   end
+
+
+  def lock_keys(regex)
+    $r.lrange('keys', 0, -1).each do |k|
+      if k =~ regex
+        yield k if block_given?
+        $r.rpush 'locked-keys', k
+        $r.lrem 'keys', 1, k
+      end
+    end
+  end
 end
 
 

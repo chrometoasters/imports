@@ -46,7 +46,35 @@ task :inspect, :path, :field, :type do |t, args|
 end
 
 
+namespace :lock do
+  task :media do
+    Rake::Task['app'].invoke
+
+    $r.lock_keys(/^media/) {|k| puts $term.color("Locking #{k}", :green)}
+  end
+end
+
+
+namespace :list do
+  task :locked do
+    Rake::Task['app'].invoke
+
+    $r.lrange('locked-keys', 0, -1).each {|k| puts $term.color("#{k}", :green)}
+  end
+end
+
+
 namespace :delete do
+  task :lock do
+    Rake::Task['app'].invoke
+
+    $r.lrange('locked-keys', 0, -1).each do |k|
+      puts $term.color("Removing #{k}", :green)
+      $r.del k
+    end
+  end
+
+
   namespace :helpers do
     task :output, :section, :silent do |t, args|
       section = args[:section]

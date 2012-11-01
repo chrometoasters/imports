@@ -15,6 +15,8 @@ Run tasks via rake:
 @$ rake flush@                      wipe clean output and redis data (silently)
 @$ rake process:static@             process input using the static file handler set
 @$ rake inspect['./input/folder/file.htm',title]@  see parser output for a field
+@$ rake lock:media@                 protect media paths from deletion and exclude from xml
+@$ rake delete:lock@                delete locked items
 
 etc.
 
