@@ -8,19 +8,21 @@ BasicImage = lambda do |env|
   return if env[:is_whitelisted] || !node.element?
 
   if name == 'img'
+    include MediaPathHelper
+
     node.name = 'embed'
     node[:size] = 'original'
     src = node[:src]
 
     link = LinkHelpers.parse(src, context_path)
 
-    include MediaPathHelper
-
     id = $r.hget(mediaize_path(link.key, 'images'), 'id')
 
     if id
       node[:object_id] = id
     end
+
+    node.remove_attribute 'src'
   end
 end
 
