@@ -28,14 +28,16 @@ module FieldParsers
   # This is a compromise, but it will do.
 
   def get_title(doc, path)
+    title = nil
+
     # Try to obtain a title from the left-hand navigation.
-    title = get_title_via_navigation(doc, path)
+    nav_title = get_title_via_navigation(doc, path)
 
-    if title
-      title
+    if nav_title
+      title = nav_title
+    end
 
-
-    elsif doc.css('p.header').first
+    if doc.css('p.header').first
 
       # Remove nested little headings.
       if doc.css('p.header').first.children
@@ -46,26 +48,32 @@ module FieldParsers
         end
       end
 
-      doc.css('p.header').first.content.to_s
+      title = doc.css('p.header').first.content.to_s
 
-
-    elsif doc.css('p.header-dk-blue').first
-      doc.css('p.header-dk-blue').first.content.to_s
-
-    # Example => ./input/curriculum-support/Teacher-Education/PTTER-framework/E1/E1A2.htm
-    elsif doc.css('p.subhead.PTTER-element').first
-      if doc.css('p.PTTER-element').children
-        children = doc.css('p.PTTER-element').children
-        if children.css('span.subhead').first
-          children.css('span.subhead').first.content.to_s
-        end
-      else
-        nil
-      end
-
-    else
-      nil
     end
+
+    if doc.css('p.header-dk-blue').first
+      title = doc.css('p.header-dk-blue').first.content.to_s
+    end
+
+    #
+    # Example => ./input/curriculum-support/Teacher-Education/PTTER-framework/E1/E1A2.htm
+    # if doc.css('p.subhead.PTTER-element').first
+    #   if doc.css('p.PTTER-element').children
+    #     children = doc.css('p.PTTER-element').children
+    #     if children.css('span.subhead').first
+    #       children.css('span.subhead').first.content.to_s
+    #     end
+    #   else
+    #     nil
+    #   end
+    #end
+
+    if doc.css('title').first
+      title = doc.css('title').first.content.to_s
+    end
+
+    title
   end
 
 
@@ -109,6 +117,9 @@ module FieldParsers
           url = path + '/' + url
         end
       end
+
+      # puts url.gsub('index.htm', '').downcase
+      # puts path.gsub('index.htm', '').downcase
 
       if url.gsub('index.htm', '').downcase == path.gsub('index.htm', '').downcase
         title = anchor.content
@@ -167,6 +178,20 @@ module FieldParsers
     extend ::MediaPathHelper
     if doc.xpath('//p[@style]').first
       img = doc.xpath('//p[@style]').first.css('img').first
+
+      url = img['src']
+
+      link = LinkHelpers.parse(url, path)
+
+      link.key
+    end
+  end
+
+
+  def get_showcase_image_path(doc, path)
+    extend ::MediaPathHelper
+    if doc.css('div#content').css('img').first
+      img = doc.css('div#content').css('img').first
 
       url = img['src']
 
@@ -241,15 +266,19 @@ module FieldParsers
     nodes = Nokogiri::XML::NodeSet.new(Nokogiri::XML::Document.new)
 
 
-    if doc.css('p.subsubhead').first
+    if doc.css('p.subsubhead').first || doc.css('strong')
+      set = doc.css('p.subsubhead') + doc.css('strong')
 
-      doc.css('p.subsubhead').each do |node|
+      set.each do |node|
+        node = node.parent if node.name == 'strong'
 
-        if node.child.content.downcase.gsub('  ', '') =~ regex
+        if node.child.content.downcase.gsub('  ', '') =~ regex || node.content.downcase.gsub('  ', '') =~ regex
+
+          # reset "until" conditions
           node.remove_attribute 'class'
+          strong_comming = false
 
-          until node.next_sibling[:class] == 'subsubhead' || node.next_sibling.name == 'cfinclude'
-
+          until node.next_sibling[:class] == 'subsubhead' || node.next_sibling.name == 'cfinclude' || strong_comming
             nodes.push node.next_sibling
 
             if node.next_sibling.next_sibling
@@ -258,6 +287,11 @@ module FieldParsers
               break
             end
 
+            if node.next_sibling.children.first
+              if node.next_sibling.children.first.name == 'strong'
+                strong_comming = true
+              end
+            end
           end
         end
       end
@@ -266,7 +300,7 @@ module FieldParsers
     if nodes.empty?
       nil
     else
-      nodes
+      nodes.to_s
     end
   end
 end
