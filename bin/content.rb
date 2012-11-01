@@ -40,4 +40,6 @@ puts $term.color("Generating XML...", :green)
 
 path = @p.to_xml :name => 'techlink-content-only'
 
+SanityCheck.summary path
+
 puts $term.color("XML created at #{path}.", :green)
