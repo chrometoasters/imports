@@ -13,6 +13,12 @@ module StaticCopy
 
 
   def move_to(path, dest)
+    require 'shellwords'
+    # nil for links with cf variables in them.
+    if path =~ /#(\w|-|_)+#/i
+      return nil
+    end
+
     name = flatten(path)
     dest = dest + '/' + name
 
@@ -21,9 +27,16 @@ module StaticCopy
       dest = make_unique(dest)
     end
 
-    if Dir.glob(path, File::FNM_CASEFOLD).first
-      FileUtils.cp(Dir.glob(path, File::FNM_CASEFOLD).first, dest)
+    path = Dir.glob(path, File::FNM_CASEFOLD).first
+
+    if path
+
+      escaped_source = path.gsub(/^\.\//, '').shellescape
+      escaped_dest = dest.gsub(/^\.\//, '').shellescape
+
+      system("cp #{escaped_source} #{escaped_dest}")
     end
+
     dest
   end
 
