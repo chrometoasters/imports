@@ -35,6 +35,11 @@ module EzPub
         response = true
       end
 
+      # REMOVE ME!!!
+      if path =~ /gallery\.htm/i || path =~ /\/gallery-(\w|-|_)+\.htm$/i
+        response = true
+      end
+
       response
     end
 
@@ -51,7 +56,8 @@ module EzPub
       bucket_urls = [
         'ts', 'tki', 'styles',
         'people-in-technology', 'parents', 'latest-news', 'images', 'gallery-images', 'TPP', 'Right-links',
-        'Resources', 'RSS', 'PTTER-framework', 'Navigation', 'Media', 'scholarship'
+        'Resources', 'RSS', 'PTTER-framework', 'Navigation', 'Media', 'scholarship', 'Teacher_Education/Research',
+        'Teacher_Education/Publications'
       ]
 
       escaped_urls = []
