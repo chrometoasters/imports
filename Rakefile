@@ -72,6 +72,8 @@ namespace :delete do
       puts $term.color("Removing #{k}", :green)
       $r.del k
     end
+
+    $r.del 'locked-keys'
   end
 
 
