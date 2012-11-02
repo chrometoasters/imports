@@ -128,5 +128,13 @@ class SanityCheck
     if i < 100
       puts $term.color("Only #{i} showcases", [:red])
     end
+
+
+    i = h['snapshots_landing_page']
+    i = 0 unless i
+
+    if i < 4
+      puts $term.color("Only #{i} snapshots_landing_pages", [:red])
+    end
   end
 end
