@@ -59,9 +59,18 @@ class Redis
   # value and returning a derived hash.
 
   def get_id(path = nil)
-    $r.incr 'idcount'
-    id = path || $r.get('idcount')
-    Digest::MD5.hexdigest('not a date :D' + id )
+    if path
+      if $r.hget(path, 'id') # See EzPub::Folder::store
+        $r.hget(path, 'id')
+      else
+        id = path
+        Digest::MD5.hexdigest('not a date :D' + id )
+      end
+    else
+      $r.incr 'idcount'
+      $r.get('idcount')
+      Digest::MD5.hexdigest('not a date :D' + id )
+    end
   end
 
 

@@ -8,6 +8,7 @@ module EzPub
     extend FieldParsers
     extend TechlinkUrl
     extend HasValidIndex
+    extend ActsAsIndex
 
     # Identifying general_content is primarily a case of elimination.
     # We place general_content last among our content handlers as
@@ -67,6 +68,15 @@ module EzPub
     def self.store(path)
       if has_valid_index? path
         path = path + '/' unless path =~ /\/$/
+      end
+
+      # Obliterate parent item (by stealing its key) as if this is the
+      # index.htm.
+      # This makes the safe assumption that the parent has already
+      # been declared.
+
+      if acts_as_index? path
+        path = path._parentize
       end
 
       filepath = path
