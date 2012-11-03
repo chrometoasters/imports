@@ -96,9 +96,17 @@ class SanityCheck
         title = 'unknown title'
       end
 
-      content_class = o[:type]
+      if o.xpath("//object[@remote_id='#{parent}']/attribute[@name='title']").first
+        parent_title = o.xpath("//object[@remote_id='#{parent}']/attribute[@name='title']").first.content
+      elsif o.xpath("//object[@remote_id='#{parent}']/attribute[@name='name']").first
+        parent_title = o.xpath("//object[@remote_id='#{parent}']/attribute[@name='name']").first.content
+      else
+        parent_title = 'unknown title'
+      end
 
-      list.css("##{parent}").first.add_child "<ul id='#{remote_id}'><li>#{title} <strong>#{content_class}<strong></li></ul>"
+      content_class = o[:name]
+
+      list.css("##{parent}").first.add_child "<ul id='#{remote_id}'><li><a title='#{parent_title}' href='##{parent}'>#{title}</a> <strong>#{content_class}<strong></li></ul>"
     end
 
     list_file_path = CONFIG['directories']['output']['xml'] + '/list.html'
