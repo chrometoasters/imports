@@ -16,6 +16,19 @@ Rake::TestTask.new do |t|
 end
 
 
+namespace :render do
+  task :content do
+    Rake::Task['app'].invoke
+    SanityCheck.render_as_list './output/xml/techlink-content-only.xml'
+  end
+
+  task :all do
+    Rake::Task['app'].invoke
+    SanityCheck.render_as_list './output/xml/techlink-content.xml'
+  end
+end
+
+
 namespace :process do
   task :static do
     system("bundle exec ruby bin/static.rb")

@@ -1,6 +1,6 @@
 class SanityCheck
-  def self.summary(file)
-    file = File.open(file)
+  def self.summary(file_name)
+    file = File.open(file_name)
     str = file.read
     doc = Nokogiri::XML(str)
 
@@ -24,8 +24,93 @@ class SanityCheck
 
     puts
 
+    puts $term.color("Checking structure...", [:green])
+
+    structure_check(file_name)
+
+    puts $term.color("Structure valid.", [:green])
+
+    # puts $term.color("Rendering as an html list.", [:green])
+
+    # path = render_as_list(file_name)
+
+    # puts $term.color("List available at #{path}", [:green])
+
   end
 
+
+  def self.structure_check(file_name)
+    file = File.open(file_name)
+    str = file.read
+    doc = Nokogiri::XML(str)
+
+    valid_parents = []
+
+    objects = []
+
+    CONFIG['ids'].each do |k,v|
+      valid_parents << v
+    end
+
+    doc.css('object').each do |o|
+      unless valid_parents.member? o[:parent_remote_id]
+        puts $term.color("remote id: #{o[:remote_id]}", [:red])
+        puts $term.color("parent remote id: #{o[:parent_remote_id]}", [:red])
+        raise Orphanity, "Orphan found in xml output"
+      end
+
+      if objects.member? o[:remote_id]
+        puts $term.color("remote id: #{o[:remote_id]}", [:red])
+        puts $term.color("parent remote id: #{o[:parent_remote_id]}", [:red])
+        raise Redclaration, "Declaring an remote_id that was previously declared."
+      end
+
+      valid_parents << o[:remote_id]
+      objects << o[:remote_id]
+    end
+  end
+
+
+  def self.render_as_list(file_name)
+    puts $term.color("Rendering as an html list.", [:green])
+
+    file = File.open(file_name)
+    str = file.read
+    doc = Nokogiri::XML(str)
+
+    list = Nokogiri::HTML.fragment('<div id="main"></div>')
+
+    CONFIG['ids'].each do |k,v|
+      list.css('div#main').first.add_child "<ul id='#{v}'><li>#{k}</li></ul>"
+    end
+
+    doc.css('object').each do |o|
+      parent = o[:parent_remote_id]
+      remote_id = o[:remote_id]
+
+      if o.xpath("//object[@remote_id='#{remote_id}']/attribute[@name='title']").first
+        title = o.xpath("//object[@remote_id='#{remote_id}']/attribute[@name='title']").first.content
+      elsif o.xpath("//object[@remote_id='#{remote_id}']/attribute[@name='name']").first
+        title = o.xpath("//object[@remote_id='#{remote_id}']/attribute[@name='name']").first.content
+      else
+        title = 'unknown title'
+      end
+
+      content_class = o[:type]
+
+      list.css("##{parent}").first.add_child "<ul id='#{remote_id}'><li>#{title} <strong>#{content_class}<strong></li></ul>"
+    end
+
+    list_file_path = CONFIG['directories']['output']['xml'] + '/list.html'
+
+    f = File.open(list_file_path, 'w')
+    f.write(list.to_s)
+    f.close
+
+    puts $term.color("List available at #{list_file_path}", [:green])
+
+    list_file_path
+  end
 
 
   def self.warnings(h)
@@ -136,5 +221,6 @@ class SanityCheck
     if i < 4
       puts $term.color("Only #{i} snapshots_landing_pages", [:red])
     end
+
   end
 end
