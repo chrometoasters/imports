@@ -41,6 +41,9 @@ puts $term.color("Database content ingest complete.", :green)
 
 
 
+puts $term.color("Starting content post-processing...", :green)
+
+
 @p.post_process
 
 
