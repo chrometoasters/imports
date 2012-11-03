@@ -23,6 +23,14 @@ module EzPub
       # Overide in child classes if necessary.
 
       def parent_id(path)
+        # Return previously set parent id if it exists.
+        # See EzPub::Folder::store for more information.
+
+        if $r.hget path, 'parent'
+          return $r.hget path, 'parent'
+        end
+
+
         if path._parentize == path
           # hard parentize
         else
