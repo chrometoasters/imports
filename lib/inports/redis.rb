@@ -68,8 +68,8 @@ class Redis
       end
     else
       $r.incr 'idcount'
-      $r.get('idcount')
-      Digest::MD5.hexdigest('not a date :D' + id )
+      id = $r.get('idcount')
+      Digest::MD5.hexdigest('not a date :D' + id)
     end
   end
 
@@ -94,8 +94,13 @@ class Redis
       $r.del k
     end
 
+    $r.lrange('pseudo-keys', 0, -1).each do |k|
+      $r.del k
+    end
+
     $r.del 'post_process'
     $r.del 'keys'
+    $r.del 'pseudo-keys'
 
     # Attempt to delete unhandled sets in the event of a broken run.
     5.times {|i| $r.del "unhandled-#{i}"}
