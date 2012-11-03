@@ -24,3 +24,6 @@ end
 
 class UnresolvedInternalLink < Exception
 end
+
+class Redclaration < Exception
+end
