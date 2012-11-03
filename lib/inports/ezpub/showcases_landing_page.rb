@@ -75,13 +75,23 @@ module EzPub
       # This makes the safe assumption that the parent has already
       # been declared.
 
+      filepath = path # save filepath in case of rekeying.
+
       if acts_as_index? path
+        $r.rpush 'pseudo-keys', path
+
         path = path._parentize
+
+        unless $r.exists(path)
+          raise Orphanity "During rekeying, #{path} attempted to rekey as parent which doesn't exist already."
+        end
+
+      else
+        # We only log the key if we're declaring a truly new object.
+        # (It's already been declared as a folder previously, and redeclaring or
+        # only declaring it now would risk orphanity...)
+        $r.log_key(path)
       end
-
-      filepath = path
-
-      $r.log_key(path)
 
       $r.hset path, 'parent', parent_id(path)
 

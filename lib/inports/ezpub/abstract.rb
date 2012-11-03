@@ -6,6 +6,8 @@ module EzPub
     extend IncludeOrPage
     extend IncludeResolver
     extend FieldParsers
+    extend ActsAsIndex
+    extend HasValidIndex
 
     # Identifying general_content is primarily a case of elimination.
     # We place general_content last among our content handlers as
@@ -70,9 +72,27 @@ module EzPub
         path = path + '/' unless path =~ /\/$/
       end
 
-      filepath = path
+      # Obliterate parent item (by stealing its key) as if this is the
+      # index.htm.
+      # This makes the safe assumption that the parent has already
+      # been declared.
 
-      $r.log_key(path)
+      filepath = path # save filepath in case of rekeying.
+
+      if acts_as_index? path
+        $r.rpush 'pseudo-keys', path
+
+        path = path._parentize
+
+        unless $r.exists(path)
+          raise Orphanity "During rekeying, #{path} attempted to rekey as parent which doesn't exist already."
+        end
+
+      else
+        # We only log the key if we're declaring a truly new object.
+        # (It's already been declared as a folder previously)
+        $r.log_key(path)
+      end
 
       $r.hset path, 'parent', parent_id(path)
 
