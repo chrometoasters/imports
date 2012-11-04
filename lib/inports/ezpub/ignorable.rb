@@ -35,10 +35,10 @@ module EzPub
         response = true
       end
 
-      # REMOVE ME!!!
-      if path =~ /gallery\.htm/i || path =~ /\/gallery-(\w|-|_)+\.htm$/i
-        response = true
-      end
+      # # REMOVE ME!!!
+      # if path =~ /gallery\.htm/i || path =~ /\/gallery-(\w|-|_)+\.htm$/i
+      #   response = true
+      # end
 
       response
     end
