@@ -52,6 +52,34 @@ module EzPub
     end
 
 
+    def self.find_parent(path)
+      parent = nil
+      if path =~ /\/student\-showcase\/Materials\//i
+        parent = $r.hget './input/student-showcase/index-materials-hard.htm', 'id'
+      end
+
+      if path =~ /\/student\-showcase\/materials-soft\//i
+        parent = $r.hget './input/student-showcase/index-materials-soft.htm', 'id'
+      end
+
+      if path =~ /\/student\-showcase\/Electronics\//i
+        parent = $r.hget './input/student-showcase/index-electronics.htm', 'id'
+      end
+
+      if path =~ /\/student\-showcase\/food\-and\-biological\//i
+        parent = $r.hget './input/student-showcase/index-food.htm', 'id'
+      end
+
+      if path =~ /\/student\-showcase\/ict\//i
+        parent = $r.hget './input/student-showcase/index-ict.htm', 'id'
+      end
+
+      if path =~ /\/student\-showcase\/Graphics\//i
+        parent = $r.hget './input/student-showcase/index-graphics.htm', 'id'
+      end
+    end
+
+
     def self.store(path)
       if has_valid_index? path
         path = path + '/' unless path =~ /\/$/
@@ -79,7 +107,13 @@ module EzPub
         $r.log_key(path)
       end
 
-      $r.hset path, 'parent', parent_id(path)
+      parent = find_parent(path)
+
+      if parent
+        $r.hset path, 'parent', parent
+      else
+        $r.hset path, 'parent', parent_id(path)
+      end
 
       $r.hset path, 'id', $r.get_id(path)
 
