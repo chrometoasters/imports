@@ -26,5 +26,6 @@ require './lib/inports/ezpub/general_content'
 require './lib/inports/ezpub/showcases_landing_page'
 require './lib/inports/ezpub/showcase'
 require './lib/inports/ezpub/snapshots_landing_page'
+require './lib/inports/ezpub/simple_gallery'
 
 require './lib/inports/ezpub/ignorable'
