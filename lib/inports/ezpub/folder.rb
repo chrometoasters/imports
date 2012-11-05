@@ -44,20 +44,11 @@ module EzPub
       # Rekey another item if this folder's index redirects to that item.
       if has_remote_index? path
 
-        puts 'has_remote index!'
-
-        puts  path + '     path'
-
         replacement = has_remote_index? path
-
-        puts replacement + '     replacement'
 
         # Check if its referent exists, if so, simply key as that item.
         # So that anything calling #parent_id gets its remote id.
         if $r.hget(replacement, 'id')
-
-          puts '     replacement id response:'
-          puts $r.hget(replacement, 'id')
 
           new_id = $r.hget(replacement, 'id')
 
@@ -81,8 +72,6 @@ module EzPub
           # now respect, and return.
 
           replacement_id = $r.get_id(replacement)
-
-          puts replacement_id + "     replacement's get_id"
 
           $r.hset replacement, 'id', replacement_id
 
