@@ -63,7 +63,7 @@ module EzPub
 
       $r.hset path, 'type', 'general_content'
 
-      $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,body:ezxmltext'
+      $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,body:ezxmltext,short_title:ezstring'
 
       $r.hset path, 'field_old_site_url', techlink_url(path + '#general_content')
 
@@ -78,6 +78,14 @@ module EzPub
       else
         $r.hset path, 'field_title', 'TITLE NOT FOUND'
         Logger.warning path, 'No title found'
+      end
+
+      short_title = generate_short_title(title, path)
+
+      if short_title
+        $r.hset path, 'field_title', short_title
+      else
+        $r.hset path, 'field_title', 'UNKNOWN TITLE'
       end
 
 

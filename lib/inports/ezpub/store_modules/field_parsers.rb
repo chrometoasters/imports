@@ -56,26 +56,25 @@ module FieldParsers
       title = doc.css('p.header-dk-blue').first.content.to_s
     end
 
-    #
-    # Example => ./input/curriculum-support/Teacher-Education/PTTER-framework/E1/E1A2.htm
-    # if doc.css('p.subhead.PTTER-element').first
-    #   if doc.css('p.PTTER-element').children
-    #     children = doc.css('p.PTTER-element').children
-    #     if children.css('span.subhead').first
-    #       children.css('span.subhead').first.content.to_s
-    #     end
-    #   else
-    #     nil
-    #   end
-    #end
-
     if doc.css('title').first
       title = doc.css('title').first.content.to_s
+    end
+
+    if title
+      title = title._sentence_case
     end
 
     title
   end
 
+
+  def generate_short_title(title, path)
+    if title =~ /:/
+      title = /:([^:]+)$/.match(title)[0]
+      title = title.gsub(/^\s|^\s:|^:|^\s:\s|^:\s/, '')
+    end
+    title
+  end
 
   # Make absolute, make non index, make downase.
 
@@ -152,6 +151,10 @@ module FieldParsers
       end
     end
 
+    if title
+      title = title._sentence_case
+    end
+
     title
   end
 
@@ -212,6 +215,11 @@ module FieldParsers
         end
       end
     end
+
+    if title
+      title = title._sentence_case
+    end
+
     title
   end
 
