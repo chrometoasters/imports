@@ -1,5 +1,5 @@
 class SanityCheck
-  def self.summary(file_name)
+  def self.summary(file_name, no_render = nil)
     file = File.open(file_name)
     str = file.read
     doc = Nokogiri::XML(str)
@@ -20,6 +20,8 @@ class SanityCheck
       puts $term.color("#{obj} => ", [:green]) + $term.color("#{count}", [:red, :on_white])
     end
 
+    puts
+
     warnings classes
 
     puts
@@ -30,11 +32,7 @@ class SanityCheck
 
     puts $term.color("Structure valid.", [:green])
 
-    # puts $term.color("Rendering as an html list.", [:green])
-
-    # path = render_as_list(file_name)
-
-    # puts $term.color("List available at #{path}", [:green])
+    path = render_as_list(file_name) unless no_render
 
   end
 
@@ -218,7 +216,7 @@ class SanityCheck
     i = h['showcase']
     i = 0 unless i
 
-    if i < 100
+    if i < 180
       puts $term.color("Only #{i} showcases", [:red])
     end
 
