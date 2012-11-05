@@ -29,7 +29,11 @@ module EzPub
         # Narrow down to the section
 
         if path =~ /student-showcase\/(\w|-|_)+\/(\w|-|_)+\.htm$/i
-          response = true
+
+          if path !~ /\/Scholarship\//i
+            response = true
+          end
+
         end
       end
 
@@ -54,29 +58,47 @@ module EzPub
 
     def self.find_parent(path)
       parent = nil
-      if path =~ /\/student\-showcase\/Materials\//i
-        parent = $r.hget './input/student-showcase/index-materials-hard.htm', 'id'
+      # Add to list now, if it's not already there.
+      # then the landing page can check if it's there...
+      # or maybe a generic check.
+
+      if path =~ /\/student\-showcase\/Materials\/(\w|-|_)+\.htm$/i
+        landing_page = './input/student-showcase/index-materials-hard.htm'
+        parent = $r.get_id landing_page
+        $r.log_key landing_page
       end
 
-      if path =~ /\/student\-showcase\/materials-soft\//i
-        parent = $r.hget './input/student-showcase/index-materials-soft.htm', 'id'
+      if path =~ /\/student\-showcase\/materials-soft\/(\w|-|_)+\.htm$/i
+        landing_page = './input/student-showcase/index-materials-soft.htm'
+        parent = $r.get_id landing_page
+        $r.log_key landing_page
       end
 
-      if path =~ /\/student\-showcase\/Electronics\//i
-        parent = $r.hget './input/student-showcase/index-electronics.htm', 'id'
+      if path =~ /\/student\-showcase\/Electronics\/(\w|-|_)+\.htm$/i
+        landing_page = './input/student-showcase/index-electronics.htm'
+        parent = $r.get_id landing_page
+        $r.log_key landing_page
       end
 
-      if path =~ /\/student\-showcase\/food\-and\-biological\//i
-        parent = $r.hget './input/student-showcase/index-food.htm', 'id'
+      if path =~ /\/student\-showcase\/food\-and\-biological\/(\w|-|_)+\.htm$/i
+        landing_page = './input/student-showcase/index-food.htm'
+        parent = $r.get_id landing_page
+        $r.log_key landing_page
       end
 
-      if path =~ /\/student\-showcase\/ict\//i
-        parent = $r.hget './input/student-showcase/index-ict.htm', 'id'
+      if path =~ /\/student\-showcase\/ict\/(\w|-|_)+\.htm$/i
+        landing_page = './input/student-showcase/index-ict.htm'
+        parent = $r.get_id landing_page
+        $r.log_key landing_page
       end
 
-      if path =~ /\/student\-showcase\/Graphics\//i
-        parent = $r.hget './input/student-showcase/index-graphics.htm', 'id'
+      if path =~ /\/student\-showcase\/Graphics\/(\w|-|_)+\.htm$/i
+        landing_page = './input/student-showcase/index-graphics.htm'
+        parent = $r.get_id landing_page
+        $r.log_key landing_page
       end
+
+      parent
     end
 
 
@@ -100,11 +122,6 @@ module EzPub
         unless $r.exists(path)
           raise Orphanity "During rekeying, #{path} attempted to rekey as parent which doesn't exist already."
         end
-
-      else
-        # We only log the key if we're declaring a truly new object.
-        # (It's already been declared as a folder previously)
-        $r.log_key(path)
       end
 
       parent = find_parent(path)
@@ -114,6 +131,13 @@ module EzPub
       else
         $r.hset path, 'parent', parent_id(path)
       end
+
+      # Handled differently here.
+      # We log the key after #find_parent since find_parent may be declaring the
+      # parent object, which needs to be first in the keys list.
+
+      $r.log_key(path)
+
 
       $r.hset path, 'id', $r.get_id(path)
 
