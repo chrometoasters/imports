@@ -75,7 +75,6 @@ module EzPub
       filepath = path # save filepath in case of rekeying.
 
       if acts_as_index? path
-        puts; puts '!!!!!!!!:  ' + path; puts
 
         $r.rpush 'pseudo-keys', path
 
