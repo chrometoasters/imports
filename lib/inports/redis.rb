@@ -78,7 +78,17 @@ class Redis
   # in the "keys" list.
 
   def log_key(k)
-    $r.rpush 'keys', k
+    k = k.downcase
+
+    # Logging a key is now idempotent.
+    #
+    # This isn't reflected in a number of the handlers,
+    # but can be safely assumed.
+
+    unless $r.sismember 'keys-set', k
+      $r.sadd 'keys-set', k
+      $r.rpush 'keys', k
+    end
   end
 
 
@@ -101,6 +111,7 @@ class Redis
     $r.del 'post_process'
     $r.del 'keys'
     $r.del 'pseudo-keys'
+    $r.del 'keys-set'
 
     # Attempt to delete unhandled sets in the event of a broken run.
     5.times {|i| $r.del "unhandled-#{i}"}
