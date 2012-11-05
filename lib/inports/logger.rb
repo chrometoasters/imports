@@ -13,7 +13,7 @@ module Logger
     log_file = './log/' + type.gsub(/\s|:/, '-').downcase + '.log'
 
     unless quiet
-      puts $term.color("#{type} => ", :cyan) + $term.color("#{path}", [:white, :on_magenta]) + $term.color(" ", [:white])
+      puts $term.color("#{type} => ", :cyan) + $term.color("#{path}", [:white, :on_magenta])
     end
 
     f = File.open(log_file, 'a')
