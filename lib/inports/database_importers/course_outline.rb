@@ -3,9 +3,11 @@ module DatabaseImporters
 
     DatabaseImporters::Importers::All << self
 
+    extend MediaPathHelper
+
 
     def self.get_data
-      FasterCSV.read(CONFIG['directories']['dbs'] + "/CourseOutlines.csv")
+      FasterCSV.read(CONFIG['directories']['dbs'] + "/CourseOutlines.csv")[1..-1]
     end
 
 
@@ -45,8 +47,6 @@ module DatabaseImporters
 
       $r.hset path, 'id', $r.get_id(path)
 
-      puts get_parent(a[3])
-
       $r.hset path, 'parent', get_parent(a[3])
 
       $r.hset path, 'priority', '0'
@@ -67,9 +67,9 @@ module DatabaseImporters
 
       file_path = $r.hget(mediaize_path(file_link.key, 'files'), 'field_file')
 
-      puts $r.hget(mediaize_path(file_link.key, 'files'), 'field_file')
-
-      $r.hset path, 'field_download_pdf', file_path
+      if file_path
+        $r.hset path, 'field_download_pdf', file_path
+      end
 
       # Register general content for post_processing.
       PostProcessor.register path

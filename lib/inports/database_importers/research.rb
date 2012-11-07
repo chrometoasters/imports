@@ -5,7 +5,7 @@ module DatabaseImporters
 
 
     def self.get_data
-      FasterCSV.read(CONFIG['directories']['dbs'] + "/TE_Research.csv")
+      FasterCSV.read(CONFIG['directories']['dbs'] + "/TE_Research.csv")[1..-1]
     end
 
 
