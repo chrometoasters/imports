@@ -31,9 +31,9 @@ module EzPub
         response = true
       end
 
-      if path.gsub(CONFIG['directories']['input'], '') =~ /^index(\-\w+(\-\w+)?)?\.html?$/
-        response = true
-      end
+      # if path.gsub(CONFIG['directories']['input'], '') =~ /^index(\-\w+(\-\w+)?)?\.html?$/
+      #   response = true
+      # end
 
       # if path =~ /\/images\/?/i || path =~ /\/resources\/?/i
       #   response = true
