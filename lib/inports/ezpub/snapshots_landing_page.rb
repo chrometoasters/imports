@@ -39,6 +39,7 @@ module EzPub
         'teaching-snapshot/Y01-06-Junior/',
         'teaching-snapshot/Y07-10-Middle/',
         'teaching-snapshot/Y12-13-Senior/',
+        'teaching-snapshot/Y11-Senior/',
       ]
 
       escaped_urls = []
