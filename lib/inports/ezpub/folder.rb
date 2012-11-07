@@ -58,8 +58,6 @@ module EzPub
           # $r.lrem 'keys', 1, path
           $r.rpush 'pseudo-keys', path
         else
-          puts 'no replacement!'
-
           unless page?(replacement)
             raise "Attempting a rekey but endpoint is not a page (#{replacement})"
           end
