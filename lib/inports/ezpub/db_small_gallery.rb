@@ -60,7 +60,7 @@ module EzPub
 
       # create gallery
       $r.log_key(path)
-      #$r.hset path, 'parent', parent_id(path)
+      $r.hset path, 'parent', parent_id(path)
 
       gallery_id = $r.get_id(path)
 
