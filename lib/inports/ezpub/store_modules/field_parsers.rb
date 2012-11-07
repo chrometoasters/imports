@@ -64,6 +64,8 @@ module FieldParsers
       title = title._sentence_case
     end
 
+    title = title.gsub('Teaching Snapshot: ', '')
+
     title
   end
 
