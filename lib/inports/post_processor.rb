@@ -37,7 +37,7 @@ module PostProcessor
       fields.each do |field|
         field.each do |name, type|
 
-          # We only post process ezxmltext fields.
+          # We only fully post process ezxmltext fields.
 
           if type == 'ezxmltext'
 
@@ -50,6 +50,8 @@ module PostProcessor
             Logger.warning k, "Postprocessed field #{name}", 'shh'
 
           elsif type == 'eztext'
+
+            # eztext fields get basic sanitization.
 
             text = $r.hget(k, 'field_' + name)
 
@@ -80,7 +82,8 @@ module PostProcessor
   def strip(str)
     if str
       str.gsub!('&#13;', "\n")
-      str.gsub(/\n\n/, "\n")
+      str.gsub!(/\n\n/, "\n")
+      str.gsub(/\302\240/, "")
     else
       str
     end
