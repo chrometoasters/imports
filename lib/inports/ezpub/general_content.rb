@@ -83,11 +83,8 @@ module EzPub
       short_title = generate_short_title(title, path)
 
       if short_title
-        $r.hset path, 'field_title', short_title
-      else
-        $r.hset path, 'field_title', 'UNKNOWN TITLE'
+        $r.hset path, 'field_short_title', short_title
       end
-
 
       body = get_body(@doc, path)
 
