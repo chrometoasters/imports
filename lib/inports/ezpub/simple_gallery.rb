@@ -1,7 +1,7 @@
 module EzPub
   class SimpleGallery < EzPub::Handler
-    # EzPub::HandlerSets::All << self
-    # EzPub::HandlerSets::Content << self
+    EzPub::HandlerSets::All << self
+    EzPub::HandlerSets::Content << self
 
     extend NameMaker
     extend IncludeResolver
@@ -11,7 +11,7 @@ module EzPub
 
 
     def self.priority
-      40
+      20
     end
 
 
@@ -32,8 +32,11 @@ module EzPub
 
 
     def self.store(path)
-      # Extract path for gallery manifest.
+      if has_valid_index? path
+        path = path + '/' unless path =~ /\/$/
+      end
 
+      # Extract path for gallery manifest.
       str = resolve_includes(path, :return => :string)
       gallery_path = %r{flashvars\.galleryURL[^"]+([^;]+)}.match(str)[1]
       gallery_path.gsub!('"', '')
@@ -54,7 +57,10 @@ module EzPub
       $r.hset path, 'priority', '0'
       $r.hset path, 'type', 'image_gallery'
       $r.hset path, 'fields', 'title:ezstring'
-      $r.hset path, 'field_title', resolve_includes(path, :return => :doc).css('title').first.content
+
+      gallery_title = resolve_includes(path, :return => :doc).css('title').first.content
+
+      $r.hset path, 'field_title', gallery_title
 
       PostProcessor.register path
 
@@ -71,6 +77,7 @@ module EzPub
       $r.hset collection_path, 'priority', '0'
       $r.hset collection_path, 'type', 'image_collection'
       $r.hset collection_path, 'fields', 'title:ezstring'
+      $r.hset collection_path, 'field_title', gallery_title
 
       PostProcessor.register collection_path
 
@@ -81,27 +88,37 @@ module EzPub
         priority += 1
 
         image_path = LinkHelpers.parse(image[:imageurl], path)
-        puts $r.hget mediaize_path(image_path.key, 'images'), 'field_image'
 
-        $r.log_key 'keys', image_path.key
+        file_path = $r.hget(mediaize_path(image_path.key, 'images'), 'field_image')
 
-        $r.hset image_path.key, 'id', $r.get_id(image_path.key)
-        $r.hset image_path.key, 'parent', collection_id
+        if file_path
 
-        $r.hset image_path.key, 'priority', priority
+          $r.log_key(image_path.key)
 
-        $r.hset image_path.key, 'type', 'image'
+          $r.hset image_path.key, 'id', $r.get_id(image_path.key)
+          $r.hset image_path.key, 'parent', collection_id
 
-        $r.hset image_path.key, 'fields', 'image:ezimage,name:ezstring,caption:ezxmltext'
+          $r.hset image_path.key, 'priority', priority
 
-        $r.hset image_path.key, 'field_image', $r.hget(mediaize_path(image_path.key, 'images'), 'field_image')
+          $r.hset image_path.key, 'type', 'image'
 
-        # make this conditional and if not found, use the normal namemaker helper.
-        $r.hset image_path.key, 'field_name', image.css('caption').first.content
+          $r.hset image_path.key, 'fields', 'image:ezimage,name:ezstring,caption:ezxmltext'
 
-        $r.hset image_path.key, 'field_caption', image.css('caption').first.content
 
-        PostProcessor.register image_path.key
+          $r.hset image_path.key, 'field_image', file_path
+
+          title = image.css('caption').first.content
+
+          unless title =~ /\w/
+            title = pretify_filename(file_path)
+          end
+
+          $r.hset image_path.key, 'field_name', title
+
+          $r.hset image_path.key, 'field_caption', title
+
+          PostProcessor.register image_path.key
+        end
       end
     end
 
