@@ -253,8 +253,16 @@ class SanityCheck
     i = h['showcase']
     i = 0 unless i
 
-    if i < 180
+    if i < 170
       puts $term.color("Only #{i} showcases", [:red])
+    end
+
+
+    i = h['course_outline_landing_page']
+    i = 0 unless i
+
+    if i < 4
+      puts $term.color("Only #{i} course_outline_landing_pages", [:red])
     end
 
 
@@ -265,5 +273,11 @@ class SanityCheck
       puts $term.color("Only #{i} snapshots_landing_pages", [:red])
     end
 
+    i = h['course_outline']
+    i = 0 unless i
+
+    if i < 20
+      puts $term.color("Only #{i} course_outline", [:red])
+    end
   end
 end
