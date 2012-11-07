@@ -5,7 +5,7 @@ SimpleTable = lambda do |env|
   return if env[:is_whitelisted] || !node.element?
 
   if name == 'table'
-    node[:class] = 'table-bordered'
+      node[:class] = node[:class] + ' table-bordered'
     node[:width] = '100%'
   end
 end
@@ -25,4 +25,82 @@ CaseStudiesTable = lambda do |env|
   end
 end
 
-Tables = [CaseStudiesTable, SimpleTable]
+# Keep the certain table classes.
+KeepTableClasses = lambda do |env|
+    node = env[:node]
+    name = env[:node_name]
+    return if env[:is_whitelisted] || !node.element?
+
+    classesToKeep = ["table-bordered", "PCS-Table", "footertable2", "progressiontable", "TechEdASTable", "unit-plan-table", "unit-plan-table-borders"]
+
+    if name == 'table' && node[:class]
+        classes = node[:class].split(' ')
+        node.remove_attribute 'class'
+
+        valid = classesToKeep & classes
+
+        unless valid == []
+            valid.sort! {|a,b| a <=> b}
+            valid_class = valid.join(' ')
+            node[:class] = valid_class
+        end
+
+        if valid.length > 1
+            Logger.warning "#{valid_class}", "Multiple table classes being added"
+        end
+    end
+end
+
+# Keep the certain tr classes.
+KeepTableRowClasses = lambda do |env|
+    node = env[:node]
+    name = env[:node_name]
+    return if env[:is_whitelisted] || !node.element?
+
+    classesToKeep = ["italics"]
+
+    if name == 'tr' && node[:class]
+        classes = node[:class].split(' ')
+        node.remove_attribute 'class'
+
+        valid = classesToKeep & classes
+
+        unless valid == []
+            valid.sort! {|a,b| a <=> b}
+            valid_class = valid.join(' ')
+            node[:class] = valid_class
+        end
+
+        if valid.length > 1
+            Logger.warning "#{valid_class}", "Multiple tr classes being added"
+        end
+    end
+end
+
+# Keep the certain td classes.
+KeepTableCellClasses = lambda do |env|
+    node = env[:node]
+    name = env[:node_name]
+    return if env[:is_whitelisted] || !node.element?
+
+    classesToKeep = ["cover-table-subsubhead"]
+
+    if name == 'td' && node[:class]
+        classes = node[:class].split(' ')
+        node.remove_attribute 'class'
+
+        valid = classesToKeep & classes
+
+        unless valid == []
+            valid.sort! {|a,b| a <=> b}
+            valid_class = valid.join(' ')
+            node[:class] = valid_class
+        end
+
+        if valid.length > 1
+            Logger.warning "#{valid_class}", "Multiple td classes being added"
+        end
+    end
+end
+
+Tables = [CaseStudiesTable, KeepTableClasses, KeepTableRowClasses, KeepTableRowClasses, KeepTableCellClasses]
