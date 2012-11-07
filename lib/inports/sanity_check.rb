@@ -54,13 +54,50 @@ class SanityCheck
       unless valid_parents.member? o[:parent_remote_id]
         puts $term.color("remote id: #{o[:remote_id]}", [:red])
         puts $term.color("parent remote id: #{o[:parent_remote_id]}", [:red])
+        puts $term.color(o[:name], :red)
+
+
+        if o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='title']").first
+          title = o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='title']").first.content
+          puts $term.color(title, :red)
+        end
+
+        if o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='old_ste_url']").first
+          title = o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='old_ste_url']").first.content
+          puts $term.color(title, :red)
+        end
+
+        if o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='name']").first
+          title = o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='name']").first.content
+          puts $term.color(title, :red)
+        end
+
         raise Orphanity, "Orphan found in xml output"
       end
 
       if objects.member? o[:remote_id]
         puts $term.color("remote id: #{o[:remote_id]}", [:red])
         puts $term.color("parent remote id: #{o[:parent_remote_id]}", [:red])
-        raise Redclaration, "Declaring an remote_id that was previously declared."
+        puts $term.color(o[:name], :red)
+
+
+        if o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='title']").first
+          title = o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='title']").first.content
+          puts $term.color(title, :red)
+        end
+
+        if o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='old_ste_url']").first
+          title = o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='old_ste_url']").first.content
+          puts $term.color(title, :red)
+        end
+
+
+        if o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='name']").first
+          title = o.xpath("//object[@remote_id='#{o[:remote_id]}']/attribute[@name='name']").first.content
+          puts $term.color(title, :red)
+        end
+
+        raise Redclaration, "Declaring a remote_id that was previously declared."
       end
 
       valid_parents << o[:remote_id]
