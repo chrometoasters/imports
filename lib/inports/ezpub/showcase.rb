@@ -12,6 +12,7 @@ module EzPub
     extend TechlinkUrl
     extend HasValidIndex
     extend ActsAsIndex
+    extend Descriptions
 
     # Identifying general_content is primarily a case of elimination.
     # We place general_content last among our content handlers as
@@ -145,7 +146,7 @@ module EzPub
 
       $r.hset path, 'type', 'showcase'
 
-      $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,image:ezimage,body:ezxmltext'
+      $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,description:ezxmltextimage:ezimage,body:ezxmltext'
 
       $r.hset path, 'field_old_site_url', techlink_url(path + '#showcase')
 
@@ -155,11 +156,19 @@ module EzPub
 
       title = get_title(@doc, path)
 
+      title = title.gsub('Student Showcase: ', '')
+
       if title
         $r.hset path, 'field_title', title
       else
         $r.hset path, 'field_title', 'SHOWCASE TITLE NOT FOUND'
         Logger.warning path, 'No title found'
+      end
+
+      description = get_db_description(path)
+
+      if description
+        $r.hset path, 'field_description', description
       end
 
       image_path = get_showcase_image_path(@doc, path)

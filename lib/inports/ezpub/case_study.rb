@@ -12,6 +12,7 @@ module EzPub
     extend TechlinkUrl
     extend HasValidIndex
     extend ActsAsIndex
+    extend Descriptions
 
     # Identifying general_content is primarily a case of elimination.
     # We place general_content last among our content handlers as
@@ -110,7 +111,7 @@ module EzPub
 
       $r.hset path, 'type', 'case_study'
 
-      $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,cover_image:ezimage,body:ezxmltext,category:ezstring,year_level:ezstring,case_study_date:ezstring'
+      $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,cover_image:ezimage,body:ezxmltext,description:ezxmltext,category:ezstring,year_level:ezstring,case_study_date:ezstring'
 
       $r.hset path, 'field_old_site_url', techlink_url(path + '#case_study')
 
@@ -148,6 +149,12 @@ module EzPub
       else
         $r.hset path, 'field_body', 'BODY NOT FOUND'
         Logger.warning path, 'Body not found'
+      end
+
+      description = get_db_description(path)
+
+      if description
+        $r.hset path, 'field_description', description
       end
 
       # Register general content for post_processing.
