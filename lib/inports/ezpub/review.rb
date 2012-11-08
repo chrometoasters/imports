@@ -11,8 +11,6 @@ module EzPub
     extend ImportPathHelper
     extend ActsAsIndex
 
-    # Identifying general_content is primarily a case of elimination.
-    # We place general_content last among our content handlers as
 
     def self.priority
       25

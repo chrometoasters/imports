@@ -147,4 +147,39 @@ HRToCustomTag = lambda do |env|
     end
 end
 
-Styles = [EmToEmphasize, GlossaryBoxToCustomTag, RoundBoxToCustomTag, RoundBox275ToCustomTag, SplitRightToCustomTag, TSStrategyToCustomTag, PDFRightToCustomTag, BlueBoxLowToCustomTag,BlueBox3ToCustomTag, GreenTogreen, ULLinksToCustomTag, HRToCustomTag]
+# <div style="float:left; width:210px;"> => <custom name="container-left"
+FloatLeftStyleToCustomTag = lambda do |env|
+    node = env[:node]
+    name = env[:node_name]
+    return if env[:is_whitelisted] || !node.element?
+
+    if name == 'div' && node[:style] =~ /float:\s*left/
+        node.name = 'custom'
+        node[:name] = 'container-left'
+    end
+end
+
+# <div style="float:right; width:240px; margin-bottom:15px;"> => <custom name="container-right"
+FloatRightStyleToCustomTag = lambda do |env|
+    node = env[:node]
+    name = env[:node_name]
+    return if env[:is_whitelisted] || !node.element?
+
+    if name == 'div' && node[:style] =~ /float:\s*right/
+        node.name = 'custom'
+        node[:name] = 'container-right'
+    end
+end
+
+# (formerly <a href="#top">Back to top</a>)<link href="#top"> => <custom name="backtotop">
+BackToTopToCustomTag = lambda do |env|
+    node = env[:node]
+    name = env[:node_name]
+    return if env[:is_whitelisted] || !node.element?
+
+    if name == 'link' && node[:href] == '#top'
+        node.replace "<custom name='backtotop'></custom>"
+    end
+end
+
+Styles = [EmToEmphasize, GlossaryBoxToCustomTag, RoundBoxToCustomTag, RoundBox275ToCustomTag, SplitRightToCustomTag, TSStrategyToCustomTag, PDFRightToCustomTag, BlueBoxLowToCustomTag,BlueBox3ToCustomTag, GreenTogreen, ULLinksToCustomTag, HRToCustomTag, FloatLeftStyleToCustomTag, FloatRightStyleToCustomTag, BackToTopToCustomTag]

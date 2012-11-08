@@ -17,8 +17,11 @@ class Sanitize
         'table' => ['class', 'width', 'border'],
         'tr' => ['class'],
         'td' => ['colspan', 'class'],
-        'embed' => ['size', 'object_id'],
+        'embed' => ['size', 'object_id', 'align', 'custom:lightbox'],
         'embed-inline' => ['view', 'size', 'object_id'],
+        'strong' => ['class'],
+        'ul' => ['class'],
+        'paragraph' => ['class'],
       },
 
       :add_attributes => {

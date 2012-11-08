@@ -23,11 +23,35 @@ module EzPub
         response = true
       end
 
-      if path =~ /\/print.htm$/
+      if path =~ /\/print.htm$/i
         response = true
       end
 
-      if path =~ /teaching-snapshot\/Audio_Snapshots/
+      if path =~ /teaching-snapshot\/Audio_Snapshots/i
+        response = true
+      end
+
+      if path =~ /\/svcore\/|\/svcore/i
+        response = true
+      end
+
+      if path =~ /\/simpleviewer.swf/i
+        response = true
+      end
+
+      if path == /\/Print-PDFs\/|\/Print-PDFs/i
+        response = true
+      end
+
+      if path == /\/menunav\/|\/menunav/i
+        response = true
+      end
+
+      if path == /\/thumbs\/|\/thumbs/i
+        response = true
+      end
+
+      if path == /\/images\/|\/images/i
         response = true
       end
 
@@ -45,17 +69,24 @@ module EzPub
 
     def self.regex_list
       tailed_urls = [
-        'interview.htm', 'tdl.html', 'about.htm', 'google.htm', 'index-wide.htm', 'copyright popups.html',
-        'latest-TS.htm', 'index-teachers-wide.htm', 'subscribe.htm', 'Event.htm', 'Item.htm', 'accessibility.htm',
-        'Teacher_Education/In-service/Ask-an-expert', 'career.htm', 'contact.htm', 'copyright popups.html',
-        'disclaimer.htm', 'error.htm', 'feedback.htm', 'glossary.htm', 'glossaryItem.htm', 'glossarylist-enhanced.htm',
+        'interview.htm', 'tdl.html', 'about.htm', 'index-teachers.htm', 'google.htm',
+        'index-wide.htm', 'index-student-wide.htm',
+        'copyright popups.html', 'AAS.htm',
+        'latest-TS.htm', 'index-teachers-wide.htm', 'subscribe.htm', 'Event.htm', 'Item.htm',
+        'accessibility.htm',
+        'Teacher_Education/In-service/Ask-an-expert', 'career.htm', 'contact.htm',
+        'copyright popups.html',
+        'disclaimer.htm', 'error.htm', 'feedback.htm', 'glossary.htm', 'glossaryItem.htm',
+        'glossarylist-enhanced.htm',
         'glossarylist.htm', 'sitemap.htm', 'subscribe.htm', 'tbd-assessment.html',
       ]
 
       bucket_urls = [
         'ts', 'tki', 'styles',
-        'people-in-technology', 'parents', 'latest-news', 'images', 'gallery-images', 'TPP', 'Right-links',
-        'Resources', 'RSS', 'PTTER-framework', 'Navigation', 'Media', 'scholarship', 'Teacher_Education/Research',
+        'people-in-technology', 'parents', 'latest-news', 'images', 'gallery-images', 'TPP',
+        'Right-links',
+        'Resources', 'RSS', 'PTTER-framework', 'Navigation', 'Media', 'scholarship',
+        'Teacher_Education/Research',
         'Teacher_Education/Publications'
       ]
 

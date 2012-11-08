@@ -15,7 +15,7 @@ RemoveEmptyParagraphs = lambda do |env|
   name = env[:node_name]
   return if env[:is_whitelisted] || !node.element?
 
-  if name == 'paragraph'
+  if name == 'paragraph' && !node.child
     node.remove unless node.text =~ /\d|\w/
   end
 end
@@ -26,7 +26,7 @@ KeepParagraphClasses = lambda do |env|
     name = env[:node_name]
     return if env[:is_whitelisted] || !node.element?
 
-    classesToKeep = ["small", "Red", "gallery-head"]
+    classesToKeep = ["small", "Red", "gallery-head", "margin-left"]
 
     if ( name == 'paragraph' || name == 'p')  && node[:class]
         classes = node[:class].split(' ')
@@ -46,4 +46,28 @@ KeepParagraphClasses = lambda do |env|
     end
 end
 
-Paragraphs = [KeepParagraphClasses, PToParagraph, RemoveEmptyParagraphs]
+# Convert <div id="case-nav">Case Study CP909: Healthy, funky, saleable lunches</div> to <p class="reference-heading">Case Study CP909: Healthy, funky, saleable lunches</p>
+CaseNavDivToReferenceHeading = lambda do |env|
+    node = env[:node]
+    name = env[:node_name]
+    return if env[:is_whitelisted] || !node.element?
+
+    if name == 'div' && node[:id] == 'case-nav'
+      node.name = 'paragraph'
+      node[:class] = 'reference-heading'
+    end
+end
+
+# convert <p style="margin-left:15px;"> to <paragraph class="margin-left">
+PStyleToMarginLeft = lambda do |env|
+    node = env[:node]
+    name = env[:node_name]
+    return if env[:is_whitelisted] || !node.element?
+    if name == 'p' && node[:style] =~ /margin-left:/
+        node.name = 'paragraph'
+        node[:class] = 'margin-left'
+    end
+end
+
+
+Paragraphs = [PStyleToMarginLeft, KeepParagraphClasses, PToParagraph, RemoveEmptyParagraphs, CaseNavDivToReferenceHeading]

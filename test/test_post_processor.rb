@@ -19,6 +19,9 @@ class TestPostProcessor < MiniTest::Unit::TestCase
     $r.hset mediaize_path('./test/mocks/some_path/context/609-resources2.jpg', 'images'), 'id', $r.get_id
     $r.log_key mediaize_path('./test/mocks/some_path/context/609-resources2.jpg', 'images')
 
+    $r.hset mediaize_path('./test/mocks/Case-studies/Classroom-practice/Electronics/BP609-remote-controlled-electronic-robots/images/609-resources2-large.jpg', 'images'), 'id', $r.get_id
+    $r.log_key mediaize_path('./test/mocks//Case-studies/Classroom-practice/Electronics/BP609-remote-controlled-electronic-robots/images/609-resources2-large.jpg', 'images')
+
     file = File.open('./test/mocks/example_source_content.htm')
     @converted = to_ezp(file.read, :path => './test/mocks/some_path/context/')
   end
@@ -137,5 +140,9 @@ class TestPostProcessor < MiniTest::Unit::TestCase
 
   def test_relative_image_resolved
     assert_match 'object_id="074be90af66f157223e71ace9b4e0319"', @converted
+  end
+
+  def test_lightbox_image_selects_larger_image
+    assert_match 'object_id="8fea406115865c060932116f701e60e2"', @converted
   end
 end

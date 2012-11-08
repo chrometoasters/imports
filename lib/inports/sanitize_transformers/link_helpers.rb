@@ -91,8 +91,6 @@ class LinkHelpers
 
     end
 
-
-
     response
   end
 end

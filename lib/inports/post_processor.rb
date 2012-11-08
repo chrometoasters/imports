@@ -83,7 +83,10 @@ module PostProcessor
     if str
       str.gsub!('&#13;', "\n")
       str.gsub!(/\n\n/, "\n")
-      str.gsub(/\302\240/, "")
+      # these are '&nbsp;'s
+      str.gsub!(/\302\240/, "")
+      # client request: convert snap lock instances to resealble - copyright stuff
+      str.gsub(/snap(\s|-|)lock/, "resealable")
     else
       str
     end

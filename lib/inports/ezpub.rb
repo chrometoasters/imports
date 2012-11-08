@@ -31,5 +31,6 @@ require './lib/inports/ezpub/simple_gallery'
 require './lib/inports/ezpub/db_large_gallery'
 require './lib/inports/ezpub/db_small_gallery'
 require './lib/inports/ezpub/course_outline_landing_page'
+require './lib/inports/ezpub/in_tree_file'
 
 require './lib/inports/ezpub/ignorable'

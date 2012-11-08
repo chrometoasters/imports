@@ -51,6 +51,18 @@ KeepTableClasses = lambda do |env|
     end
 end
 
+# Remove <tr>s with class hide
+RemoveHiddenTableRows = lambda do |env|
+    node = env[:node]
+    name = env[:node_name]
+    return if env[:is_whitelisted] || !node.element?
+
+    if name == 'tr' && node[:class] == 'hide'
+        node.remove
+    end
+end
+
+
 # Keep the certain tr classes.
 KeepTableRowClasses = lambda do |env|
     node = env[:node]
@@ -103,4 +115,4 @@ KeepTableCellClasses = lambda do |env|
     end
 end
 
-Tables = [CaseStudiesTable, KeepTableClasses, KeepTableRowClasses, KeepTableRowClasses, KeepTableCellClasses]
+Tables = [CaseStudiesTable, KeepTableClasses, RemoveHiddenTableRows, KeepTableRowClasses, KeepTableRowClasses, KeepTableCellClasses]

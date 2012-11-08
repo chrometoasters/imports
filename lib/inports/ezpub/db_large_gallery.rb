@@ -40,7 +40,7 @@ module EzPub
       # Extract id for gallery lookup.
       doc = resolve_includes(path, :return => :doc)
 
-      case_study_id = doc.xpath("//cfparam").first[:default]
+      case_study_id = doc.xpath("//cfparam[@name='CaseStudyID']").first[:default]
 
       # Get images.
       images = []
@@ -99,6 +99,12 @@ module EzPub
         image_path = LinkHelpers.parse("/images/gallery/#{image[2]}", path)
 
         file_path = $r.hget(mediaize_path(image_path.key, 'images'), 'field_image')
+
+        unless file_path
+          image_path = LinkHelpers.parse("/images/img/#{image[5]}", path)
+
+          file_path = $r.hget(mediaize_path(image_path.key, 'images'), 'field_image')
+        end
 
         image_path = image_path.key + '::' + collection_id
 

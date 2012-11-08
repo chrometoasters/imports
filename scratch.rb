@@ -1,6 +1,6 @@
 require './lib/inports'
 
-# $r.kill_keys
+$r.kill_keys
 
 # #puts EzPub::File.mine?('./input/curriculum-support/Teacher-Education/PTTER-framework/E1/E1A2.htm')
 
@@ -25,23 +25,81 @@ require './lib/inports'
 
 
 
+# @p = Processor.new
+# puts @p.list
+# path = @p.to_xml :name => 'techlink-content'
+
+
+
 
 # str = StringFromPath.get_case_insensitive('./input/Case-studies/Technological-practice/Soft-Materials/Conscious-Cloth/index.htm')
 
 
 # puts to_ezp(str, :config => Sanitize::InportConfig::EZXML)
 
-path = './input/curriculum-support/indicators/practice/'
+# module EzPub
+#   class Handler
+#     class << self
+#       def parent_id(path)
+#         'abc'
+#       end
+#     end
+#   end
+# end
+
+# @p = Processor.new
+
+# FasterCSV.read(CONFIG['directories']['dbs'] + "/CourseOutlines.csv").each do |row|
+#   puts row[0]
+# end
 
 
-puts EzPub::GeneralContent.mine?(path)
-EzPub::GeneralContent.store(path)
+paths = [
+        './input/navigation',
+        # './input/teaching-snapshot/Y01-06-Junior/',
+        # './input/teaching-snapshot/Y07-10-Middle/',
+        # './input/teaching-snapshot/Y12-13-Senior/',
+  ]
 
-include PostProcessor
-post_process
+paths.each do |path|
+  puts EzPub::Ignorable.mine?(path)
+  # EzPub::DBSmallGallery.store(path)
+  # include PostProcessor
+  # post_process
 
-puts $r.hget(path, 'field_title')
-puts $r.hget(path, 'field_body')
+  # puts $r.hget(path, 'field_title')
+  # puts $r.hget(path, 'field_body')
+  # puts $r.hget(path, 'field_image')
+  #puts $r.hget(path, 'field_curriculum_links')
+end
+
+# include ActsAsIndex
+# puts acts_as_index? './input/teaching-snapshot/ts.htm'
+
+# puts has_remote_index? './input/student-showcase/Materials/'
+
+
+
+# @p = Processor.new
+# @p.to_xml :name => 'techlink-content-only.xml'
+
+# SanityCheck.render_as_list './output/xml/techlink-content-only.xml'
+
+# paths.each do |path|
+#   puts @p.handle path
+# end
+
+
+
+# SanityCheck.summary './output/xml/techlink-content.xml'
+
+
+
+
+
+
+
+
 
 # puts $r.hget(path, 'field_body')
 

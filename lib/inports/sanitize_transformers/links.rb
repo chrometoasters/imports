@@ -46,6 +46,19 @@ ExternalLink = lambda do |env|
 end
 
 
+# remove links to the glossary
+RemoveGlossaryLink = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if name == 'a' && node[:href] =~  /[^:]+glossaryitem.htm/i
+  puts node.text
+
+    node.replace node.text
+  end
+end
+
 # <a href="/somehwere/internal.htm"></a> => <link href="eznode://0f2d5c080f60022be272ff2fd911cbca"></link>
 # <a href="internal.htm"></a> => <link href="eznode://0f2d5c080f60022be272ff2fd911cbca"></link>
 InternalLink = lambda do |env|
@@ -114,4 +127,4 @@ MediaLink = lambda do |env|
 end
 
 
-Links = [AnchorEndPoint, AnchorLink, Mail, MediaLink, InternalLink, ExternalLink]
+Links = [AnchorEndPoint, AnchorLink, Mail, RemoveGlossaryLink, MediaLink, InternalLink, ExternalLink]
