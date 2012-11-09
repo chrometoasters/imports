@@ -121,7 +121,7 @@ module EzPub
       if ease
         $r.hset path, 'field_ease_of_use', ease
       else
-        $r.hset path, 'field_content', ''
+        $r.hset path, 'field_ease_of_use', ''
         Logger.warning path, 'Content element not found'
       end
 
@@ -131,7 +131,7 @@ module EzPub
       if rating
         $r.hset path, 'field_rating', rating
       else
-        $r.hset path, 'field_content', ''
+        $r.hset path, 'field_rating', ''
         Logger.warning path, 'Content element not found'
       end
 
@@ -141,7 +141,7 @@ module EzPub
       if accessibility
         $r.hset path, 'field_accessibility', accessibility
       else
-        $r.hset path, 'field_content', ''
+        $r.hset path, 'field_accessibility', ''
         Logger.warning path, 'Content element not found'
       end
 
