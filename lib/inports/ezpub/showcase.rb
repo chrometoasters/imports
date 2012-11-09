@@ -146,7 +146,7 @@ module EzPub
 
       $r.hset path, 'type', 'showcase'
 
-      $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,description:ezxmltextimage:ezimage,body:ezxmltext'
+      $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,description:ezxmltext,image:ezimage,body:ezxmltext'
 
       $r.hset path, 'field_old_site_url', techlink_url(path + '#showcase')
 
