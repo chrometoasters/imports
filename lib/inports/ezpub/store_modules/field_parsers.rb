@@ -12,6 +12,9 @@ module FieldParsers
     elsif doc.css('div#noright-content').first
       doc.css('div#noright-content').first.to_s
 
+    elsif doc.css('div#fullwidth-contentcontainer').first
+      doc.css('div#fullwidth-contentcontainer').first.to_s
+
     else
       nil
     end
@@ -65,6 +68,7 @@ module FieldParsers
     end
 
     title = title.gsub('Teaching Snapshot: ', '')
+    title = title.gsub(/^\s/, '')
 
     title
   end
@@ -75,6 +79,7 @@ module FieldParsers
       title = /:([^:]+)$/.match(title)[0]
       title = title.gsub(/^\s|^\s:|^:|^\s:\s|^:\s/, '')
     end
+    title = title.gsub(/^\s/, '')
     title
   end
 
@@ -157,6 +162,8 @@ module FieldParsers
       title = title._sentence_case
     end
 
+    title = title.gsub(/^\s/, '')
+
     title
   end
 
@@ -222,6 +229,8 @@ module FieldParsers
       title = title._sentence_case
     end
 
+    title = title.gsub(/^\s/, '')
+
     title
   end
 
@@ -242,7 +251,7 @@ module FieldParsers
 
   def get_case_study_landing_page_title(doc, path)
     if doc.css('title').first
-      doc.css('title').first.content.to_s
+      doc.css('title').first.content.to_s.gsub(/^\s/, '')
     end
   end
 
@@ -251,6 +260,7 @@ module FieldParsers
     if doc.css('p.header').first
       title = doc.css('p.header').first.content.to_s
       title.gsub!("\r\n", ' ')
+      title = title.gsub(/^\s/, '')
       title.gsub("\342\200\223", '')
     end
   end
