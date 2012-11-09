@@ -22,7 +22,7 @@ module EzPub
 
       unless ::File.directory? path
 
-        exts = /\.#{EZP_ICON_BINARY_EXTENSIONS.join('$|\.')}/i
+        exts = /\.#{EZP_ICON_BINARY_EXTENSIONS.join('$|\.')}$/i
 
         if exts.match(path.downcase)
 
