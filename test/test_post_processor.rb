@@ -10,8 +10,7 @@ class TestPostProcessor < MiniTest::Unit::TestCase
 
     CONFIG['directories']['input'] = './test/mocks/'
 
-
-    # 8fea406115865c060932116f701e60e2
+    # 8238101f03021090a2799fcf145103c3
     $r.hset mediaize_path('./test/mocks/Case-studies/Classroom-practice/Electronics/BP609-remote-controlled-electronic-robots/images/609-resources2.jpg', 'images'), 'id', $r.get_id
     $r.log_key mediaize_path('./test/mocks/Case-studies/Classroom-practice/Electronics/BP609-remote-controlled-electronic-robots/images/609-resources2.jpg', 'images')
 
@@ -19,8 +18,9 @@ class TestPostProcessor < MiniTest::Unit::TestCase
     $r.hset mediaize_path('./test/mocks/some_path/context/609-resources2.jpg', 'images'), 'id', $r.get_id
     $r.log_key mediaize_path('./test/mocks/some_path/context/609-resources2.jpg', 'images')
 
+    # 8fea406115865c060932116f701e60e2
     $r.hset mediaize_path('./test/mocks/Case-studies/Classroom-practice/Electronics/BP609-remote-controlled-electronic-robots/images/609-resources2-large.jpg', 'images'), 'id', $r.get_id
-    $r.log_key mediaize_path('./test/mocks//Case-studies/Classroom-practice/Electronics/BP609-remote-controlled-electronic-robots/images/609-resources2-large.jpg', 'images')
+    $r.log_key mediaize_path('./test/mocks/Case-studies/Classroom-practice/Electronics/BP609-remote-controlled-electronic-robots/images/609-resources2-large.jpg', 'images')
 
     file = File.open('./test/mocks/example_source_content.htm')
     @converted = to_ezp(file.read, :path => './test/mocks/some_path/context/')
@@ -134,7 +134,7 @@ class TestPostProcessor < MiniTest::Unit::TestCase
 
 
   def test_image_id_resolved
-    assert_match 'object_id="8238101f03021090a2799fcf145103c3"', @converted
+    assert_match 'object_id="8fea406115865c060932116f701e60e2"', @converted
   end
 
 
@@ -143,6 +143,6 @@ class TestPostProcessor < MiniTest::Unit::TestCase
   end
 
   def test_lightbox_image_selects_larger_image
-    assert_match 'object_id="8fea406115865c060932116f701e60e2"', @converted
+    assert_match 'object_id="8238101f03021090a2799fcf145103c3"', @converted
   end
 end

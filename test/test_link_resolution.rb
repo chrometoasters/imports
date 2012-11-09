@@ -34,7 +34,6 @@ class TestLinkResolution < MiniTest::Unit::TestCase
     $r.hset './test/mocks/what.htm', 'id', $r.get_id
     $r.log_key './test/mocks/what.htm'
 
-
     file = File.open('./test/mocks/has_links.htm')
     @converted_1 = to_ezp(file.read, :path => './test/mocks/has_links.htm')
 
