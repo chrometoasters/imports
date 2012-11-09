@@ -65,6 +65,8 @@ module EzPub
     def self.strip_redundant_content(doc)
       if doc.css('table.cover-table').count == 2
         doc.css('table.cover-table').first.remove
+
+        doc.css('table').first.next_sibling.remove
       end
 
       doc.css('img').each do |img|
@@ -111,7 +113,7 @@ module EzPub
 
       $r.hset path, 'type', 'case_study'
 
-      $r.hset path, 'fields', 'old_site_url:ezstring,title:ezstring,cover_image:ezimage,body:ezxmltext,description:ezxmltext,category:ezstring,year_level:ezstring,case_study_date:ezstring'
+      $r.hset path, 'fields', 'old_site_url:ezstring,section:ezstring,title:ezstring,cover_image:ezimage,body:ezxmltext,description:ezxmltext,category:ezstring,year_level:ezstring,case_study_date:ezstring'
 
       $r.hset path, 'field_old_site_url', techlink_url(path + '#case_study')
 
@@ -136,9 +138,21 @@ module EzPub
 
       details = get_case_study_details(@doc, path)
 
-      $r.hset path, 'field_category', details[:category] || 'CATEGORY NOT FOUND'
-      $r.hset path, 'field_year_level', details[:level] || 'LEVEL NOT FOUND'
-      $r.hset path, 'field_case_study_date', details[:date] || 'DATE NOT FOUND'
+      $r.hset path, 'field_category', details[:category]._sentence_case || 'CATEGORY NOT FOUND'
+      $r.hset path, 'field_year_level', details[:level]._sentence_case || 'LEVEL NOT FOUND'
+      $r.hset path, 'field_case_study_date', details[:date]._sentence_case || 'DATE NOT FOUND'
+
+      section= nil
+
+      if path =~ /Classroom-practice/i
+        section = 'Classroom practice case study'
+      end
+
+      if path =~ /Technological-practice/i
+        section = 'Technologists\' practice'
+      end
+
+      $r.hset path, 'field_section', section || 'SECTION NOT FOUND'
 
       # Keep body last as it kills nodes required by other field getters.
 
