@@ -10,6 +10,20 @@ PToParagraph = lambda do |env|
 end
 
 
+QuoteStyleForParagraph = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if name == 'div' && node[:class] == 'quote'
+    node.children.css('paragraph').each do |p|
+      p[:class] = 'quote'
+    end
+  end
+end
+
+
+
 RemoveEmptyParagraphs = lambda do |env|
   node = env[:node]
   name = env[:node_name]
@@ -26,7 +40,7 @@ KeepParagraphClasses = lambda do |env|
     name = env[:node_name]
     return if env[:is_whitelisted] || !node.element?
 
-    classesToKeep = ["small", "Red", "gallery-head", "margin-left"]
+    classesToKeep = ["small", 'quote,' "Red", "gallery-head", "margin-left"]
 
     if ( name == 'paragraph' || name == 'p')  && node[:class]
         classes = node[:class].split(' ')
@@ -70,4 +84,4 @@ PStyleToMarginLeft = lambda do |env|
 end
 
 
-Paragraphs = [PStyleToMarginLeft, KeepParagraphClasses, PToParagraph, RemoveEmptyParagraphs, CaseNavDivToReferenceHeading]
+Paragraphs = [PStyleToMarginLeft, KeepParagraphClasses, PToParagraph, QuoteStyleForParagraph, RemoveEmptyParagraphs, CaseNavDivToReferenceHeading]

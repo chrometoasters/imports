@@ -26,6 +26,25 @@ RemoveHeader = lambda do |env|
 end
 
 
+#<div id="footer-brown-papernav">Introduction | <a href="page2.htm">Technological Practice </a><br />
+#<a href="page3.htm">Nature of Technology</a> | <a href="page4.htm">Technological Knowledge</a></div>
+#</div>
+
+RemoveFooterNav = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if node.name == 'div' && node[:id] == 'footer-brown-papernav'
+    node.remove
+  end
+
+  if node.name == 'div' && node[:id] == 'footer-brown'
+    node.remove
+  end
+end
+
+
 # Kill if style="display:none;"
 RemoveHiddenElements = lambda do |env|
   node = env[:node]
@@ -33,6 +52,16 @@ RemoveHiddenElements = lambda do |env|
   return if env[:is_whitelisted] || !node.element?
 
   if node[:style] == 'display:none;'
+    node.remove
+  end
+end
+
+RemoveNoScript = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if node.name == 'noscript'
     node.remove
   end
 end
@@ -51,5 +80,5 @@ end
 
 
 
-Removers = [RemoveTitle, RemoveHeader, RemoveHiddenElements, RemoveQueries]
+Removers = [RemoveFooterNav, RemoveTitle, RemoveNoScript, RemoveHeader, RemoveHiddenElements, RemoveQueries]
 

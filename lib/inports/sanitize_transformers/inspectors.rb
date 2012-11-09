@@ -21,15 +21,15 @@
 #   end
 # end
 
-ClassAttributeInspector = lambda do |env|
-  node = env[:node]
-  name = env[:node_name]
-  return if env[:is_whitelisted] || !node.element?
+# ClassAttributeInspector = lambda do |env|
+#   node = env[:node]
+#   name = env[:node_name]
+#   return if env[:is_whitelisted] || !node.element?
 
-  if node[:class]
-    $r.sadd 'examples', "#{env[:config][:path]} => <#{node.name}>  =>  #{node[:class]}"
-    $r.sadd 'classes', "<#{node.name}>  =>  #{node[:class]}"
-  end
-end
+#   if node[:class]
+#     $r.sadd 'examples', "#{env[:config][:path]} => <#{node.name}>  =>  #{node[:class]}"
+#     $r.sadd 'classes', "<#{node.name}>  =>  #{node[:class]}"
+#   end
+# end
 
-Inspectors = [ClassAttributeInspector]
+# Inspectors = [ClassAttributeInspector]

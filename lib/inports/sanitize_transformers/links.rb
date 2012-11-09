@@ -46,18 +46,41 @@ ExternalLink = lambda do |env|
 end
 
 
+InternaliseTechlinkLinks = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if name == 'a' && node[:href] =~  /http:\/\/(www\.)?techlink\.org\.nz(.+)/i
+    match = /http:\/\/(www\.)?techlink\.org\.nz(.+)/.match(node[:href])
+    node[:href] = match[2] if match[2]
+  end
+end
+
+
 # remove links to the glossary
 RemoveGlossaryLink = lambda do |env|
   node = env[:node]
   name = env[:node_name]
   return if env[:is_whitelisted] || !node.element?
 
-  if name == 'a' && node[:href] =~  /[^:]+glossaryitem.htm/i
-  puts node.text
-
+  if name == 'a' && node[:href] =~  /[^:]+glossaryitem\.htm/i
     node.replace node.text
   end
 end
+
+
+# remove links to the glossary
+RemoveItemLink = lambda do |env|
+  node = env[:node]
+  name = env[:node_name]
+  return if env[:is_whitelisted] || !node.element?
+
+  if name == 'a' && node[:href] =~  /[^:]+item\.htm/i
+    node.replace node.text
+  end
+end
+
 
 # <a href="/somehwere/internal.htm"></a> => <link href="eznode://0f2d5c080f60022be272ff2fd911cbca"></link>
 # <a href="internal.htm"></a> => <link href="eznode://0f2d5c080f60022be272ff2fd911cbca"></link>
@@ -112,7 +135,11 @@ MediaLink = lambda do |env|
 
       node.name = 'link'
 
-      id = $r.hget(mediaize_path(link.key, 'files'), 'id')
+      unless node[:rel] =~ /lightbox/
+        id = $r.hget(mediaize_path(link.key, 'files'), 'id')
+      else
+        id = $r.hget(mediaize_path(link.key, 'images'), 'id')
+      end
 
       if id
         new_href = 'importmedia://' + id
@@ -127,4 +154,4 @@ MediaLink = lambda do |env|
 end
 
 
-Links = [AnchorEndPoint, AnchorLink, Mail, RemoveGlossaryLink, MediaLink, InternalLink, ExternalLink]
+Links = [InternaliseTechlinkLinks, AnchorEndPoint, RemoveItemLink, RemoveGlossaryLink, AnchorLink, Mail, MediaLink, InternalLink, ExternalLink]
