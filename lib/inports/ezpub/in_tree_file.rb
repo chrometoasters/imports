@@ -10,7 +10,7 @@ module EzPub
     def self.priority
       # I should run nearly last,
       # to keep my ::mine? check simple.
-      100
+      51
     end
 
 
@@ -21,7 +21,7 @@ module EzPub
 
       unless ::File.directory? path
 
-        exts = /\.#{EZP_ICON_BINARY_EXTENSIONS.join('$|\.')}/i
+        exts = /\.#{EZP_ICON_BINARY_EXTENSIONS.join('$|\.')}$/i
 
         if exts.match(path.downcase)
           if path =~ /\/Case-studies\/Classroom-practice\/|\/teaching-snapshot\/|\/student-showcase\/|\/Case-studies\/Technological-practice\//

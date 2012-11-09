@@ -104,7 +104,6 @@ module EzPub
 
           $r.hset image_path.key, 'fields', 'image:ezimage,name:ezstring,caption:ezxmltext'
 
-
           $r.hset image_path.key, 'field_image', file_path
 
           title = image.css('caption').first.content
