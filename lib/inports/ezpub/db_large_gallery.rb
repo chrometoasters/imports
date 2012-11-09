@@ -101,7 +101,7 @@ module EzPub
         file_path = $r.hget(mediaize_path(image_path.key, 'images'), 'field_image')
 
         unless file_path
-          image_path = LinkHelpers.parse("/images/img/#{image[5]}", path)
+          image_path = LinkHelpers.parse("/images/img/#{image[2]}", path)
 
           file_path = $r.hget(mediaize_path(image_path.key, 'images'), 'field_image')
         end
